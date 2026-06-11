@@ -1,0 +1,4952 @@
+{
+  "ABCDEFGH": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "D",
+    "vs_1l": "E"
+  },
+  "ABCDEFGI": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "I"
+  },
+  "ABCDEFGJ": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "J"
+  },
+  "ABCDEFGK": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "K"
+  },
+  "ABCDEFGL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "E"
+  },
+  "ABCDEFHI": {
+    "vs_1a": "H",
+    "vs_1b": "E",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "D",
+    "vs_1l": "I"
+  },
+  "ABCDEFHJ": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "D",
+    "vs_1l": "E"
+  },
+  "ABCDEFHK": {
+    "vs_1a": "H",
+    "vs_1b": "E",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "D",
+    "vs_1l": "K"
+  },
+  "ABCDEFHL": {
+    "vs_1a": "H",
+    "vs_1b": "F",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "E"
+  },
+  "ABCDEFIJ": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "I"
+  },
+  "ABCDEFIK": {
+    "vs_1a": "C",
+    "vs_1b": "E",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABCDEFIL": {
+    "vs_1a": "C",
+    "vs_1b": "E",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABCDEFJK": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "K"
+  },
+  "ABCDEFJL": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "E"
+  },
+  "ABCDEFKL": {
+    "vs_1a": "C",
+    "vs_1b": "E",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCDEGHI": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "E",
+    "vs_1l": "I"
+  },
+  "ABCDEGHJ": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "E",
+    "vs_1l": "J"
+  },
+  "ABCDEGHK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "E",
+    "vs_1l": "K"
+  },
+  "ABCDEGHL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "E"
+  },
+  "ABCDEGIJ": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "I",
+    "vs_1l": "J"
+  },
+  "ABCDEGIK": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABCDEGIL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABCDEGJK": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "J",
+    "vs_1l": "K"
+  },
+  "ABCDEGJL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "J"
+  },
+  "ABCDEGKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCDEHIJ": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "E",
+    "vs_1l": "I"
+  },
+  "ABCDEHIK": {
+    "vs_1a": "H",
+    "vs_1b": "E",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABCDEHIL": {
+    "vs_1a": "H",
+    "vs_1b": "E",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABCDEHJK": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "E",
+    "vs_1l": "K"
+  },
+  "ABCDEHJL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "E"
+  },
+  "ABCDEHKL": {
+    "vs_1a": "H",
+    "vs_1b": "E",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCDEIJK": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABCDEIJL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABCDEIKL": {
+    "vs_1a": "E",
+    "vs_1b": "I",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCDEJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCDFGHI": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "D",
+    "vs_1l": "I"
+  },
+  "ABCDFGHJ": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "D",
+    "vs_1l": "J"
+  },
+  "ABCDFGHK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "D",
+    "vs_1l": "K"
+  },
+  "ABCDFGHL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "H"
+  },
+  "ABCDFGIJ": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "J"
+  },
+  "ABCDFGIK": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABCDFGIL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABCDFGJK": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "J",
+    "vs_1l": "K"
+  },
+  "ABCDFGJL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "J"
+  },
+  "ABCDFGKL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCDFHIJ": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "D",
+    "vs_1l": "I"
+  },
+  "ABCDFHIK": {
+    "vs_1a": "H",
+    "vs_1b": "F",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABCDFHIL": {
+    "vs_1a": "H",
+    "vs_1b": "F",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABCDFHJK": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "D",
+    "vs_1l": "K"
+  },
+  "ABCDFHJL": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "H"
+  },
+  "ABCDFHKL": {
+    "vs_1a": "H",
+    "vs_1b": "F",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCDFIJK": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABCDFIJL": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABCDFIKL": {
+    "vs_1a": "C",
+    "vs_1b": "I",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCDFJKL": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCDGHIJ": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "I",
+    "vs_1l": "J"
+  },
+  "ABCDGHIK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABCDGHIL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABCDGHJK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "J",
+    "vs_1l": "K"
+  },
+  "ABCDGHJL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "J"
+  },
+  "ABCDGHKL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCDGIJK": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABCDGIJL": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABCDGIKL": {
+    "vs_1a": "I",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCDGJKL": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCDHIJK": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABCDHIJL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABCDHIKL": {
+    "vs_1a": "H",
+    "vs_1b": "I",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCDHJKL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCDIJKL": {
+    "vs_1a": "I",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCEFGHI": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "I"
+  },
+  "ABCEFGHJ": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "J"
+  },
+  "ABCEFGHK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "K"
+  },
+  "ABCEFGHL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "E"
+  },
+  "ABCEFGIJ": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "J"
+  },
+  "ABCEFGIK": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABCEFGIL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABCEFGJK": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "J",
+    "vs_1l": "K"
+  },
+  "ABCEFGJL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "J"
+  },
+  "ABCEFGKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCEFHIJ": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "I"
+  },
+  "ABCEFHIK": {
+    "vs_1a": "H",
+    "vs_1b": "E",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABCEFHIL": {
+    "vs_1a": "H",
+    "vs_1b": "E",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABCEFHJK": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "K"
+  },
+  "ABCEFHJL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "E"
+  },
+  "ABCEFHKL": {
+    "vs_1a": "H",
+    "vs_1b": "E",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCEFIJK": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABCEFIJL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABCEFIKL": {
+    "vs_1a": "E",
+    "vs_1b": "I",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCEFJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCEGHIJ": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "E",
+    "vs_1l": "I"
+  },
+  "ABCEGHIK": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABCEGHIL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABCEGHJK": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "E",
+    "vs_1l": "K"
+  },
+  "ABCEGHJL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "E"
+  },
+  "ABCEGHKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCEGIJK": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABCEGIJL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABCEGIKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "A",
+    "vs_1g": "I",
+    "vs_1i": "C",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCEGJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCEHIJK": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABCEHIJL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABCEHIKL": {
+    "vs_1a": "E",
+    "vs_1b": "I",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCEHJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCEIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "A",
+    "vs_1g": "I",
+    "vs_1i": "C",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCFGHIJ": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "J"
+  },
+  "ABCFGHIK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABCFGHIL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABCFGHJK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "J",
+    "vs_1l": "K"
+  },
+  "ABCFGHJL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "J"
+  },
+  "ABCFGHKL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCFGIJK": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABCFGIJL": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABCFGIKL": {
+    "vs_1a": "I",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCFGJKL": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCFHIJK": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABCFHIJL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABCFHIKL": {
+    "vs_1a": "H",
+    "vs_1b": "I",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCFHJKL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCFIJKL": {
+    "vs_1a": "I",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCGHIJK": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABCGHIJL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABCGHIKL": {
+    "vs_1a": "I",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCGHJKL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCGIJKL": {
+    "vs_1a": "I",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABCHIJKL": {
+    "vs_1a": "I",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABDEFGHI": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "I"
+  },
+  "ABDEFGHJ": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "J"
+  },
+  "ABDEFGHK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "K"
+  },
+  "ABDEFGHL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "E"
+  },
+  "ABDEFGIJ": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "J"
+  },
+  "ABDEFGIK": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABDEFGIL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABDEFGJK": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "J",
+    "vs_1l": "K"
+  },
+  "ABDEFGJL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "J"
+  },
+  "ABDEFGKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABDEFHIJ": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "I"
+  },
+  "ABDEFHIK": {
+    "vs_1a": "H",
+    "vs_1b": "E",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABDEFHIL": {
+    "vs_1a": "H",
+    "vs_1b": "E",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABDEFHJK": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "K"
+  },
+  "ABDEFHJL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "E"
+  },
+  "ABDEFHKL": {
+    "vs_1a": "H",
+    "vs_1b": "E",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABDEFIJK": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABDEFIJL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABDEFIKL": {
+    "vs_1a": "E",
+    "vs_1b": "I",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABDEFJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABDEGHIJ": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "E",
+    "vs_1l": "I"
+  },
+  "ABDEGHIK": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABDEGHIL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABDEGHJK": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "E",
+    "vs_1l": "K"
+  },
+  "ABDEGHJL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "E"
+  },
+  "ABDEGHKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABDEGIJK": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABDEGIJL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABDEGIKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "A",
+    "vs_1g": "I",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABDEGJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABDEHIJK": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABDEHIJL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABDEHIKL": {
+    "vs_1a": "E",
+    "vs_1b": "I",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABDEHJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABDEIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "A",
+    "vs_1g": "I",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABDFGHIJ": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "J"
+  },
+  "ABDFGHIK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABDFGHIL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABDFGHJK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "J",
+    "vs_1l": "K"
+  },
+  "ABDFGHJL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "J"
+  },
+  "ABDFGHKL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABDFGIJK": {
+    "vs_1a": "F",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABDFGIJL": {
+    "vs_1a": "F",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABDFGIKL": {
+    "vs_1a": "I",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABDFGJKL": {
+    "vs_1a": "F",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABDFHIJK": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABDFHIJL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABDFHIKL": {
+    "vs_1a": "H",
+    "vs_1b": "I",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABDFHJKL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABDFIJKL": {
+    "vs_1a": "I",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABDGHIJK": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABDGHIJL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABDGHIKL": {
+    "vs_1a": "I",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABDGHJKL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABDGIJKL": {
+    "vs_1a": "I",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABDHIJKL": {
+    "vs_1a": "I",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABEFGHIJ": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "E",
+    "vs_1l": "I"
+  },
+  "ABEFGHIK": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABEFGHIL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABEFGHJK": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "E",
+    "vs_1l": "K"
+  },
+  "ABEFGHJL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "E"
+  },
+  "ABEFGHKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABEFGIJK": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABEFGIJL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABEFGIKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "A",
+    "vs_1g": "I",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABEFGJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABEFHIJK": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABEFHIJL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABEFHIKL": {
+    "vs_1a": "E",
+    "vs_1b": "I",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABEFHJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABEFIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "A",
+    "vs_1g": "I",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABEGHIJK": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "A",
+    "vs_1g": "H",
+    "vs_1i": "G",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABEGHIJL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "A",
+    "vs_1g": "H",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABEGHIKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "A",
+    "vs_1g": "I",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABEGHJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "A",
+    "vs_1g": "H",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABEGIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "A",
+    "vs_1g": "I",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABEHIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "A",
+    "vs_1g": "I",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABFGHIJK": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ABFGHIJL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ABFGHIKL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "A",
+    "vs_1g": "I",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABFGHJKL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABFGIJKL": {
+    "vs_1a": "I",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABFHIJKL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "A",
+    "vs_1g": "I",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ABGHIJKL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "A",
+    "vs_1g": "I",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACDEFGHI": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "E",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "D",
+    "vs_1l": "I"
+  },
+  "ACDEFGHJ": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "D",
+    "vs_1l": "E"
+  },
+  "ACDEFGHK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "E",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "D",
+    "vs_1l": "K"
+  },
+  "ACDEFGHL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "F",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "E"
+  },
+  "ACDEFGIJ": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "I"
+  },
+  "ACDEFGIK": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "E",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ACDEFGIL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "E",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ACDEFGJK": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "K"
+  },
+  "ACDEFGJL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "E"
+  },
+  "ACDEFGKL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "E",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACDEFHIJ": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "E",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "D",
+    "vs_1l": "I"
+  },
+  "ACDEFHIK": {
+    "vs_1a": "H",
+    "vs_1b": "E",
+    "vs_1d": "F",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ACDEFHIL": {
+    "vs_1a": "H",
+    "vs_1b": "E",
+    "vs_1d": "F",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ACDEFHJK": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "E",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "D",
+    "vs_1l": "K"
+  },
+  "ACDEFHJL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "F",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "E"
+  },
+  "ACDEFHKL": {
+    "vs_1a": "H",
+    "vs_1b": "E",
+    "vs_1d": "F",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACDEFIJK": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "E",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ACDEFIJL": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "E",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ACDEFIKL": {
+    "vs_1a": "C",
+    "vs_1b": "E",
+    "vs_1d": "I",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACDEFJKL": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "E",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACDEGHIJ": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "E",
+    "vs_1l": "I"
+  },
+  "ACDEGHIK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "E",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ACDEGHIL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "E",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ACDEGHJK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "E",
+    "vs_1l": "K"
+  },
+  "ACDEGHJL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "E"
+  },
+  "ACDEGHKL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "E",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACDEGIJK": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ACDEGIJL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ACDEGIKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "I",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACDEGJKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACDEHIJK": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "E",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ACDEHIJL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "E",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ACDEHIKL": {
+    "vs_1a": "H",
+    "vs_1b": "E",
+    "vs_1d": "I",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACDEHJKL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "E",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACDEIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "I",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACDFGHIJ": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "D",
+    "vs_1l": "I"
+  },
+  "ACDFGHIK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "F",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ACDFGHIL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "F",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ACDFGHJK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "D",
+    "vs_1l": "K"
+  },
+  "ACDFGHJL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "H"
+  },
+  "ACDFGHKL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "F",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACDFGIJK": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ACDFGIJL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ACDFGIKL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "I",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACDFGJKL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACDFHIJK": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "F",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ACDFHIJL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "F",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ACDFHIKL": {
+    "vs_1a": "H",
+    "vs_1b": "F",
+    "vs_1d": "I",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACDFHJKL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "F",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACDFIJKL": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "I",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACDGHIJK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ACDGHIJL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ACDGHIKL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "I",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACDGHJKL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACDGIJKL": {
+    "vs_1a": "I",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACDHIJKL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "I",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACEFGHIJ": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "I"
+  },
+  "ACEFGHIK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "E",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ACEFGHIL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "E",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ACEFGHJK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "K"
+  },
+  "ACEFGHJL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "E"
+  },
+  "ACEFGHKL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "E",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACEFGIJK": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ACEFGIJL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ACEFGIKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "I",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACEFGJKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACEFHIJK": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "E",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ACEFHIJL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "E",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ACEFHIKL": {
+    "vs_1a": "H",
+    "vs_1b": "E",
+    "vs_1d": "I",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACEFHJKL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "E",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACEFIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "I",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACEGHIJK": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ACEGHIJL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ACEGHIKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "I",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACEGHJKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACEGIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "I",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACEHIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "I",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACFGHIJK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ACFGHIJL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ACFGHIKL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "I",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACFGHJKL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACFGIJKL": {
+    "vs_1a": "I",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACFHIJKL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "I",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ACGHIJKL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "I",
+    "vs_1e": "C",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ADEFGHIJ": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "I"
+  },
+  "ADEFGHIK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "E",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ADEFGHIL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "E",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ADEFGHJK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "K"
+  },
+  "ADEFGHJL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "E"
+  },
+  "ADEFGHKL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "E",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ADEFGIJK": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ADEFGIJL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ADEFGIKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "I",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ADEFGJKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ADEFHIJK": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "E",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ADEFHIJL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "E",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ADEFHIKL": {
+    "vs_1a": "H",
+    "vs_1b": "E",
+    "vs_1d": "I",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ADEFHJKL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "E",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ADEFIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "I",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ADEGHIJK": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ADEGHIJL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ADEGHIKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "I",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ADEGHJKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ADEGIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "I",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ADEHIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "I",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ADFGHIJK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "ADFGHIJL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "ADFGHIKL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "I",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ADFGHJKL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ADFGIJKL": {
+    "vs_1a": "I",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ADFHIJKL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "I",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "ADGHIJKL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "I",
+    "vs_1e": "D",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "AEFGHIJK": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "AEFGHIJL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "AEFGHIKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "I",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "AEFGHJKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "AEFGIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "I",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "AEFHIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "I",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "AEGHIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "I",
+    "vs_1e": "A",
+    "vs_1g": "H",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "AFGHIJKL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "I",
+    "vs_1e": "F",
+    "vs_1g": "A",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCDEFGHI": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "I"
+  },
+  "BCDEFGHJ": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "D",
+    "vs_1l": "E"
+  },
+  "BCDEFGHK": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "K"
+  },
+  "BCDEFGHL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "E"
+  },
+  "BCDEFGIJ": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "I"
+  },
+  "BCDEFGIK": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "E",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "BCDEFGIL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "E",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "BCDEFGJK": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "K"
+  },
+  "BCDEFGJL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "E"
+  },
+  "BCDEFGKL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "E",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCDEFHIJ": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "I"
+  },
+  "BCDEFHIK": {
+    "vs_1a": "C",
+    "vs_1b": "E",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "BCDEFHIL": {
+    "vs_1a": "C",
+    "vs_1b": "E",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "BCDEFHJK": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "K"
+  },
+  "BCDEFHJL": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "E"
+  },
+  "BCDEFHKL": {
+    "vs_1a": "C",
+    "vs_1b": "E",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCDEFIJK": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "E",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "BCDEFIJL": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "E",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "BCDEFIKL": {
+    "vs_1a": "C",
+    "vs_1b": "E",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "I",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCDEFJKL": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "E",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCDEGHIJ": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "D",
+    "vs_1k": "E",
+    "vs_1l": "I"
+  },
+  "BCDEGHIK": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "D",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "BCDEGHIL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "BCDEGHJK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "D",
+    "vs_1k": "E",
+    "vs_1l": "K"
+  },
+  "BCDEGHJL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "E"
+  },
+  "BCDEGHKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCDEGIJK": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "D",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "BCDEGIJL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "BCDEGIKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "I",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCDEGJKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCDEHIJK": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "D",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "BCDEHIJL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "BCDEHIKL": {
+    "vs_1a": "E",
+    "vs_1b": "I",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCDEHJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCDEIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "I",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCDFGHIJ": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "D",
+    "vs_1l": "I"
+  },
+  "BCDFGHIK": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "BCDFGHIL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "BCDFGHJK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "D",
+    "vs_1l": "K"
+  },
+  "BCDFGHJL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "J"
+  },
+  "BCDFGHKL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCDFGIJK": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "BCDFGIJL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "BCDFGIKL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "I",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCDFGJKL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCDFHIJK": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "BCDFHIJL": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "BCDFHIKL": {
+    "vs_1a": "C",
+    "vs_1b": "I",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCDFHJKL": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCDFIJKL": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "I",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCDGHIJK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "D",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "BCDGHIJL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "BCDGHIKL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "I",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCDGHJKL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCDGIJKL": {
+    "vs_1a": "I",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCDHIJKL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "I",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCEFGHIJ": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "I"
+  },
+  "BCEFGHIK": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "BCEFGHIL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "BCEFGHJK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "K"
+  },
+  "BCEFGHJL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "E"
+  },
+  "BCEFGHKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCEFGIJK": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "BCEFGIJL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "BCEFGIKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "I",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCEFGJKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCEFHIJK": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "BCEFHIJL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "BCEFHIKL": {
+    "vs_1a": "E",
+    "vs_1b": "I",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCEFHJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCEFIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "I",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCEGHIJK": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "G",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "BCEGHIJL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "BCEGHIKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "I",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCEGHJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCEGIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "I",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCEHIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "I",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCFGHIJK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "BCFGHIJL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "BCFGHIKL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "I",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCFGHJKL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCFGIJKL": {
+    "vs_1a": "I",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCFHIJKL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "I",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BCGHIJKL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "C",
+    "vs_1g": "I",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BDEFGHIJ": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "I"
+  },
+  "BDEFGHIK": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "BDEFGHIL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "BDEFGHJK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "K"
+  },
+  "BDEFGHJL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "E"
+  },
+  "BDEFGHKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BDEFGIJK": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "BDEFGIJL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "BDEFGIKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "I",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BDEFGJKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BDEFHIJK": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "BDEFHIJL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "BDEFHIKL": {
+    "vs_1a": "E",
+    "vs_1b": "I",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BDEFHJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BDEFIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "I",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BDEGHIJK": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "G",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "BDEGHIJL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "BDEGHIKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "I",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BDEGHJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BDEGIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "I",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BDEHIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "I",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BDFGHIJK": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "BDFGHIJL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "BDFGHIKL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "I",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BDFGHJKL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BDFGIJKL": {
+    "vs_1a": "I",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BDFHIJKL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "I",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BDGHIJKL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "D",
+    "vs_1g": "I",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BEFGHIJK": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "H",
+    "vs_1i": "G",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "BEFGHIJL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "H",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "BEFGHIKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "I",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BEFGHJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "H",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BEFGIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "I",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BEFHIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "I",
+    "vs_1i": "H",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BEGHIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "I",
+    "vs_1e": "B",
+    "vs_1g": "H",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "BFGHIJKL": {
+    "vs_1a": "H",
+    "vs_1b": "J",
+    "vs_1d": "B",
+    "vs_1e": "F",
+    "vs_1g": "I",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "CDEFGHIJ": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "I"
+  },
+  "CDEFGHIK": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "E",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "CDEFGHIL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "E",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "CDEFGHJK": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "E",
+    "vs_1l": "K"
+  },
+  "CDEFGHJL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "E"
+  },
+  "CDEFGHKL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "E",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "CDEFGIJK": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "E",
+    "vs_1e": "D",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "CDEFGIJL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "E",
+    "vs_1e": "D",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "CDEFGIKL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "E",
+    "vs_1e": "D",
+    "vs_1g": "I",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "CDEFGJKL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "E",
+    "vs_1e": "D",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "CDEFHIJK": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "E",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "CDEFHIJL": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "E",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "CDEFHIKL": {
+    "vs_1a": "C",
+    "vs_1b": "E",
+    "vs_1d": "I",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "CDEFHJKL": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "E",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "CDEFIJKL": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "E",
+    "vs_1e": "D",
+    "vs_1g": "I",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "CDEGHIJK": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "D",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "CDEGHIJL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "CDEGHIKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "I",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "CDEGHJKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "CDEGIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "I",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "CDEHIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "I",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "CDFGHIJK": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "CDFGHIJL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "CDFGHIKL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "I",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "CDFGHJKL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "CDFGIJKL": {
+    "vs_1a": "C",
+    "vs_1b": "G",
+    "vs_1d": "I",
+    "vs_1e": "D",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "CDFHIJKL": {
+    "vs_1a": "C",
+    "vs_1b": "J",
+    "vs_1d": "I",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "CDGHIJKL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "I",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "D",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "CEFGHIJK": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "CEFGHIJL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "CEFGHIKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "I",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "CEFGHJKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "CEFGIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "I",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "CEFHIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "I",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "CEGHIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "I",
+    "vs_1e": "C",
+    "vs_1g": "H",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "CFGHIJKL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "I",
+    "vs_1e": "C",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "DEFGHIJK": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "I",
+    "vs_1l": "K"
+  },
+  "DEFGHIJL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "I"
+  },
+  "DEFGHIKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "I",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "DEFGHJKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "J",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "DEFGIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "G",
+    "vs_1d": "I",
+    "vs_1e": "D",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "DEFHIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "I",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "DEGHIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "I",
+    "vs_1e": "D",
+    "vs_1g": "H",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "DFGHIJKL": {
+    "vs_1a": "H",
+    "vs_1b": "G",
+    "vs_1d": "I",
+    "vs_1e": "D",
+    "vs_1g": "J",
+    "vs_1i": "F",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  },
+  "EFGHIJKL": {
+    "vs_1a": "E",
+    "vs_1b": "J",
+    "vs_1d": "I",
+    "vs_1e": "F",
+    "vs_1g": "H",
+    "vs_1i": "G",
+    "vs_1k": "L",
+    "vs_1l": "K"
+  }
+}
