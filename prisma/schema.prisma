@@ -6,3 +6,131 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Usuario {
+  id           String   @id @default(uuid()) @db.Uuid
+  nome         String   @db.VarChar(120)
+  username     String   @unique @db.VarChar(60)
+  passwordHash String   @map("password_hash") @db.VarChar(255)
+  role         String   @default("user") @db.VarChar(20)
+  createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+
+  palpites          Palpite[]
+  palpitesEstaticos PalpiteEstatico[]
+
+  @@map("usuarios")
+}
+
+model Grupo {
+  id String @id @db.Char(1)
+
+  equipes  Equipe[]
+  partidas Partida[]
+
+  @@map("grupos")
+}
+
+model Equipe {
+  id               Int     @id @default(autoincrement())
+  nome             String  @db.VarChar(80)
+  sigla            String? @db.VarChar(10)
+  bandeiraCodigo   String? @map("bandeira_codigo") @db.VarChar(10)
+  grupoId          String  @map("grupo_id") @db.Char(1)
+  grupo            Grupo   @relation(fields: [grupoId], references: [id])
+
+  partidasCasa      Partida[]       @relation("EquipeCasa")
+  partidasFora      Partida[]       @relation("EquipeFora")
+  palpitesEstaticos PalpiteEstatico[]
+
+  @@map("equipes")
+}
+
+model Fase {
+  id            String  @id @db.VarChar(20)
+  nomeExibicao  String  @map("nome_exibicao") @db.VarChar(40)
+  multiplicador Decimal @db.Decimal(3, 1)
+  ordem         Int     @db.SmallInt
+
+  partidas Partida[]
+
+  @@map("fases")
+}
+
+model Partida {
+  id                Int      @id @db.SmallInt
+  faseId            String   @map("fase_id") @db.VarChar(20)
+  fase              Fase     @relation(fields: [faseId], references: [id])
+  grupoId           String?  @map("grupo_id") @db.Char(1)
+  grupo             Grupo?   @relation(fields: [grupoId], references: [id])
+  equipeCasaId      Int?     @map("equipe_casa_id")
+  equipeCasa        Equipe?  @relation("EquipeCasa", fields: [equipeCasaId], references: [id])
+  equipeForaId      Int?     @map("equipe_fora_id")
+  equipeFora        Equipe?  @relation("EquipeFora", fields: [equipeForaId], references: [id])
+  placeholderCasa   String?  @map("placeholder_casa") @db.VarChar(60)
+  placeholderFora   String?  @map("placeholder_fora") @db.VarChar(60)
+  golsCasa          Int?     @map("gols_casa") @db.SmallInt
+  golsFora          Int?     @map("gols_fora") @db.SmallInt
+  status            String   @default("agendada") @db.VarChar(20)
+  dataHoraUtc       DateTime @map("data_hora_utc") @db.Timestamptz(6)
+  estadio           String?  @db.VarChar(80)
+  cidade            String?  @db.VarChar(60)
+  grupoSimultaneoId Int?     @map("grupo_simultaneo_id") @db.SmallInt
+
+  palpites Palpite[]
+
+  @@index([dataHoraUtc], name: "idx_partidas_data_hora")
+  @@index([faseId], name: "idx_partidas_fase")
+  @@index([status], name: "idx_partidas_status")
+  @@map("partidas")
+}
+
+model Palpite {
+  id              String   @id @default(uuid()) @db.Uuid
+  usuarioId       String   @map("usuario_id") @db.Uuid
+  usuario         Usuario  @relation(fields: [usuarioId], references: [id])
+  partidaId       Int      @map("partida_id") @db.SmallInt
+  partida         Partida  @relation(fields: [partidaId], references: [id])
+  golsCasaPalpite Int      @map("gols_casa_palpite") @db.SmallInt
+  golsForaPalpite Int      @map("gols_fora_palpite") @db.SmallInt
+  pontosObtidos   Int?     @map("pontos_obtidos") @db.SmallInt
+  createdAt       DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt       DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  @@unique([usuarioId, partidaId])
+  @@index([partidaId], name: "idx_palpites_partida")
+  @@index([usuarioId], name: "idx_palpites_usuario")
+  @@map("palpites")
+}
+
+model PalpiteEstatico {
+  id            String   @id @default(uuid()) @db.Uuid
+  usuarioId     String   @map("usuario_id") @db.Uuid
+  usuario       Usuario  @relation(fields: [usuarioId], references: [id])
+  mercado       String   @db.VarChar(20)
+  valorEquipeId Int?     @map("valor_equipe_id")
+  valorEquipe   Equipe?  @relation(fields: [valorEquipeId], references: [id])
+  valorTexto    String?  @map("valor_texto") @db.VarChar(80)
+  pontosObtidos Int?     @map("pontos_obtidos") @db.SmallInt
+  travadoEm     DateTime @default(now()) @map("travado_em") @db.Timestamptz(6)
+
+  @@unique([usuarioId, mercado])
+  @@map("palpites_estaticos")
+}
+
+// Tabela Anexo C (495 combinações possíveis dos 8 melhores 3os colocados)
+// DOMAIN_RULES.md §5 — dado estático imutável, gerado do arquivo oficial FIFA
+model ConfrontoTerceiro {
+  id         Int    @id @default(autoincrement())
+  combinacao String @unique @db.Char(8)
+  vs1a       String @map("vs_1a") @db.Char(1)
+  vs1b       String @map("vs_1b") @db.Char(1)
+  vs1d       String @map("vs_1d") @db.Char(1)
+  vs1e       String @map("vs_1e") @db.Char(1)
+  vs1g       String @map("vs_1g") @db.Char(1)
+  vs1i       String @map("vs_1i") @db.Char(1)
+  vs1k       String @map("vs_1k") @db.Char(1)
+  vs1l       String @map("vs_1l") @db.Char(1)
+
+  @@index([combinacao], name: "idx_confrontos_terceiros_combinacao")
+  @@map("confrontos_terceiros")
+}
