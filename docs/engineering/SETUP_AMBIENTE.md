@@ -91,12 +91,20 @@ Na primeira execução, ele abrirá o navegador para login (OAuth com sua conta 
 
 1. Extraia `bolao-copa-2026-fundacao.zip` em uma pasta (ex.: `~/projetos/bolao-copa-2026`).
 2. Abra essa pasta no VSCode (`File > Open Folder`).
-3. Inicialize o Git:
+3. Inicialize o Git e conecte ao GitHub:
    ```bash
    git init
    git add .
    git commit -m "docs: fundação do projeto (AGENTS, ARCHITECTURE, DOMAIN_RULES, seed data)"
    ```
+   Crie um repositório vazio no GitHub (sem README/gitignore), copie a URL e:
+   ```bash
+   git remote add origin <URL_DO_SEU_REPOSITORIO>
+   git branch -M main
+   git push -u origin main
+   ```
+
+> A partir daqui, `MARCO_1_PLAN.md` instrui a fazer `git add . && git commit && git push` ao final de cada tarefa.
 
 ---
 

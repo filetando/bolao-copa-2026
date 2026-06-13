@@ -8,6 +8,20 @@
 
 ---
 
+## Versionamento — ao final de cada tarefa
+
+Após cada tarefa concluída (critério de aceite atendido), faça commit e push antes de seguir para a próxima:
+
+```bash
+git add .
+git commit -m "feat(marco1): <resumo da tarefa, ex: tarefa 2 - identity (cadastro/login)>"
+git push
+```
+
+Isso mantém cada tarefa como um ponto de checkpoint isolado — se algo der errado na tarefa seguinte, é fácil voltar (`git reset`/`git revert`) sem perder o que já funcionava.
+
+---
+
 ## ✅ Dados da fase de grupos — completos
 
 O calendário completo dos 72 jogos da fase de grupos (48 equipes, 12 grupos, round-robin completo) foi recebido, verificado (72 jogos, 6 por grupo, cada equipe com 3 jogos, todos os 6 confrontos por grupo presentes) e já convertido para os arquivos de seed:
@@ -47,6 +61,10 @@ Não implemente nenhuma entidade/use case ainda — apenas o esqueleto.
 **Arquivos esperados:** `package.json`, `tsconfig.json`, `prisma/schema.prisma` (vazio/inicial), `src/infrastructure/http/server.ts`, `frontend/` inicializado.
 
 **Critério de aceite:** `npm run dev` sobe sem erro; `GET /health` responde `200`.
+
+
+
+*(Ao concluir, faça commit e push — ver seção "Versionamento" no topo deste documento.)*
 
 ---
 
@@ -92,6 +110,10 @@ desenhado (ex.: ajuste de tipo de coluna pelo Prisma).
 
 **Critério de aceite:** `npx prisma migrate dev` roda sem erro; `npx prisma db seed` popula as 495 linhas de `confrontos_terceiros`, 12 `grupos`, `fases` e `partidas` (mesmo que parte com placeholder).
 
+
+
+*(Ao concluir, faça commit e push — ver seção "Versionamento" no topo deste documento.)*
+
 ---
 
 ## Tarefa 2 — Identity: cadastro e login
@@ -121,6 +143,10 @@ mapeadas para os status HTTP corretos (BACKEND_GUIDELINES.md §2/§4).
 **Arquivos esperados:** `src/domain/identity/Usuario.ts`, `src/application/identity/use-cases/{RegisterUser,LoginUser}.ts`, `src/application/identity/ports/UsuarioRepository.ts`, `src/infrastructure/repositories/PrismaUsuarioRepository.ts`, `src/infrastructure/auth/*`, `src/presentation/http/routes/auth.ts`.
 
 **Critério de aceite (Tarefa de testes virá na Tarefa 8, mas valide manualmente agora):** `POST /auth/register` cria usuário com hash (não texto plano); `POST /auth/login` retorna cookie/sessão válida; `GET /auth/me` autenticado retorna `{ id, nome, username, role }`.
+
+
+
+*(Ao concluir, faça commit e push — ver seção "Versionamento" no topo deste documento.)*
 
 ---
 
@@ -152,6 +178,10 @@ podem ficar abertas).
 **Arquivos esperados:** `src/application/tournament/ports/PartidaRepository.ts`, `src/infrastructure/repositories/PrismaPartidaRepository.ts`, `src/application/tournament/use-cases/ListMatches.ts`, `src/presentation/http/routes/partidas.ts`.
 
 **Critério de aceite:** `GET /partidas` retorna as 104 partidas, incluindo as com placeholder (73-104) corretamente formatadas.
+
+
+
+*(Ao concluir, faça commit e push — ver seção "Versionamento" no topo deste documento.)*
 
 ---
 
@@ -195,6 +225,10 @@ Use exceções tipadas (PredictionLockedError, MatchNotFoundError).
 
 **Critério de aceite:** envio de palpite antes do horário funciona; chamada direta à API dentro da janela de bloqueio retorna `409`; usuário não vê palpites de outros em partida ainda não iniciada.
 
+
+
+*(Ao concluir, faça commit e push — ver seção "Versionamento" no topo deste documento.)*
+
 ---
 
 ## Tarefa 5 — Bolão: mercados estáticos (primeiro acesso)
@@ -228,6 +262,10 @@ isso explícito.
 
 **Critério de aceite:** os 4 mercados podem ser enviados uma vez; reenvio após "abertura" retorna erro; `HasCompletedFirstAccess` reflete corretamente o estado.
 
+
+
+*(Ao concluir, faça commit e push — ver seção "Versionamento" no topo deste documento.)*
+
 ---
 
 ## Tarefa 6 — Leaderboard (Home)
@@ -256,6 +294,10 @@ decida e justifique brevemente).
 **Arquivos esperados:** `src/application/bolao/use-cases/GetLeaderboard.ts`, rota correspondente.
 
 **Critério de aceite:** `GET /leaderboard` retorna lista ordenada; usuários sem nenhum palpite avaliado aparecem com `pontosTotais: 0`.
+
+
+
+*(Ao concluir, faça commit e push — ver seção "Versionamento" no topo deste documento.)*
 
 ---
 
@@ -290,6 +332,10 @@ hardcode cores).
 
 **Critério de aceite:** fluxo completo manual — cadastro → primeiro acesso → home (leaderboard vazio) → partidas (lista agrupada, palpite enviável até o bloqueio).
 
+
+
+*(Ao concluir, faça commit e push — ver seção "Versionamento" no topo deste documento.)*
+
 ---
 
 ## Tarefa 8 — Testes (domain crítico + E2E do bloqueio)
@@ -318,6 +364,10 @@ até a primeira partida terminar.
 ```
 
 **Critério de aceite:** suítes executadas com resultado reportado; nenhum teste "deveria passar" sem rodar.
+
+
+
+*(Ao concluir, faça commit e push — ver seção "Versionamento" no topo deste documento.)*
 
 ---
 

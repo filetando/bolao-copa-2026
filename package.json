@@ -1,0 +1,39 @@
+{
+  "name": "bolao-copa-2026",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sistema web de bolão da Copa do Mundo FIFA 2026",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "tsx watch src/infrastructure/http/server.ts",
+    "build": "tsc --project tsconfig.build.json",
+    "start": "node dist/infrastructure/http/server.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:seed": "tsx prisma/seed/index.ts",
+    "db:seed:reference": "tsx prisma/seed/reference.ts",
+    "db:seed:tournament": "tsx prisma/seed/tournament.ts",
+    "db:studio": "prisma studio"
+  },
+  "dependencies": {
+    "@fastify/cookie": "^11.0.2",
+    "@fastify/cors": "^10.0.2",
+    "@prisma/client": "^5.22.0",
+    "argon2": "^0.41.1",
+    "fastify": "^5.2.1",
+    "jose": "^5.9.6",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.6",
+    "prisma": "^5.22.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.8"
+  }
+}
