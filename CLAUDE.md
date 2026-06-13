@@ -46,3 +46,15 @@ Antes de escrever qualquer linha de código, responda internamente (e, se releva
 
 - Seja direto sobre incerteza: "não tenho certeza se X está coberto por `DOMAIN_RULES.md` — posso adicionar a seguinte redação?" é melhor do que assumir e seguir.
 - Ao final de uma tarefa, resuma: o que foi implementado, quais testes rodaram (e o resultado), quais documentos foram atualizados, e o que ficou pendente/foi adiado (com referência ao `ROADMAP.md` se aplicável).
+
+## 8. Versionamento — obrigatório ao final de cada tarefa
+
+Após o critério de aceite de uma tarefa ser atendido, **sempre** executar na ordem:
+
+```bash
+git add <arquivos relevantes>
+git commit -m "feat(marco1): tarefa N - <resumo>"
+git push
+```
+
+Não pular o `push` — cada tarefa deve ter seu checkpoint no GitHub antes de iniciar a próxima.
