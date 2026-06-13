@@ -19,6 +19,10 @@ import { PrismaTournamentReadPort } from '../repositories/PrismaTournamentReadPo
 import { SubmitPrediction } from '../../application/bolao/use-cases/SubmitPrediction.js'
 import { GetMyPredictions } from '../../application/bolao/use-cases/GetMyPredictions.js'
 import { GetPredictionsForMatch } from '../../application/bolao/use-cases/GetPredictionsForMatch.js'
+import { palpitesEstaticosRoutes } from '../../presentation/http/routes/palpitesEstaticos.js'
+import { PrismaPalpiteEstaticoRepository } from '../repositories/PrismaPalpiteEstaticoRepository.js'
+import { SubmitStaticMarketPrediction } from '../../application/bolao/use-cases/SubmitStaticMarketPrediction.js'
+import { GetMyStaticPredictions } from '../../application/bolao/use-cases/GetMyStaticPredictions.js'
 
 // Carrega augmentações de tipo (request.user)
 import '../../presentation/http/types.js'
@@ -50,6 +54,7 @@ app.setErrorHandler((error, request, reply) => {
       INVALID_CREDENTIALS: 401,
       PREDICTION_LOCKED: 409,
       MATCH_NOT_FOUND: 404,
+      STATIC_MARKET_LOCKED: 409,
     }
     return reply
       .status(statusMap[error.code] ?? 400)
@@ -79,6 +84,10 @@ const submitPrediction = new SubmitPrediction(palpiteRepo, tournamentReadPort)
 const getMyPredictions = new GetMyPredictions(palpiteRepo)
 const getPredictionsForMatch = new GetPredictionsForMatch(palpiteRepo, tournamentReadPort)
 
+const palpiteEstaticoRepo = new PrismaPalpiteEstaticoRepository(prisma)
+const submitStaticMarketPrediction = new SubmitStaticMarketPrediction(palpiteEstaticoRepo)
+const getMyStaticPredictions = new GetMyStaticPredictions(palpiteEstaticoRepo)
+
 // ─── Rotas ────────────────────────────────────────────────────────────────────
 
 app.get('/health', async () => ({ status: 'ok' }))
@@ -86,6 +95,7 @@ app.get('/health', async () => ({ status: 'ok' }))
 await app.register(authRoutes, { prefix: '/auth', registerUser, loginUser, tokenService })
 await app.register(partidasRoutes, { listMatches })
 await app.register(palpitesRoutes, { submitPrediction, getMyPredictions, getPredictionsForMatch, tokenService })
+await app.register(palpitesEstaticosRoutes, { submitStaticMarketPrediction, getMyStaticPredictions, tokenService })
 
 // ─── Start ────────────────────────────────────────────────────────────────────
 
