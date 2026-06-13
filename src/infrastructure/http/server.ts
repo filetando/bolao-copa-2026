@@ -10,6 +10,9 @@ import { PrismaUsuarioRepository } from '../repositories/PrismaUsuarioRepository
 import { RegisterUser } from '../../application/identity/use-cases/RegisterUser.js'
 import { LoginUser } from '../../application/identity/use-cases/LoginUser.js'
 import { authRoutes } from '../../presentation/http/routes/auth.js'
+import { partidasRoutes } from '../../presentation/http/routes/partidas.js'
+import { PrismaPartidaRepository } from '../repositories/PrismaPartidaRepository.js'
+import { ListMatches } from '../../application/tournament/use-cases/ListMatches.js'
 
 // Carrega augmentações de tipo (request.user)
 import '../../presentation/http/types.js'
@@ -59,11 +62,15 @@ const usuarioRepo = new PrismaUsuarioRepository(prisma)
 const registerUser = new RegisterUser(usuarioRepo, hasher)
 const loginUser = new LoginUser(usuarioRepo, hasher, tokenService)
 
+const partidaRepo = new PrismaPartidaRepository(prisma)
+const listMatches = new ListMatches(partidaRepo)
+
 // ─── Rotas ────────────────────────────────────────────────────────────────────
 
 app.get('/health', async () => ({ status: 'ok' }))
 
 await app.register(authRoutes, { prefix: '/auth', registerUser, loginUser, tokenService })
+await app.register(partidasRoutes, { listMatches })
 
 // ─── Start ────────────────────────────────────────────────────────────────────
 
