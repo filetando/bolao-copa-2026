@@ -58,3 +58,7 @@ git push
 ```
 
 Não pular o `push` — cada tarefa deve ter seu checkpoint no GitHub antes de iniciar a próxima.
+
+## 9. Gestão de contexto — antes de iniciar uma tarefa nova
+
+Antes de começar qualquer tarefa nova, rodar `/compact` para comprimir o histórico da conversa e liberar espaço no contexto. Isso evita degradação de qualidade nas respostas à medida que a sessão cresce.
