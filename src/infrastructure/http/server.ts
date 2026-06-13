@@ -13,6 +13,12 @@ import { authRoutes } from '../../presentation/http/routes/auth.js'
 import { partidasRoutes } from '../../presentation/http/routes/partidas.js'
 import { PrismaPartidaRepository } from '../repositories/PrismaPartidaRepository.js'
 import { ListMatches } from '../../application/tournament/use-cases/ListMatches.js'
+import { palpitesRoutes } from '../../presentation/http/routes/palpites.js'
+import { PrismaPalpiteRepository } from '../repositories/PrismaPalpiteRepository.js'
+import { PrismaTournamentReadPort } from '../repositories/PrismaTournamentReadPort.js'
+import { SubmitPrediction } from '../../application/bolao/use-cases/SubmitPrediction.js'
+import { GetMyPredictions } from '../../application/bolao/use-cases/GetMyPredictions.js'
+import { GetPredictionsForMatch } from '../../application/bolao/use-cases/GetPredictionsForMatch.js'
 
 // Carrega augmentações de tipo (request.user)
 import '../../presentation/http/types.js'
@@ -42,6 +48,8 @@ app.setErrorHandler((error, request, reply) => {
     const statusMap: Record<string, number> = {
       USERNAME_ALREADY_EXISTS: 409,
       INVALID_CREDENTIALS: 401,
+      PREDICTION_LOCKED: 409,
+      MATCH_NOT_FOUND: 404,
     }
     return reply
       .status(statusMap[error.code] ?? 400)
@@ -65,12 +73,19 @@ const loginUser = new LoginUser(usuarioRepo, hasher, tokenService)
 const partidaRepo = new PrismaPartidaRepository(prisma)
 const listMatches = new ListMatches(partidaRepo)
 
+const palpiteRepo = new PrismaPalpiteRepository(prisma)
+const tournamentReadPort = new PrismaTournamentReadPort(prisma)
+const submitPrediction = new SubmitPrediction(palpiteRepo, tournamentReadPort)
+const getMyPredictions = new GetMyPredictions(palpiteRepo)
+const getPredictionsForMatch = new GetPredictionsForMatch(palpiteRepo, tournamentReadPort)
+
 // ─── Rotas ────────────────────────────────────────────────────────────────────
 
 app.get('/health', async () => ({ status: 'ok' }))
 
 await app.register(authRoutes, { prefix: '/auth', registerUser, loginUser, tokenService })
 await app.register(partidasRoutes, { listMatches })
+await app.register(palpitesRoutes, { submitPrediction, getMyPredictions, getPredictionsForMatch, tokenService })
 
 // ─── Start ────────────────────────────────────────────────────────────────────
 
