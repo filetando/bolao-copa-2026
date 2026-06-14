@@ -23,6 +23,9 @@ import { palpitesEstaticosRoutes } from '../../presentation/http/routes/palpites
 import { PrismaPalpiteEstaticoRepository } from '../repositories/PrismaPalpiteEstaticoRepository.js'
 import { SubmitStaticMarketPrediction } from '../../application/bolao/use-cases/SubmitStaticMarketPrediction.js'
 import { GetMyStaticPredictions } from '../../application/bolao/use-cases/GetMyStaticPredictions.js'
+import { leaderboardRoutes } from '../../presentation/http/routes/leaderboard.js'
+import { PrismaLeaderboardRepository } from '../repositories/PrismaLeaderboardRepository.js'
+import { GetLeaderboard } from '../../application/bolao/use-cases/GetLeaderboard.js'
 
 // Carrega augmentações de tipo (request.user)
 import '../../presentation/http/types.js'
@@ -88,6 +91,9 @@ const palpiteEstaticoRepo = new PrismaPalpiteEstaticoRepository(prisma)
 const submitStaticMarketPrediction = new SubmitStaticMarketPrediction(palpiteEstaticoRepo)
 const getMyStaticPredictions = new GetMyStaticPredictions(palpiteEstaticoRepo)
 
+const leaderboardRepo = new PrismaLeaderboardRepository(prisma)
+const getLeaderboard = new GetLeaderboard(leaderboardRepo)
+
 // ─── Rotas ────────────────────────────────────────────────────────────────────
 
 app.get('/health', async () => ({ status: 'ok' }))
@@ -96,6 +102,7 @@ await app.register(authRoutes, { prefix: '/auth', registerUser, loginUser, token
 await app.register(partidasRoutes, { listMatches })
 await app.register(palpitesRoutes, { submitPrediction, getMyPredictions, getPredictionsForMatch, tokenService })
 await app.register(palpitesEstaticosRoutes, { submitStaticMarketPrediction, getMyStaticPredictions, tokenService })
+await app.register(leaderboardRoutes, { getLeaderboard, tokenService })
 
 // ─── Start ────────────────────────────────────────────────────────────────────
 
