@@ -1,7 +1,7 @@
 import { PredictionLockedError } from './errors.js'
 
-// DOMAIN_RULES.md §10 — janela de bloqueio antes do início da partida
-export const LOCK_WINDOW_MS = 5 * 60 * 1000
+// DOMAIN_RULES.md §10 — bloqueio no horário exato de início da partida
+export const LOCK_WINDOW_MS = 0
 
 export class Palpite {
   readonly usuarioId: string

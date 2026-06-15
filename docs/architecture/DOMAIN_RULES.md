@@ -112,7 +112,7 @@ Estrutura completa em `bolao-copa-2026_1.md`, Seção 6. Resumo do fluxo de depe
 
 ## 10. Bloqueio de palpites de partida
 
-- Bloqueado 5–10 minutos antes do horário de início (UTC).
+- Bloqueado no horário exato de início (UTC).
 - Partidas simultâneas (R3 da fase de grupos, e diversos jogos do mata-mata) travam **todos** os formulários do conjunto ao mesmo tempo — o "horário de corte" é o **menor** horário de início entre as partidas do conjunto simultâneo.
 - **Validação é responsabilidade do backend** (ADR-004 em `DECISIONS_LOG.md`); frontend apenas reflete o estado.
 

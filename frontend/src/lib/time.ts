@@ -1,7 +1,7 @@
 const BRT = 'America/Sao_Paulo'
 
-// DOMAIN_RULES.md §10 — bloqueio 30 min antes do início
-export const LOCK_WINDOW_MS = 30 * 60 * 1000
+// DOMAIN_RULES.md §10 — bloqueio no horário exato de início
+export const LOCK_WINDOW_MS = 0
 
 // Date da abertura do torneio — mercados estáticos travados a partir daqui
 // DOMAIN_RULES.md §9

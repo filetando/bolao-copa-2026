@@ -64,7 +64,7 @@ A maior parte do esforço de teste deve estar em **`domain`**, porque é onde mo
 ### 2.6 Bloqueio de palpites (`SubmitPrediction`) — **integração/E2E**
 
 - [ ] Envio de palpite antes da janela de bloqueio → sucesso.
-- [ ] Envio de palpite dentro da janela de bloqueio (ex.: 3 min antes, janela de 5 min) → rejeitado pelo **backend**, mesmo chamando a API diretamente (sem passar pelo frontend).
+- [ ] Envio de palpite após o horário de início → rejeitado pelo **backend**, mesmo chamando a API diretamente (sem passar pelo frontend).
 - [ ] Edição de palpite existente após o bloqueio → rejeitada.
 - [ ] Partidas simultâneas (R3): bloqueio de uma trava também as outras do mesmo `grupo_simultaneo_id`.
 

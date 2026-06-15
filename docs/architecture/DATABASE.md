@@ -110,7 +110,7 @@ confrontos_terceiros (tabela de referência estática, sem FKs — ver Anexo C)
 
 Restrições:
 - `UNIQUE (usuario_id, partida_id)` — um palpite por usuário por partida (upsert ao editar).
-- Checagem de janela de bloqueio é feita na **aplicação** (não dá para expressar "5 min antes de `partidas.data_hora_utc`" de forma portátil só com `CHECK`), mas pode-se adicionar um trigger `BEFORE INSERT/UPDATE` como camada extra de defesa em profundidade (opcional, fase 2).
+- Checagem de bloqueio é feita na **aplicação** (não dá para expressar "a partir de `partidas.data_hora_utc`" de forma portátil só com `CHECK`), mas pode-se adicionar um trigger `BEFORE INSERT/UPDATE` como camada extra de defesa em profundidade (opcional, fase 2).
 
 Índices:
 - `idx_palpites_partida` em `partida_id` (para "ver palpites de todos nesta partida").
