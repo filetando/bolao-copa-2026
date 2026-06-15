@@ -41,7 +41,7 @@ function getCategoriaPalpite(
   const pEmpate = pc === pf
   const rEmpate = rc === rf
   if (pEmpate && rEmpate)
-    return { label: 'Empate', variant: 'success', palpiteColor: 'text-green-600' }
+    return { label: 'Empate', variant: 'success', palpiteColor: 'text-green-400' }
   if (pEmpate || rEmpate)
     return { label: 'Errou', variant: 'neutral', palpiteColor: 'text-red-600' }
 
@@ -52,10 +52,10 @@ function getCategoriaPalpite(
   const rVencGols = rc > rf ? rc : rf
   const pVencGols = rc > rf ? pc : pf
   if (pVencGols === rVencGols)
-    return { label: 'Vencedor + Gols', variant: 'success', palpiteColor: 'text-green-600' }
+    return { label: 'Vencedor + Gols', variant: 'success', palpiteColor: 'text-green-400' }
   if (pc - pf === rc - rf)
-    return { label: 'Vencedor + Saldo', variant: 'success', palpiteColor: 'text-green-600' }
-  return { label: 'Só Vencedor', variant: 'warning', palpiteColor: 'text-green-600' }
+    return { label: 'Vencedor + Saldo', variant: 'success', palpiteColor: 'text-green-400' }
+  return { label: 'Só Vencedor', variant: 'warning', palpiteColor: 'text-green-400' }
 }
 
 function StatusBadge({
