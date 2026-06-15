@@ -122,7 +122,7 @@ export function AdminPage() {
 
       <section>
         <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
-          Encerradas ({encerradas.length})
+          Encerradas — corrigir resultado ({encerradas.length})
         </h2>
         {encerradas.length === 0 && <p className="text-sm text-gray-400">Nenhuma partida encerrada ainda.</p>}
         <div className="space-y-2">
@@ -131,10 +131,40 @@ export function AdminPage() {
               <span className="text-xs text-gray-400 w-36 shrink-0">
                 {formatDateLabelBRT(p.dataHoraUtc).slice(0, 10)} · {formatTimeBRT(p.dataHoraUtc)}
               </span>
-              <span className="text-gray-600 min-w-[7rem] text-center">
-                {teamLabel(p, 'casa')} {p.golsCasa} × {p.golsFora} {teamLabel(p, 'fora')}
+              <span className="text-gray-500 min-w-[7rem] text-center text-sm">
+                {teamLabel(p, 'casa')} <span className="font-semibold text-gray-800">{p.golsCasa} × {p.golsFora}</span> {teamLabel(p, 'fora')}
               </span>
-              <span className="text-xs text-gray-400 ml-auto">encerrada</span>
+              <div className="flex items-center gap-2">
+                <input
+                  type="number"
+                  min={0}
+                  placeholder={String(p.golsCasa ?? 0)}
+                  value={inputs[p.id]?.golsCasa ?? ''}
+                  onChange={(e) => setInputs((i) => ({ ...i, [p.id]: { ...i[p.id], golsCasa: e.target.value } }))}
+                  className="w-14 border border-gray-300 rounded px-2 py-1 text-sm text-center"
+                />
+                <span className="text-gray-400">×</span>
+                <input
+                  type="number"
+                  min={0}
+                  placeholder={String(p.golsFora ?? 0)}
+                  value={inputs[p.id]?.golsFora ?? ''}
+                  onChange={(e) => setInputs((i) => ({ ...i, [p.id]: { ...i[p.id], golsFora: e.target.value } }))}
+                  className="w-14 border border-gray-300 rounded px-2 py-1 text-sm text-center"
+                />
+                <button
+                  onClick={() => handleRegister(p.id)}
+                  disabled={loading[p.id]}
+                  className="bg-amber-600 hover:bg-amber-700 disabled:opacity-50 text-white text-sm px-3 py-1 rounded transition-colors"
+                >
+                  {loading[p.id] ? '…' : 'Corrigir'}
+                </button>
+              </div>
+              {feedback[p.id]?.msg && (
+                <span className={`text-xs ${feedback[p.id].ok ? 'text-green-700' : 'text-red-600'}`}>
+                  {feedback[p.id].msg}
+                </span>
+              )}
             </div>
           ))}
         </div>
