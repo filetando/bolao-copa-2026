@@ -25,7 +25,7 @@ function GrupoTable({ grupoId }: { grupoId: string }) {
 
   return (
     <section>
-      <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">
+      <h2 className="text-lg font-bold text-gray-900 mb-2">
         Grupo {grupoId}
       </h2>
       <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-x-auto">
