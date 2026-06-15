@@ -5,6 +5,9 @@ export interface PartidaInfo {
   dataHoraUtc: Date
   status: string
   grupoSimultaneoId: number | null
+  golsCasa: number | null      // DOMAIN_RULES.md §7 — necessários para calcular pontuação
+  golsFora: number | null
+  multiplicador: number        // DOMAIN_RULES.md §8 — de Fase.multiplicador
 }
 
 export interface TournamentReadPort {

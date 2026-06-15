@@ -22,4 +22,5 @@ export interface PalpiteRepository {
   }): Promise<PalpiteData>
   findByUsuario(usuarioId: string): Promise<PalpiteData[]>
   findByPartida(partidaId: number): Promise<PalpiteWithUser[]>
+  updatePontosObtidos(id: string, pontos: number): Promise<void>
 }

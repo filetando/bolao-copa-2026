@@ -1,8 +1,19 @@
 import type { PrismaClient } from '@prisma/client'
-import type { PartidaRepository, PartidaListItem } from '../../application/tournament/ports/PartidaRepository.js'
+import type { PartidaRepository, PartidaListItem, PartidaBasica } from '../../application/tournament/ports/PartidaRepository.js'
 
 export class PrismaPartidaRepository implements PartidaRepository {
   constructor(private readonly db: PrismaClient) {}
+
+  async findById(id: number): Promise<PartidaBasica | null> {
+    return this.db.partida.findUnique({ where: { id }, select: { id: true, status: true } })
+  }
+
+  async registerResult(id: number, golsCasa: number, golsFora: number): Promise<void> {
+    await this.db.partida.update({
+      where: { id },
+      data: { golsCasa, golsFora, status: 'encerrada' },
+    })
+  }
 
   async findAllOrderedByDate(): Promise<PartidaListItem[]> {
     const rows = await this.db.partida.findMany({

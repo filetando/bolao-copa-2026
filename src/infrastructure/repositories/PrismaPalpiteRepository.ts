@@ -42,6 +42,10 @@ export class PrismaPalpiteRepository implements PalpiteRepository {
     return rows.map((r) => ({ ...this.toData(r), nomeUsuario: r.usuario.nome }))
   }
 
+  async updatePontosObtidos(id: string, pontos: number): Promise<void> {
+    await this.db.palpite.update({ where: { id }, data: { pontosObtidos: pontos } })
+  }
+
   private toData(row: {
     id: string
     usuarioId: string

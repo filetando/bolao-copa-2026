@@ -12,6 +12,9 @@ function makePartida(overrides: Partial<PartidaInfo> = {}): PartidaInfo {
     dataHoraUtc: new Date(Date.now() + 2 * 60 * 60_000), // 2h from now (default safe)
     status: 'agendada',
     grupoSimultaneoId: null,
+    golsCasa: null,
+    golsFora: null,
+    multiplicador: 1,
     ...overrides,
   }
 }
@@ -38,6 +41,7 @@ function makePalpiteRepo(): PalpiteRepository {
     upsert: vi.fn().mockResolvedValue(result),
     findByUsuario: vi.fn().mockResolvedValue([]),
     findByPartida: vi.fn().mockResolvedValue([]),
+    updatePontosObtidos: vi.fn().mockResolvedValue(undefined),
   }
 }
 

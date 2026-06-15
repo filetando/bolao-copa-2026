@@ -26,6 +26,9 @@ import { GetMyStaticPredictions } from '../../application/bolao/use-cases/GetMyS
 import { leaderboardRoutes } from '../../presentation/http/routes/leaderboard.js'
 import { PrismaLeaderboardRepository } from '../repositories/PrismaLeaderboardRepository.js'
 import { GetLeaderboard } from '../../application/bolao/use-cases/GetLeaderboard.js'
+import { adminRoutes } from '../../presentation/http/routes/admin.js'
+import { RegisterMatchResult } from '../../application/tournament/use-cases/RegisterMatchResult.js'
+import { CalculateScoreForMatch } from '../../application/bolao/use-cases/CalculateScoreForMatch.js'
 
 // Carrega augmentações de tipo (request.user)
 import '../../presentation/http/types.js'
@@ -58,6 +61,8 @@ app.setErrorHandler((error, request, reply) => {
       PREDICTION_LOCKED: 409,
       MATCH_NOT_FOUND: 404,
       STATIC_MARKET_LOCKED: 409,
+      MATCH_ALREADY_FINISHED: 409,
+      MATCH_NOT_ENCERRADA: 422,
     }
     return reply
       .status(statusMap[error.code] ?? 400)
@@ -94,6 +99,9 @@ const getMyStaticPredictions = new GetMyStaticPredictions(palpiteEstaticoRepo)
 const leaderboardRepo = new PrismaLeaderboardRepository(prisma)
 const getLeaderboard = new GetLeaderboard(leaderboardRepo)
 
+const registerMatchResult = new RegisterMatchResult(partidaRepo)
+const calculateScoreForMatch = new CalculateScoreForMatch(tournamentReadPort, palpiteRepo)
+
 // ─── Rotas ────────────────────────────────────────────────────────────────────
 
 app.get('/health', async () => ({ status: 'ok' }))
@@ -103,6 +111,7 @@ await app.register(partidasRoutes, { listMatches })
 await app.register(palpitesRoutes, { submitPrediction, getMyPredictions, getPredictionsForMatch, tokenService })
 await app.register(palpitesEstaticosRoutes, { submitStaticMarketPrediction, getMyStaticPredictions, tokenService })
 await app.register(leaderboardRoutes, { getLeaderboard, tokenService })
+await app.register(adminRoutes, { registerMatchResult, calculateScoreForMatch, tokenService })
 
 // ─── Start ────────────────────────────────────────────────────────────────────
 

@@ -7,9 +7,26 @@ export class PrismaTournamentReadPort implements TournamentReadPort {
   async getPartida(id: number): Promise<PartidaInfo | null> {
     const row = await this.db.partida.findUnique({
       where: { id },
-      select: { id: true, dataHoraUtc: true, status: true, grupoSimultaneoId: true },
+      select: {
+        id: true,
+        dataHoraUtc: true,
+        status: true,
+        grupoSimultaneoId: true,
+        golsCasa: true,
+        golsFora: true,
+        fase: { select: { multiplicador: true } },
+      },
     })
-    return row
+    if (!row) return null
+    return {
+      id: row.id,
+      dataHoraUtc: row.dataHoraUtc,
+      status: row.status,
+      grupoSimultaneoId: row.grupoSimultaneoId,
+      golsCasa: row.golsCasa,
+      golsFora: row.golsFora,
+      multiplicador: Number(row.fase.multiplicador),
+    }
   }
 
   // DOMAIN_RULES.md §10 — retorna o menor dataHoraUtc do conjunto simultâneo

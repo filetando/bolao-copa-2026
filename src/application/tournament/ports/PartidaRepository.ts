@@ -22,6 +22,13 @@ export interface PartidaListItem {
   grupoSimultaneoId: number | null
 }
 
+export interface PartidaBasica {
+  id: number
+  status: string
+}
+
 export interface PartidaRepository {
   findAllOrderedByDate(): Promise<PartidaListItem[]>
+  findById(id: number): Promise<PartidaBasica | null>
+  registerResult(id: number, golsCasa: number, golsFora: number): Promise<void>
 }
