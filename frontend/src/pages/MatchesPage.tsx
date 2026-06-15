@@ -56,7 +56,7 @@ export function MatchesPage() {
   if (error) return <p className="text-red-600 text-sm">{error}</p>
 
   return (
-    <div className="space-y-8">
+    <div className="max-w-lg mx-auto space-y-8">
       <h2 className="text-xl font-bold text-gray-900">Partidas</h2>
       {Array.from(byDate.entries()).map(([key, group]) => (
         <section key={key}>

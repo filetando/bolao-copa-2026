@@ -37,16 +37,16 @@ function GrupoTable({ grupoId }: { grupoId: string }) {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-gray-200 text-gray-500 text-xs uppercase tracking-wide">
-                <th className="px-3 py-2 text-left w-6">#</th>
-                <th className="px-3 py-2 text-left">Equipe</th>
-                <th className="px-3 py-2 text-center font-bold text-gray-700">Pts</th>
-                <th className="px-3 py-2 text-center">J</th>
-                <th className="px-3 py-2 text-center">V</th>
-                <th className="px-3 py-2 text-center">E</th>
-                <th className="px-3 py-2 text-center">D</th>
-                <th className="px-3 py-2 text-center">GP</th>
-                <th className="px-3 py-2 text-center">GC</th>
-                <th className="px-3 py-2 text-center">SG</th>
+                <th className="px-2 py-1.5 text-left w-6">#</th>
+                <th className="px-2 py-1.5 text-left">Equipe</th>
+                <th className="px-2 py-1.5 text-center font-bold text-gray-700">Pts</th>
+                <th className="px-2 py-1.5 text-center">J</th>
+                <th className="px-2 py-1.5 text-center">V</th>
+                <th className="px-2 py-1.5 text-center">E</th>
+                <th className="px-2 py-1.5 text-center">D</th>
+                <th className="px-2 py-1.5 text-center">GP</th>
+                <th className="px-2 py-1.5 text-center">GC</th>
+                <th className="px-2 py-1.5 text-center">SG</th>
               </tr>
             </thead>
             <tbody>
@@ -55,21 +55,21 @@ function GrupoTable({ grupoId }: { grupoId: string }) {
                   key={row.equipe.id}
                   className={`border-b border-gray-100 last:border-0 ${idx < 2 ? 'bg-green-50' : ''}`}
                 >
-                  <td className="px-3 py-2 text-gray-400 text-xs">{row.posicao}</td>
-                  <td className="px-3 py-2">
+                  <td className="px-2 py-1.5 text-gray-400 text-xs">{row.posicao}</td>
+                  <td className="px-2 py-1.5">
                     <div className="flex items-center gap-2">
                       <FlagIcon codigo={row.equipe.bandeiraCodigo} nome={row.equipe.nome} />
                       <span className="font-medium text-gray-800">{row.equipe.sigla ?? row.equipe.nome}</span>
                     </div>
                   </td>
-                  <td className="px-3 py-2 text-center font-bold text-gray-900">{row.pontos}</td>
-                  <td className="px-3 py-2 text-center text-gray-600">{row.jogos}</td>
-                  <td className="px-3 py-2 text-center text-gray-600">{row.vitorias}</td>
-                  <td className="px-3 py-2 text-center text-gray-600">{row.empates}</td>
-                  <td className="px-3 py-2 text-center text-gray-600">{row.derrotas}</td>
-                  <td className="px-3 py-2 text-center text-gray-600">{row.golsMarcados}</td>
-                  <td className="px-3 py-2 text-center text-gray-600">{row.golsSofridos}</td>
-                  <td className="px-3 py-2 text-center text-gray-600">{saldoLabel(row.saldoGols)}</td>
+                  <td className="px-2 py-1.5 text-center font-bold text-gray-900">{row.pontos}</td>
+                  <td className="px-2 py-1.5 text-center text-gray-600">{row.jogos}</td>
+                  <td className="px-2 py-1.5 text-center text-gray-600">{row.vitorias}</td>
+                  <td className="px-2 py-1.5 text-center text-gray-600">{row.empates}</td>
+                  <td className="px-2 py-1.5 text-center text-gray-600">{row.derrotas}</td>
+                  <td className="px-2 py-1.5 text-center text-gray-600">{row.golsMarcados}</td>
+                  <td className="px-2 py-1.5 text-center text-gray-600">{row.golsSofridos}</td>
+                  <td className="px-2 py-1.5 text-center text-gray-600">{saldoLabel(row.saldoGols)}</td>
                 </tr>
               ))}
               {!loading && rows.length === 0 && (
@@ -89,7 +89,7 @@ function GrupoTable({ grupoId }: { grupoId: string }) {
 
 export function ClassificacaoPage() {
   return (
-    <div className="space-y-6">
+    <div className="max-w-2xl mx-auto space-y-6">
       <h1 className="text-xl font-bold text-gray-900">Classificação — Fase de Grupos</h1>
       {GRUPOS.map((g) => (
         <GrupoTable key={g} grupoId={g} />

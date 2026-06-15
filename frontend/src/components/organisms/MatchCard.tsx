@@ -147,7 +147,7 @@ export function MatchCard({ partida, meuPalpite: initialPalpite, lockCutoffUtc }
   const othersFiltered = others?.filter((p) => p.usuarioId !== user?.id) ?? []
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden max-w-2xl w-full mx-auto">
+    <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
       {/* Cabeçalho — grid de 3 colunas para centralizar o horário */}
       <div className="bg-gray-50 px-4 py-2 grid grid-cols-3 items-center text-xs text-gray-500 border-b border-gray-100">
         <span className="font-medium text-gray-700">{partida.faseNome}</span>
@@ -163,14 +163,13 @@ export function MatchCard({ partida, meuPalpite: initialPalpite, lockCutoffUtc }
       <div className="px-4 py-4">
         {blocked ? (
           // Estado bloqueado / encerrado / ao vivo
-          <div className="flex items-center justify-between gap-3">
-            <div className="flex-1 min-w-0">
-              <TeamLabel equipe={partida.equipeCasa} placeholder={partida.placeholderCasa} />
-            </div>
-
-            <div className="flex flex-col items-center shrink-0">
-              {/* Placar oficial */}
-              <div className="flex items-center gap-2 font-mono font-bold text-xl text-gray-800">
+          <div className="flex flex-col gap-1">
+            {/* Linha única: países + placar sempre alinhados */}
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex-1 min-w-0">
+                <TeamLabel equipe={partida.equipeCasa} placeholder={partida.placeholderCasa} />
+              </div>
+              <div className="flex items-center gap-2 font-mono font-bold text-xl text-gray-800 shrink-0">
                 {ended ? (
                   <>
                     <span>{partida.golsCasa ?? '-'}</span>
@@ -189,20 +188,21 @@ export function MatchCard({ partida, meuPalpite: initialPalpite, lockCutoffUtc }
                   </>
                 )}
               </div>
-              {/* Meu palpite abaixo do placar oficial */}
-              {ended && hasPalpite && partida.golsCasa !== null && partida.golsFora !== null && (() => {
-                const cat = getCategoriaPalpite(meuPalpite!, { golsCasa: partida.golsCasa!, golsFora: partida.golsFora! })
-                return (
-                  <span className={`text-sm font-mono font-semibold mt-0.5 ${cat.palpiteColor}`}>
+              <div className="flex-1 min-w-0 flex justify-end">
+                <TeamLabel equipe={partida.equipeFora} placeholder={partida.placeholderFora} />
+              </div>
+            </div>
+            {/* Meu palpite em linha própria — não desloca o placar acima */}
+            {ended && hasPalpite && partida.golsCasa !== null && partida.golsFora !== null && (() => {
+              const cat = getCategoriaPalpite(meuPalpite!, { golsCasa: partida.golsCasa!, golsFora: partida.golsFora! })
+              return (
+                <div className="flex justify-center">
+                  <span className={`text-sm font-mono font-semibold ${cat.palpiteColor}`}>
                     {meuPalpite!.golsCasaPalpite} × {meuPalpite!.golsForaPalpite}
                   </span>
-                )
-              })()}
-            </div>
-
-            <div className="flex-1 min-w-0 flex justify-end">
-              <TeamLabel equipe={partida.equipeFora} placeholder={partida.placeholderFora} />
-            </div>
+                </div>
+              )
+            })()}
           </div>
         ) : (
           // Estado aberto — inputs de palpite
@@ -294,7 +294,7 @@ export function MatchCard({ partida, meuPalpite: initialPalpite, lockCutoffUtc }
           ) : (
             <ul className="space-y-1">
               {othersFiltered.map((p) => (
-                <li key={p.id} className="flex items-center justify-between text-xs text-gray-700">
+                <li key={p.id} className="flex items-center justify-end gap-3 text-xs text-gray-700">
                   <span>{p.nomeUsuario}</span>
                   <span className="font-mono">
                     {p.golsCasaPalpite} × {p.golsForaPalpite}
