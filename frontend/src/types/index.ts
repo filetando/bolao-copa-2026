@@ -56,6 +56,19 @@ export interface LeaderboardRow {
   totalPontos: number
 }
 
+export interface ClassificacaoRow {
+  posicao: number
+  equipe: { id: number; nome: string; sigla: string | null; bandeiraCodigo: string | null }
+  jogos: number
+  vitorias: number
+  empates: number
+  derrotas: number
+  golsMarcados: number
+  golsSofridos: number
+  saldoGols: number
+  pontos: number
+}
+
 export type MercadoEstatico = 'campeao' | 'vice' | 'terceiro_lugar' | 'artilheiro'
 
 export interface PalpiteEstaticoData {

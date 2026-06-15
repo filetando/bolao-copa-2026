@@ -30,6 +30,9 @@ export function MainLayout() {
             <Link to="/partidas" className={navClass('/partidas')}>
               Partidas
             </Link>
+            <Link to="/classificacao" className={navClass('/classificacao')}>
+              Classificação
+            </Link>
             <Link to="/primeiro-acesso" className={navClass('/primeiro-acesso')}>
               Palpites Estáticos
             </Link>

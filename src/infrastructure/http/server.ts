@@ -29,6 +29,9 @@ import { GetLeaderboard } from '../../application/bolao/use-cases/GetLeaderboard
 import { adminRoutes } from '../../presentation/http/routes/admin.js'
 import { RegisterMatchResult } from '../../application/tournament/use-cases/RegisterMatchResult.js'
 import { CalculateScoreForMatch } from '../../application/bolao/use-cases/CalculateScoreForMatch.js'
+import { gruposRoutes } from '../../presentation/http/routes/grupos.js'
+import { PrismaGrupoRepository } from '../repositories/PrismaGrupoRepository.js'
+import { GetGroupStandings } from '../../application/tournament/use-cases/GetGroupStandings.js'
 
 // Carrega augmentações de tipo (request.user)
 import '../../presentation/http/types.js'
@@ -63,6 +66,7 @@ app.setErrorHandler((error, request, reply) => {
       STATIC_MARKET_LOCKED: 409,
       MATCH_ALREADY_FINISHED: 409,
       MATCH_NOT_ENCERRADA: 422,
+      GROUP_NOT_FOUND: 404,
     }
     return reply
       .status(statusMap[error.code] ?? 400)
@@ -102,6 +106,9 @@ const getLeaderboard = new GetLeaderboard(leaderboardRepo)
 const registerMatchResult = new RegisterMatchResult(partidaRepo)
 const calculateScoreForMatch = new CalculateScoreForMatch(tournamentReadPort, palpiteRepo)
 
+const grupoRepo = new PrismaGrupoRepository(prisma)
+const getGroupStandings = new GetGroupStandings(grupoRepo)
+
 // ─── Rotas ────────────────────────────────────────────────────────────────────
 
 app.get('/health', async () => ({ status: 'ok' }))
@@ -112,6 +119,7 @@ await app.register(palpitesRoutes, { submitPrediction, getMyPredictions, getPred
 await app.register(palpitesEstaticosRoutes, { submitStaticMarketPrediction, getMyStaticPredictions, tokenService })
 await app.register(leaderboardRoutes, { getLeaderboard, tokenService })
 await app.register(adminRoutes, { registerMatchResult, calculateScoreForMatch, tokenService })
+await app.register(gruposRoutes, { getGroupStandings })
 
 // ─── Start ────────────────────────────────────────────────────────────────────
 

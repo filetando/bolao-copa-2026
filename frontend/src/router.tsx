@@ -7,6 +7,7 @@ import { HomePage } from './pages/HomePage.tsx'
 import { MatchesPage } from './pages/MatchesPage.tsx'
 import { FirstAccessPage } from './pages/FirstAccessPage.tsx'
 import { AdminPage } from './pages/AdminPage.tsx'
+import { ClassificacaoPage } from './pages/ClassificacaoPage.tsx'
 
 function ProtectedRoute() {
   const { user, loading } = useAuth()
@@ -38,6 +39,7 @@ export const router = createBrowserRouter([
         children: [
           { path: '/', element: <HomePage /> },
           { path: '/partidas', element: <MatchesPage /> },
+          { path: '/classificacao', element: <ClassificacaoPage /> },
           { path: '/primeiro-acesso', element: <FirstAccessPage /> },
         ],
       },

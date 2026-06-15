@@ -5,6 +5,7 @@ import type {
   PredictionsForMatch,
   LeaderboardRow,
   PalpiteEstaticoData,
+  ClassificacaoRow,
 } from '../types/index.ts'
 
 const BASE = '/api'
@@ -51,6 +52,9 @@ export const api = {
   },
   leaderboard: {
     get: () => request<LeaderboardRow[]>('/leaderboard'),
+  },
+  grupos: {
+    classificacao: (grupoId: string) => request<ClassificacaoRow[]>(`/grupos/${grupoId}/classificacao`),
   },
   admin: {
     registerResult: (id: number, golsCasa: number, golsFora: number) =>
