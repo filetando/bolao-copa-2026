@@ -29,27 +29,33 @@ function TeamLabel({ equipe, placeholder }: { equipe: Partida['equipeCasa']; pla
 function getCategoriaPalpite(
   palpite: { golsCasaPalpite: number; golsForaPalpite: number },
   resultado: { golsCasa: number; golsFora: number },
-): { label: string; variant: 'success' | 'warning' | 'neutral' } {
+): { label: string; variant: 'success' | 'warning' | 'neutral'; palpiteColor: string } {
   const pc = palpite.golsCasaPalpite
   const pf = palpite.golsForaPalpite
   const rc = resultado.golsCasa
   const rf = resultado.golsFora
 
-  if (pc === rc && pf === rf) return { label: 'Placar Exato', variant: 'success' }
+  if (pc === rc && pf === rf)
+    return { label: 'Placar Exato', variant: 'success', palpiteColor: 'text-green-800' }
 
   const pEmpate = pc === pf
   const rEmpate = rc === rf
-  if (pEmpate && rEmpate) return { label: 'Empate Correto', variant: 'success' }
-  if (pEmpate || rEmpate) return { label: 'Errou', variant: 'neutral' }
+  if (pEmpate && rEmpate)
+    return { label: 'Empate', variant: 'success', palpiteColor: 'text-green-600' }
+  if (pEmpate || rEmpate)
+    return { label: 'Errou', variant: 'neutral', palpiteColor: 'text-red-600' }
 
   const mesmoVencedor = (pc > pf && rc > rf) || (pc < pf && rc < rf)
-  if (!mesmoVencedor) return { label: 'Errou', variant: 'neutral' }
+  if (!mesmoVencedor)
+    return { label: 'Errou', variant: 'neutral', palpiteColor: 'text-red-600' }
 
   const rVencGols = rc > rf ? rc : rf
   const pVencGols = rc > rf ? pc : pf
-  if (pVencGols === rVencGols) return { label: 'Vencedor + Gols', variant: 'success' }
-  if (pc - pf === rc - rf) return { label: 'Vencedor + Saldo', variant: 'success' }
-  return { label: 'Só Vencedor', variant: 'warning' }
+  if (pVencGols === rVencGols)
+    return { label: 'Vencedor + Gols', variant: 'success', palpiteColor: 'text-green-600' }
+  if (pc - pf === rc - rf)
+    return { label: 'Vencedor + Saldo', variant: 'success', palpiteColor: 'text-green-600' }
+  return { label: 'Só Vencedor', variant: 'warning', palpiteColor: 'text-green-600' }
 }
 
 function StatusBadge({
@@ -184,11 +190,14 @@ export function MatchCard({ partida, meuPalpite: initialPalpite, lockCutoffUtc }
                 )}
               </div>
               {/* Meu palpite abaixo do placar oficial */}
-              {ended && hasPalpite && (
-                <span className="text-xs text-gray-400 font-mono mt-0.5">
-                  {meuPalpite!.golsCasaPalpite} × {meuPalpite!.golsForaPalpite}
-                </span>
-              )}
+              {ended && hasPalpite && partida.golsCasa !== null && partida.golsFora !== null && (() => {
+                const cat = getCategoriaPalpite(meuPalpite!, { golsCasa: partida.golsCasa!, golsFora: partida.golsFora! })
+                return (
+                  <span className={`text-sm font-mono font-semibold mt-0.5 ${cat.palpiteColor}`}>
+                    {meuPalpite!.golsCasaPalpite} × {meuPalpite!.golsForaPalpite}
+                  </span>
+                )
+              })()}
             </div>
 
             <div className="flex-1 min-w-0 flex justify-end">
