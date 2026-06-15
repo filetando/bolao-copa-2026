@@ -4,12 +4,12 @@ import { isMatchLocked, formatTimeBRT } from '../../lib/time.ts'
 import { Badge } from '../atoms/Badge.tsx'
 import { Button } from '../atoms/Button.tsx'
 import { FlagIcon } from '../atoms/FlagIcon.tsx'
+import { useAuth } from '../../contexts/AuthContext.tsx'
 import type { Partida, PalpiteData, PalpiteWithUser } from '../../types/index.ts'
 
 interface Props {
   partida: Partida
   meuPalpite: PalpiteData | undefined
-  // cutoff para o bloqueio (min dataHoraUtc do grupo simultâneo, se houver)
   lockCutoffUtc: string
 }
 
@@ -25,14 +25,61 @@ function TeamLabel({ equipe, placeholder }: { equipe: Partida['equipeCasa']; pla
   return <span className="text-gray-400 text-xs italic truncate">{placeholder ?? '?'}</span>
 }
 
-function StatusBadge({ status, locked }: { status: string; locked: boolean }) {
-  if (status === 'encerrada') return <Badge variant="success">Encerrada</Badge>
+// DOMAIN_RULES.md §7 — replica a cascata de pontuação para exibição da categoria
+function getCategoriaPalpite(
+  palpite: { golsCasaPalpite: number; golsForaPalpite: number },
+  resultado: { golsCasa: number; golsFora: number },
+): { label: string; variant: 'success' | 'warning' | 'neutral' } {
+  const pc = palpite.golsCasaPalpite
+  const pf = palpite.golsForaPalpite
+  const rc = resultado.golsCasa
+  const rf = resultado.golsFora
+
+  if (pc === rc && pf === rf) return { label: 'Placar Exato', variant: 'success' }
+
+  const pEmpate = pc === pf
+  const rEmpate = rc === rf
+  if (pEmpate && rEmpate) return { label: 'Empate Correto', variant: 'success' }
+  if (pEmpate || rEmpate) return { label: 'Errou', variant: 'neutral' }
+
+  const mesmoVencedor = (pc > pf && rc > rf) || (pc < pf && rc < rf)
+  if (!mesmoVencedor) return { label: 'Errou', variant: 'neutral' }
+
+  const rVencGols = rc > rf ? rc : rf
+  const pVencGols = rc > rf ? pc : pf
+  if (pVencGols === rVencGols) return { label: 'Vencedor + Gols', variant: 'success' }
+  if (pc - pf === rc - rf) return { label: 'Vencedor + Saldo', variant: 'success' }
+  return { label: 'Só Vencedor', variant: 'warning' }
+}
+
+function StatusBadge({
+  status,
+  locked,
+  palpite,
+  resultado,
+}: {
+  status: string
+  locked: boolean
+  palpite?: PalpiteData
+  resultado?: { golsCasa: number | null; golsFora: number | null }
+}) {
+  if (status === 'encerrada') {
+    if (palpite && resultado?.golsCasa !== null && resultado?.golsFora !== null) {
+      const cat = getCategoriaPalpite(palpite, {
+        golsCasa: resultado.golsCasa!,
+        golsFora: resultado.golsFora!,
+      })
+      return <Badge variant={cat.variant}>{cat.label}</Badge>
+    }
+    return <Badge variant="neutral">Encerrada</Badge>
+  }
   if (status === 'em_andamento') return <Badge variant="live">Ao vivo</Badge>
   if (locked) return <Badge variant="locked">Palpites encerrados</Badge>
   return null
 }
 
 export function MatchCard({ partida, meuPalpite: initialPalpite, lockCutoffUtc }: Props) {
+  const { user } = useAuth()
   const locked = isMatchLocked(lockCutoffUtc)
   const ended = partida.status === 'encerrada'
   const live = partida.status === 'em_andamento'
@@ -90,46 +137,57 @@ export function MatchCard({ partida, meuPalpite: initialPalpite, lockCutoffUtc }
   }
 
   const hasPalpite = meuPalpite !== undefined
+  // Filtra o palpite do próprio usuário da lista de "outros"
+  const othersFiltered = others?.filter((p) => p.usuarioId !== user?.id) ?? []
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
-      {/* Cabeçalho */}
-      <div className="bg-gray-50 px-4 py-2 flex items-center justify-between text-xs text-gray-500 border-b border-gray-100">
+    <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden max-w-2xl w-full mx-auto">
+      {/* Cabeçalho — grid de 3 colunas para centralizar o horário */}
+      <div className="bg-gray-50 px-4 py-2 grid grid-cols-3 items-center text-xs text-gray-500 border-b border-gray-100">
         <span className="font-medium text-gray-700">{partida.faseNome}</span>
-        <span>{formatTimeBRT(partida.dataHoraUtc)} BRT</span>
-        {partida.estadio && (
-          <span className="hidden sm:block truncate max-w-40">{partida.estadio}</span>
+        <span className="text-center">{formatTimeBRT(partida.dataHoraUtc)} BRT</span>
+        {partida.estadio ? (
+          <span className="hidden sm:block text-right truncate">{partida.estadio}</span>
+        ) : (
+          <span />
         )}
       </div>
 
       {/* Corpo */}
       <div className="px-4 py-4">
         {blocked ? (
-          // Estado bloqueado / encerrado / ao vivo — mostra valores como texto
+          // Estado bloqueado / encerrado / ao vivo
           <div className="flex items-center justify-between gap-3">
             <div className="flex-1 min-w-0">
               <TeamLabel equipe={partida.equipeCasa} placeholder={partida.placeholderCasa} />
             </div>
 
-            <div className="flex items-center gap-2 shrink-0 font-mono font-bold text-xl text-gray-800">
-              {ended ? (
-                // Placar oficial
-                <>
-                  <span>{partida.golsCasa ?? '-'}</span>
-                  <span className="text-gray-400 text-sm">×</span>
-                  <span>{partida.golsFora ?? '-'}</span>
-                </>
-              ) : (
-                // Meu palpite (texto)
-                <>
-                  <span className={hasPalpite ? 'text-gray-800' : 'text-gray-300'}>
-                    {hasPalpite ? meuPalpite!.golsCasaPalpite : '-'}
-                  </span>
-                  <span className="text-gray-400 text-sm">×</span>
-                  <span className={hasPalpite ? 'text-gray-800' : 'text-gray-300'}>
-                    {hasPalpite ? meuPalpite!.golsForaPalpite : '-'}
-                  </span>
-                </>
+            <div className="flex flex-col items-center shrink-0">
+              {/* Placar oficial */}
+              <div className="flex items-center gap-2 font-mono font-bold text-xl text-gray-800">
+                {ended ? (
+                  <>
+                    <span>{partida.golsCasa ?? '-'}</span>
+                    <span className="text-gray-400 text-sm">×</span>
+                    <span>{partida.golsFora ?? '-'}</span>
+                  </>
+                ) : (
+                  <>
+                    <span className={hasPalpite ? 'text-gray-800' : 'text-gray-300'}>
+                      {hasPalpite ? meuPalpite!.golsCasaPalpite : '-'}
+                    </span>
+                    <span className="text-gray-400 text-sm">×</span>
+                    <span className={hasPalpite ? 'text-gray-800' : 'text-gray-300'}>
+                      {hasPalpite ? meuPalpite!.golsForaPalpite : '-'}
+                    </span>
+                  </>
+                )}
+              </div>
+              {/* Meu palpite abaixo do placar oficial */}
+              {ended && hasPalpite && (
+                <span className="text-xs text-gray-400 font-mono mt-0.5">
+                  {meuPalpite!.golsCasaPalpite} × {meuPalpite!.golsForaPalpite}
+                </span>
               )}
             </div>
 
@@ -187,10 +245,15 @@ export function MatchCard({ partida, meuPalpite: initialPalpite, lockCutoffUtc }
           </form>
         )}
 
-        {/* Rodapé: pontuação obtida + status */}
+        {/* Rodapé: categoria do acerto / status + pontos */}
         <div className="mt-3 flex items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <StatusBadge status={partida.status} locked={locked} />
+            <StatusBadge
+              status={partida.status}
+              locked={locked}
+              palpite={meuPalpite}
+              resultado={{ golsCasa: partida.golsCasa, golsFora: partida.golsFora }}
+            />
             {ended && hasPalpite && meuPalpite!.pontosObtidos !== null && (
               <span className="text-xs font-semibold text-green-700">
                 +{meuPalpite!.pontosObtidos} pts
@@ -208,7 +271,7 @@ export function MatchCard({ partida, meuPalpite: initialPalpite, lockCutoffUtc }
         </div>
       </div>
 
-      {/* Palpites de outros */}
+      {/* Palpites de outros (sem o do usuário atual) */}
       {showOthers && (
         <div className="border-t border-gray-100 bg-gray-50 px-4 py-3">
           {loadingOthers ? (
@@ -217,11 +280,11 @@ export function MatchCard({ partida, meuPalpite: initialPalpite, lockCutoffUtc }
             <p className="text-xs text-gray-500 italic">
               Palpites de outros participantes serão visíveis após o início da partida.
             </p>
-          ) : others && others.length === 0 ? (
-            <p className="text-xs text-gray-400">Nenhum palpite registrado.</p>
+          ) : othersFiltered.length === 0 ? (
+            <p className="text-xs text-gray-400">Nenhum palpite de outros participantes.</p>
           ) : (
             <ul className="space-y-1">
-              {others?.map((p) => (
+              {othersFiltered.map((p) => (
                 <li key={p.id} className="flex items-center justify-between text-xs text-gray-700">
                   <span>{p.nomeUsuario}</span>
                   <span className="font-mono">

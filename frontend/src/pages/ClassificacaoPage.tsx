@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { api } from '../lib/api.ts'
+import { FlagIcon } from '../components/atoms/FlagIcon.tsx'
 import type { ClassificacaoRow } from '../types/index.ts'
 
 const GRUPOS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L']
@@ -73,8 +74,11 @@ export function ClassificacaoPage() {
                   className={`border-b border-gray-100 last:border-0 ${idx < 2 ? 'bg-green-50' : ''}`}
                 >
                   <td className="px-4 py-3 text-gray-500">{row.posicao}</td>
-                  <td className="px-4 py-3 font-medium text-gray-800">
-                    {row.equipe.sigla ?? row.equipe.nome}
+                  <td className="px-4 py-3">
+                    <div className="flex items-center gap-2">
+                      <FlagIcon codigo={row.equipe.bandeiraCodigo} nome={row.equipe.nome} />
+                      <span className="font-medium text-gray-800">{row.equipe.sigla ?? row.equipe.nome}</span>
+                    </div>
                   </td>
                   <td className="px-4 py-3 text-center text-gray-600">{row.jogos}</td>
                   <td className="px-4 py-3 text-center text-gray-600">{row.vitorias}</td>

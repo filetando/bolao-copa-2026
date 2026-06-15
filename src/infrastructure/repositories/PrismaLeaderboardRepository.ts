@@ -15,6 +15,7 @@ export class PrismaLeaderboardRepository implements LeaderboardRepository {
         CAST(COALESCE(SUM(p.pontos_obtidos), 0) AS INTEGER) AS total_pontos
       FROM usuarios u
       LEFT JOIN palpites p ON p.usuario_id = u.id
+      WHERE u.nome != 'Tester'
       GROUP BY u.id, u.nome
       ORDER BY total_pontos DESC, u.nome ASC
     `
