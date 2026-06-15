@@ -52,6 +52,13 @@ export const api = {
   leaderboard: {
     get: () => request<LeaderboardRow[]>('/leaderboard'),
   },
+  admin: {
+    registerResult: (id: number, golsCasa: number, golsFora: number) =>
+      request<{ partidaId: number; golsCasa: number; golsFora: number; palpitesCalculados: number }>(
+        `/admin/partidas/${id}/resultado`,
+        { method: 'POST', body: JSON.stringify({ golsCasa, golsFora }) },
+      ),
+  },
   palpitesEstaticos: {
     me: () => request<PalpiteEstaticoData[]>('/palpites-estaticos/me'),
     submit: (mercado: string, valorEquipeId?: number, valorTexto?: string) =>

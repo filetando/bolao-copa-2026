@@ -6,11 +6,19 @@ import { RegisterPage } from './pages/RegisterPage.tsx'
 import { HomePage } from './pages/HomePage.tsx'
 import { MatchesPage } from './pages/MatchesPage.tsx'
 import { FirstAccessPage } from './pages/FirstAccessPage.tsx'
+import { AdminPage } from './pages/AdminPage.tsx'
 
 function ProtectedRoute() {
   const { user, loading } = useAuth()
   if (loading) return <div className="min-h-screen flex items-center justify-center text-gray-400 text-sm">Carregando…</div>
   if (!user) return <Navigate to="/login" replace />
+  return <Outlet />
+}
+
+function AdminRoute() {
+  const { user, loading } = useAuth()
+  if (loading) return <div className="min-h-screen flex items-center justify-center text-gray-400 text-sm">Carregando…</div>
+  if (user?.role !== 'admin') return <Navigate to="/" replace />
   return <Outlet />
 }
 
@@ -31,6 +39,15 @@ export const router = createBrowserRouter([
           { path: '/', element: <HomePage /> },
           { path: '/partidas', element: <MatchesPage /> },
           { path: '/primeiro-acesso', element: <FirstAccessPage /> },
+        ],
+      },
+      {
+        element: <AdminRoute />,
+        children: [
+          {
+            element: <MainLayout />,
+            children: [{ path: '/admin', element: <AdminPage /> }],
+          },
         ],
       },
     ],

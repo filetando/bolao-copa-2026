@@ -33,6 +33,11 @@ export function MainLayout() {
             <Link to="/primeiro-acesso" className={navClass('/primeiro-acesso')}>
               Palpites Estáticos
             </Link>
+            {user?.role === 'admin' && (
+              <Link to="/admin" className={navClass('/admin')}>
+                Admin
+              </Link>
+            )}
           </nav>
           <div className="flex items-center gap-4 text-sm">
             <span className="text-green-200 hidden sm:block">Olá, {user?.nome}</span>
