@@ -56,6 +56,18 @@ export interface LeaderboardRow {
   totalPontos: number
 }
 
+export interface LeaderboardHistoryPoint {
+  partidaId: number
+  dataHoraUtc: string
+  rodada: number
+  pontosPorUsuario: Record<string, number>
+}
+
+export interface LeaderboardHistoryResponse {
+  usuarios: { usuarioId: string; nome: string }[]
+  pontos: LeaderboardHistoryPoint[]
+}
+
 export interface ClassificacaoRow {
   posicao: number
   equipe: { id: number; nome: string; sigla: string | null; bandeiraCodigo: string | null }

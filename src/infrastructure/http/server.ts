@@ -26,6 +26,7 @@ import { GetMyStaticPredictions } from '../../application/bolao/use-cases/GetMyS
 import { leaderboardRoutes } from '../../presentation/http/routes/leaderboard.js'
 import { PrismaLeaderboardRepository } from '../repositories/PrismaLeaderboardRepository.js'
 import { GetLeaderboard } from '../../application/bolao/use-cases/GetLeaderboard.js'
+import { GetLeaderboardHistory } from '../../application/bolao/use-cases/GetLeaderboardHistory.js'
 import { adminRoutes } from '../../presentation/http/routes/admin.js'
 import { RegisterMatchResult } from '../../application/tournament/use-cases/RegisterMatchResult.js'
 import { CalculateScoreForMatch } from '../../application/bolao/use-cases/CalculateScoreForMatch.js'
@@ -102,6 +103,7 @@ const getMyStaticPredictions = new GetMyStaticPredictions(palpiteEstaticoRepo)
 
 const leaderboardRepo = new PrismaLeaderboardRepository(prisma)
 const getLeaderboard = new GetLeaderboard(leaderboardRepo)
+const getLeaderboardHistory = new GetLeaderboardHistory(leaderboardRepo)
 
 const registerMatchResult = new RegisterMatchResult(partidaRepo)
 const calculateScoreForMatch = new CalculateScoreForMatch(tournamentReadPort, palpiteRepo)
@@ -117,7 +119,7 @@ await app.register(authRoutes, { prefix: '/auth', registerUser, loginUser, token
 await app.register(partidasRoutes, { listMatches })
 await app.register(palpitesRoutes, { submitPrediction, getMyPredictions, getPredictionsForMatch, tokenService })
 await app.register(palpitesEstaticosRoutes, { submitStaticMarketPrediction, getMyStaticPredictions, tokenService })
-await app.register(leaderboardRoutes, { getLeaderboard, tokenService })
+await app.register(leaderboardRoutes, { getLeaderboard, getLeaderboardHistory, tokenService })
 await app.register(adminRoutes, { registerMatchResult, calculateScoreForMatch, tokenService })
 await app.register(gruposRoutes, { getGroupStandings })
 
