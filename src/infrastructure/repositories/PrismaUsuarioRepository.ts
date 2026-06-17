@@ -1,6 +1,6 @@
 import type { PrismaClient } from '@prisma/client'
 import { Usuario } from '../../domain/identity/Usuario.js'
-import type { UsuarioRepository } from '../../application/identity/ports/UsuarioRepository.js'
+import type { UsuarioRepository, UsuarioBasico } from '../../application/identity/ports/UsuarioRepository.js'
 
 export class PrismaUsuarioRepository implements UsuarioRepository {
   constructor(private readonly prisma: PrismaClient) {}
@@ -38,6 +38,13 @@ export class PrismaUsuarioRepository implements UsuarioRepository {
         passwordHash: usuario.passwordHash,
         role: usuario.role,
       },
+    })
+  }
+
+  async findAllBasic(): Promise<UsuarioBasico[]> {
+    return this.prisma.usuario.findMany({
+      select: { id: true, nome: true, username: true },
+      orderBy: { nome: 'asc' },
     })
   }
 }

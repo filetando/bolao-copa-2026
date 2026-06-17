@@ -7,6 +7,7 @@ import { HomePage } from './pages/HomePage.tsx'
 import { MatchesPage } from './pages/MatchesPage.tsx'
 import { FirstAccessPage } from './pages/FirstAccessPage.tsx'
 import { AdminPage } from './pages/AdminPage.tsx'
+import { AdminPalpitesPage } from './pages/AdminPalpitesPage.tsx'
 import { ClassificacaoPage } from './pages/ClassificacaoPage.tsx'
 
 function ProtectedRoute() {
@@ -48,7 +49,10 @@ export const router = createBrowserRouter([
         children: [
           {
             element: <MainLayout />,
-            children: [{ path: '/admin', element: <AdminPage /> }],
+            children: [
+              { path: '/admin', element: <AdminPage /> },
+              { path: '/admin/palpites', element: <AdminPalpitesPage /> },
+            ],
           },
         ],
       },

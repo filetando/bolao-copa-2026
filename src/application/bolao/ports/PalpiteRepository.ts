@@ -13,6 +13,26 @@ export interface PalpiteWithUser extends PalpiteData {
   nomeUsuario: string
 }
 
+export interface PartidaResumida {
+  id: number
+  faseId: string
+  faseNome: string
+  grupoId: string | null
+  dataHoraUtc: Date
+  status: string
+  golsCasa: number | null
+  golsFora: number | null
+  multiplicador: number
+  equipeCasa: { id: number; nome: string; sigla: string | null; bandeiraCodigo: string | null } | null
+  equipeFora: { id: number; nome: string; sigla: string | null; bandeiraCodigo: string | null } | null
+  placeholderCasa: string | null
+  placeholderFora: string | null
+}
+
+export interface PalpiteComPartida extends PalpiteData {
+  partida: PartidaResumida
+}
+
 export interface PalpiteRepository {
   upsert(data: {
     usuarioId: string
@@ -23,4 +43,7 @@ export interface PalpiteRepository {
   findByUsuario(usuarioId: string): Promise<PalpiteData[]>
   findByPartida(partidaId: number): Promise<PalpiteWithUser[]>
   updatePontosObtidos(id: string, pontos: number): Promise<void>
+  findById(id: string): Promise<PalpiteData | null>
+  findByUsuarioWithPartida(usuarioId: string): Promise<PalpiteComPartida[]>
+  updateGols(id: string, golsCasaPalpite: number, golsForaPalpite: number): Promise<void>
 }

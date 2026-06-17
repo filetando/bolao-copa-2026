@@ -21,6 +21,7 @@ function makeRepo(user: Usuario | null): UsuarioRepository {
     findById: vi.fn().mockResolvedValue(null),
     existsByUsername: vi.fn().mockResolvedValue(false),
     save: vi.fn().mockResolvedValue(undefined),
+    findAllBasic: vi.fn().mockResolvedValue([]),
   }
 }
 

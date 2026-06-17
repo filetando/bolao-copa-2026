@@ -7,6 +7,8 @@ import type {
   LeaderboardHistoryResponse,
   PalpiteEstaticoData,
   ClassificacaoRow,
+  UsuarioBasico,
+  PalpiteComPartida,
 } from '../types/index.ts'
 
 const BASE = '/api'
@@ -63,6 +65,13 @@ export const api = {
       request<{ partidaId: number; golsCasa: number; golsFora: number; palpitesCalculados: number }>(
         `/admin/partidas/${id}/resultado`,
         { method: 'POST', body: JSON.stringify({ golsCasa, golsFora }) },
+      ),
+    listUsuarios: () => request<UsuarioBasico[]>('/admin/usuarios'),
+    getPalpitesUsuario: (usuarioId: string) => request<PalpiteComPartida[]>(`/admin/usuarios/${usuarioId}/palpites`),
+    updatePalpite: (palpiteId: string, golsCasaPalpite: number, golsForaPalpite: number) =>
+      request<{ palpiteId: string; pontosObtidos: number | null }>(
+        `/admin/palpites/${palpiteId}`,
+        { method: 'PUT', body: JSON.stringify({ golsCasaPalpite, golsForaPalpite }) },
       ),
   },
   palpitesEstaticos: {

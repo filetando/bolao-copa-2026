@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { api } from '../lib/api.ts'
 import { formatDateLabelBRT, formatTimeBRT } from '../lib/time.ts'
 import type { Partida } from '../types/index.ts'
@@ -68,7 +69,15 @@ export function AdminPage() {
 
   return (
     <div className="space-y-8">
-      <h1 className="text-xl font-bold text-gray-900">Painel Admin — Registrar Resultados</h1>
+      <div className="flex items-center justify-between">
+        <h1 className="text-xl font-bold text-gray-900">Painel Admin — Registrar Resultados</h1>
+        <Link
+          to="/admin/palpites"
+          className="text-sm text-green-700 hover:text-green-900 border border-green-300 hover:border-green-500 rounded-md px-3 py-1.5 transition-colors"
+        >
+          Alterar Palpites dos Usuários →
+        </Link>
+      </div>
 
       <section>
         <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">

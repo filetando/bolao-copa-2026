@@ -81,6 +81,32 @@ export interface ClassificacaoRow {
   pontos: number
 }
 
+export interface UsuarioBasico {
+  id: string
+  nome: string
+  username: string
+}
+
+export interface PartidaResumida {
+  id: number
+  faseId: string
+  faseNome: string
+  grupoId: string | null
+  dataHoraUtc: string
+  status: string
+  golsCasa: number | null
+  golsFora: number | null
+  multiplicador: number
+  equipeCasa: Equipe | null
+  equipeFora: Equipe | null
+  placeholderCasa: string | null
+  placeholderFora: string | null
+}
+
+export interface PalpiteComPartida extends PalpiteData {
+  partida: PartidaResumida
+}
+
 export type MercadoEstatico = 'campeao' | 'vice' | 'terceiro_lugar' | 'artilheiro'
 
 export interface PalpiteEstaticoData {

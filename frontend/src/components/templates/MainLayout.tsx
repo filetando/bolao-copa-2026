@@ -11,8 +11,8 @@ export function MainLayout() {
     navigate('/login', { replace: true })
   }
 
-  function navClass(path: string) {
-    const active = location.pathname === path
+  function navClass(path: string, exact = true) {
+    const active = exact ? location.pathname === path : location.pathname.startsWith(path)
     return `text-sm transition-colors ${active ? 'text-white font-semibold' : 'text-green-200 hover:text-white'}`
   }
 
@@ -37,7 +37,7 @@ export function MainLayout() {
               Palpites Estáticos
             </Link>
             {user?.role === 'admin' && (
-              <Link to="/admin" className={navClass('/admin')}>
+              <Link to="/admin" className={navClass('/admin', false)}>
                 Admin
               </Link>
             )}

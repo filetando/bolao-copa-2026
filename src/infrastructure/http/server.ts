@@ -30,6 +30,9 @@ import { GetLeaderboardHistory } from '../../application/bolao/use-cases/GetLead
 import { adminRoutes } from '../../presentation/http/routes/admin.js'
 import { RegisterMatchResult } from '../../application/tournament/use-cases/RegisterMatchResult.js'
 import { CalculateScoreForMatch } from '../../application/bolao/use-cases/CalculateScoreForMatch.js'
+import { GetAdminUserPalpites } from '../../application/bolao/use-cases/GetAdminUserPalpites.js'
+import { AdminUpdatePalpite } from '../../application/bolao/use-cases/AdminUpdatePalpite.js'
+import { ListUsers } from '../../application/identity/use-cases/ListUsers.js'
 import { gruposRoutes } from '../../presentation/http/routes/grupos.js'
 import { PrismaGrupoRepository } from '../repositories/PrismaGrupoRepository.js'
 import { GetGroupStandings } from '../../application/tournament/use-cases/GetGroupStandings.js'
@@ -107,6 +110,9 @@ const getLeaderboardHistory = new GetLeaderboardHistory(leaderboardRepo)
 
 const registerMatchResult = new RegisterMatchResult(partidaRepo)
 const calculateScoreForMatch = new CalculateScoreForMatch(tournamentReadPort, palpiteRepo)
+const getAdminUserPalpites = new GetAdminUserPalpites(palpiteRepo)
+const adminUpdatePalpite = new AdminUpdatePalpite(palpiteRepo, tournamentReadPort)
+const listUsers = new ListUsers(usuarioRepo)
 
 const grupoRepo = new PrismaGrupoRepository(prisma)
 const getGroupStandings = new GetGroupStandings(grupoRepo)
@@ -120,7 +126,7 @@ await app.register(partidasRoutes, { listMatches })
 await app.register(palpitesRoutes, { submitPrediction, getMyPredictions, getPredictionsForMatch, tokenService })
 await app.register(palpitesEstaticosRoutes, { submitStaticMarketPrediction, getMyStaticPredictions, tokenService })
 await app.register(leaderboardRoutes, { getLeaderboard, getLeaderboardHistory, tokenService })
-await app.register(adminRoutes, { registerMatchResult, calculateScoreForMatch, tokenService })
+await app.register(adminRoutes, { registerMatchResult, calculateScoreForMatch, getAdminUserPalpites, adminUpdatePalpite, listUsers, tokenService })
 await app.register(gruposRoutes, { getGroupStandings })
 
 // ─── Start ────────────────────────────────────────────────────────────────────
