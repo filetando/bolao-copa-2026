@@ -4,6 +4,8 @@ import type { RegisterMatchResult } from '../../../application/tournament/use-ca
 import type { CalculateScoreForMatch } from '../../../application/bolao/use-cases/CalculateScoreForMatch.js'
 import type { GetAdminUserPalpites } from '../../../application/bolao/use-cases/GetAdminUserPalpites.js'
 import type { AdminUpdatePalpite } from '../../../application/bolao/use-cases/AdminUpdatePalpite.js'
+import type { AdminUpsertPalpite } from '../../../application/bolao/use-cases/AdminUpsertPalpite.js'
+import type { GetAdminPartidasComPalpite } from '../../../application/bolao/use-cases/GetAdminPartidasComPalpite.js'
 import type { ListUsers } from '../../../application/identity/use-cases/ListUsers.js'
 import type { ITokenService } from '../../../application/identity/ports/ITokenService.js'
 import { createAuthMiddleware } from '../middlewares/authenticate.js'
@@ -14,6 +16,8 @@ interface AdminRouteOptions {
   calculateScoreForMatch: CalculateScoreForMatch
   getAdminUserPalpites: GetAdminUserPalpites
   adminUpdatePalpite: AdminUpdatePalpite
+  adminUpsertPalpite: AdminUpsertPalpite
+  getAdminPartidasComPalpite: GetAdminPartidasComPalpite
   listUsers: ListUsers
   tokenService: ITokenService
 }
@@ -24,6 +28,12 @@ const RegisterResultBodySchema = z.object({
 })
 
 const UpdatePalpiteBodySchema = z.object({
+  golsCasaPalpite: z.number().int().min(0),
+  golsForaPalpite: z.number().int().min(0),
+})
+
+const UpsertPalpiteBodySchema = z.object({
+  partidaId: z.number().int().min(1),
   golsCasaPalpite: z.number().int().min(0),
   golsForaPalpite: z.number().int().min(0),
 })
@@ -67,12 +77,32 @@ export const adminRoutes: FastifyPluginAsync<AdminRouteOptions> = async (fastify
     return reply.status(200).send(palpites)
   })
 
-  // PUT /admin/palpites/:palpiteId — altera gols de um palpite e recalcula pontos
+  // PUT /admin/palpites/:palpiteId — altera gols de um palpite existente e recalcula pontos
   fastify.put('/admin/palpites/:palpiteId', { preHandler: guard }, async (request, reply) => {
     const { palpiteId } = request.params as { palpiteId: string }
     const body = UpdatePalpiteBodySchema.parse(request.body)
     const result = await opts.adminUpdatePalpite.execute({
       palpiteId,
+      golsCasaPalpite: body.golsCasaPalpite,
+      golsForaPalpite: body.golsForaPalpite,
+    })
+    return reply.status(200).send(result)
+  })
+
+  // GET /admin/usuarios/:usuarioId/partidas — todas as partidas com palpite do usuário (ou null)
+  fastify.get('/admin/usuarios/:usuarioId/partidas', { preHandler: guard }, async (request, reply) => {
+    const { usuarioId } = request.params as { usuarioId: string }
+    const partidas = await opts.getAdminPartidasComPalpite.execute(usuarioId)
+    return reply.status(200).send(partidas)
+  })
+
+  // POST /admin/usuarios/:usuarioId/palpites — cria ou atualiza palpite, bypassando bloqueio de janela
+  fastify.post('/admin/usuarios/:usuarioId/palpites', { preHandler: guard }, async (request, reply) => {
+    const { usuarioId } = request.params as { usuarioId: string }
+    const body = UpsertPalpiteBodySchema.parse(request.body)
+    const result = await opts.adminUpsertPalpite.execute({
+      usuarioId,
+      partidaId: body.partidaId,
       golsCasaPalpite: body.golsCasaPalpite,
       golsForaPalpite: body.golsForaPalpite,
     })

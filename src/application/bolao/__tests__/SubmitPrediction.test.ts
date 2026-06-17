@@ -45,6 +45,7 @@ function makePalpiteRepo(): PalpiteRepository {
     findById: vi.fn().mockResolvedValue(null),
     findByUsuarioWithPartida: vi.fn().mockResolvedValue([]),
     updateGols: vi.fn().mockResolvedValue(undefined),
+    findAllPartidasWithPalpiteForUser: vi.fn().mockResolvedValue([]),
   }
 }
 

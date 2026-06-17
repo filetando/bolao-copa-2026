@@ -1,5 +1,5 @@
 import type { PrismaClient } from '@prisma/client'
-import type { PalpiteRepository, PalpiteData, PalpiteWithUser, PalpiteComPartida } from '../../application/bolao/ports/PalpiteRepository.js'
+import type { PalpiteRepository, PalpiteData, PalpiteWithUser, PalpiteComPartida, PartidaComPalpiteData } from '../../application/bolao/ports/PalpiteRepository.js'
 
 export class PrismaPalpiteRepository implements PalpiteRepository {
   constructor(private readonly db: PrismaClient) {}
@@ -86,6 +86,46 @@ export class PrismaPalpiteRepository implements PalpiteRepository {
         placeholderCasa: r.partida.placeholderCasa,
         placeholderFora: r.partida.placeholderFora,
       },
+    }))
+  }
+
+  async findAllPartidasWithPalpiteForUser(usuarioId: string): Promise<PartidaComPalpiteData[]> {
+    const partidas = await this.db.partida.findMany({
+      orderBy: { id: 'asc' },
+      include: {
+        fase: { select: { id: true, nomeExibicao: true, multiplicador: true } },
+        equipeCasa: { select: { id: true, nome: true, sigla: true, bandeiraCodigo: true } },
+        equipeFora: { select: { id: true, nome: true, sigla: true, bandeiraCodigo: true } },
+        palpites: {
+          where: { usuarioId },
+          select: { id: true, golsCasaPalpite: true, golsForaPalpite: true, pontosObtidos: true },
+        },
+      },
+    })
+    return partidas.map((p) => ({
+      partida: {
+        id: p.id,
+        faseId: p.faseId,
+        faseNome: p.fase.nomeExibicao,
+        grupoId: p.grupoId,
+        dataHoraUtc: p.dataHoraUtc,
+        status: p.status,
+        golsCasa: p.golsCasa,
+        golsFora: p.golsFora,
+        multiplicador: Number(p.fase.multiplicador),
+        equipeCasa: p.equipeCasa,
+        equipeFora: p.equipeFora,
+        placeholderCasa: p.placeholderCasa,
+        placeholderFora: p.placeholderFora,
+      },
+      palpite: p.palpites[0]
+        ? {
+            id: p.palpites[0].id,
+            golsCasaPalpite: p.palpites[0].golsCasaPalpite,
+            golsForaPalpite: p.palpites[0].golsForaPalpite,
+            pontosObtidos: p.palpites[0].pontosObtidos,
+          }
+        : null,
     }))
   }
 

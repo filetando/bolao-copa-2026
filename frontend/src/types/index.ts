@@ -107,6 +107,18 @@ export interface PalpiteComPartida extends PalpiteData {
   partida: PartidaResumida
 }
 
+export interface PalpiteResumo {
+  id: string
+  golsCasaPalpite: number
+  golsForaPalpite: number
+  pontosObtidos: number | null
+}
+
+export interface PartidaComPalpiteAdmin {
+  partida: PartidaResumida
+  palpite: PalpiteResumo | null
+}
+
 export type MercadoEstatico = 'campeao' | 'vice' | 'terceiro_lugar' | 'artilheiro'
 
 export interface PalpiteEstaticoData {

@@ -9,6 +9,7 @@ import type {
   ClassificacaoRow,
   UsuarioBasico,
   PalpiteComPartida,
+  PartidaComPalpiteAdmin,
 } from '../types/index.ts'
 
 const BASE = '/api'
@@ -68,10 +69,16 @@ export const api = {
       ),
     listUsuarios: () => request<UsuarioBasico[]>('/admin/usuarios'),
     getPalpitesUsuario: (usuarioId: string) => request<PalpiteComPartida[]>(`/admin/usuarios/${usuarioId}/palpites`),
+    getPartidasComPalpite: (usuarioId: string) => request<PartidaComPalpiteAdmin[]>(`/admin/usuarios/${usuarioId}/partidas`),
     updatePalpite: (palpiteId: string, golsCasaPalpite: number, golsForaPalpite: number) =>
       request<{ palpiteId: string; pontosObtidos: number | null }>(
         `/admin/palpites/${palpiteId}`,
         { method: 'PUT', body: JSON.stringify({ golsCasaPalpite, golsForaPalpite }) },
+      ),
+    upsertPalpite: (usuarioId: string, partidaId: number, golsCasaPalpite: number, golsForaPalpite: number) =>
+      request<{ palpiteId: string; pontosObtidos: number | null }>(
+        `/admin/usuarios/${usuarioId}/palpites`,
+        { method: 'POST', body: JSON.stringify({ partidaId, golsCasaPalpite, golsForaPalpite }) },
       ),
   },
   palpitesEstaticos: {
