@@ -25,8 +25,11 @@ export function PointsHistoryChart({ data }: Props) {
     )
   }
 
+  const formatDate = (iso: string) =>
+    new Date(iso).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })
+
   const chartData = data.pontos.map((ponto) => ({
-    data: new Date(ponto.dataHoraUtc).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' }),
+    dataHoraUtc: ponto.dataHoraUtc,
     ...ponto.pontosPorUsuario,
   }))
 
@@ -34,9 +37,18 @@ export function PointsHistoryChart({ data }: Props) {
     <ResponsiveContainer width="100%" height={320}>
       <LineChart data={chartData} margin={{ top: 8, right: 16, left: -8, bottom: 0 }}>
         <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
-        <XAxis dataKey="data" tick={{ fontSize: 11, fill: '#9ca3af' }} axisLine={{ stroke: '#e5e7eb' }} tickLine={false} />
+        <XAxis
+          dataKey="dataHoraUtc"
+          tickFormatter={formatDate}
+          tick={{ fontSize: 11, fill: '#9ca3af' }}
+          axisLine={{ stroke: '#e5e7eb' }}
+          tickLine={false}
+        />
         <YAxis tick={{ fontSize: 11, fill: '#9ca3af' }} axisLine={false} tickLine={false} allowDecimals={false} />
-        <Tooltip contentStyle={{ borderRadius: 12, border: '1px solid #e5e7eb', fontSize: 12 }} />
+        <Tooltip
+          contentStyle={{ borderRadius: 12, border: '1px solid #e5e7eb', fontSize: 12 }}
+          labelFormatter={formatDate}
+        />
         <Legend wrapperStyle={{ fontSize: 12 }} />
         {data.usuarios.map((usuario, idx) => (
           <Line
