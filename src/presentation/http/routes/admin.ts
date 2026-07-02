@@ -2,6 +2,7 @@ import type { FastifyPluginAsync } from 'fastify'
 import { z } from 'zod'
 import type { RegisterMatchResult } from '../../../application/tournament/use-cases/RegisterMatchResult.js'
 import type { CalculateScoreForMatch } from '../../../application/bolao/use-cases/CalculateScoreForMatch.js'
+import type { SaveStandingsSnapshot } from '../../../application/bolao/use-cases/SaveStandingsSnapshot.js'
 import type { GetAdminUserPalpites } from '../../../application/bolao/use-cases/GetAdminUserPalpites.js'
 import type { AdminUpdatePalpite } from '../../../application/bolao/use-cases/AdminUpdatePalpite.js'
 import type { AdminUpsertPalpite } from '../../../application/bolao/use-cases/AdminUpsertPalpite.js'
@@ -15,6 +16,7 @@ import { requireAdmin } from '../middlewares/requireAdmin.js'
 interface AdminRouteOptions {
   registerMatchResult: RegisterMatchResult
   calculateScoreForMatch: CalculateScoreForMatch
+  saveStandingsSnapshot: SaveStandingsSnapshot
   getAdminUserPalpites: GetAdminUserPalpites
   adminUpdatePalpite: AdminUpdatePalpite
   adminUpsertPalpite: AdminUpsertPalpite
@@ -55,7 +57,7 @@ export const adminRoutes: FastifyPluginAsync<AdminRouteOptions> = async (fastify
 
     const body = RegisterResultBodySchema.parse(request.body)
 
-    await opts.registerMatchResult.execute({
+    const { correcao } = await opts.registerMatchResult.execute({
       adminId: request.user!.id,
       partidaId,
       golsCasa: body.golsCasa,
@@ -64,6 +66,14 @@ export const adminRoutes: FastifyPluginAsync<AdminRouteOptions> = async (fastify
     })
 
     const { count } = await opts.calculateScoreForMatch.execute({ partidaId })
+
+    // Snapshot de auditoria é best-effort: uma falha ao gravar o arquivo não pode impedir
+    // que o placar (já persistido) seja confirmado ao admin.
+    try {
+      await opts.saveStandingsSnapshot.execute({ partidaId, motivo: correcao ? 'correcao' : 'insercao' })
+    } catch (err) {
+      request.log.warn({ err, partidaId }, 'Falha ao salvar snapshot de auditoria')
+    }
 
     return reply.status(200).send({ partidaId, golsCasa: body.golsCasa, golsFora: body.golsFora, palpitesCalculados: count })
   })

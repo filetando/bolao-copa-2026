@@ -45,6 +45,15 @@ export interface PartidaComPalpiteData {
   palpite: PalpiteResumo | null
 }
 
+export interface UltimoPalpiteFinalizadoRow {
+  usuarioId: string
+  nomeUsuario: string
+  golsCasaPalpite: number
+  golsForaPalpite: number
+  pontosObtidos: number | null
+  partida: PartidaResumida
+}
+
 export interface PalpiteRepository {
   upsert(data: {
     usuarioId: string
@@ -59,4 +68,7 @@ export interface PalpiteRepository {
   findByUsuarioWithPartida(usuarioId: string): Promise<PalpiteComPartida[]>
   updateGols(id: string, golsCasaPalpite: number, golsForaPalpite: number): Promise<void>
   findAllPartidasWithPalpiteForUser(usuarioId: string): Promise<PartidaComPalpiteData[]>
+  // Snapshot de auditoria (RegisterMatchResult) — para cada usuário, o palpite cuja partida
+  // encerrada tem o data_hora_utc mais recente (DISTINCT ON por usuário).
+  findUltimosPalpitesFinalizados(): Promise<UltimoPalpiteFinalizadoRow[]>
 }

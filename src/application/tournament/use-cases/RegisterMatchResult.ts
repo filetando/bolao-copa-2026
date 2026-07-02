@@ -12,15 +12,22 @@ interface Input {
   vencedorPenaltisEquipeId?: number
 }
 
+interface Output {
+  // true quando a partida já estava 'encerrada' antes desta chamada (admin corrigindo um
+  // placar já registrado, não inserindo pela primeira vez).
+  correcao: boolean
+}
+
 export class RegisterMatchResult {
   constructor(
     private readonly partidaRepo: PartidaRepository,
     private readonly bracketPropagation: BracketPropagationService,
   ) {}
 
-  async execute(input: Input): Promise<void> {
+  async execute(input: Input): Promise<Output> {
     const partida = await this.partidaRepo.findById(input.partidaId)
     if (!partida) throw new MatchNotFoundError()
+    const correcao = partida.status === 'encerrada'
 
     const isMataMata = partida.faseId !== 'grupos'
     const empateTempoNormal = input.golsCasa === input.golsFora
@@ -37,7 +44,7 @@ export class RegisterMatchResult {
     // é disparado em seguida pelo CalculateScoreForMatch no route handler
     await this.partidaRepo.registerResult(input.partidaId, input.golsCasa, input.golsFora, vencedorPenaltisEquipeId)
 
-    if (!isMataMata || partida.equipeCasaId === null || partida.equipeForaId === null) return
+    if (!isMataMata || partida.equipeCasaId === null || partida.equipeForaId === null) return { correcao }
 
     const vencedorEquipeId = empateTempoNormal
       ? vencedorPenaltisEquipeId!
@@ -55,5 +62,7 @@ export class RegisterMatchResult {
     if (resolucoes.length > 0) {
       await this.partidaRepo.resolverLadosPartidas(resolucoes)
     }
+
+    return { correcao }
   }
 }

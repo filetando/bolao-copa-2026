@@ -44,6 +44,8 @@ import { loadAnexoCTable } from '../tournament/loadAnexoCTable.js'
 import { BracketPropagationService } from '../../domain/tournament/BracketPropagationService.js'
 import { loadBracketDependencias } from '../tournament/loadBracketDependencias.js'
 import { ListMataMataMatches } from '../../application/tournament/use-cases/ListMataMataMatches.js'
+import { SaveStandingsSnapshot } from '../../application/bolao/use-cases/SaveStandingsSnapshot.js'
+import { FileSnapshotWriter } from '../snapshot/FileSnapshotWriter.js'
 
 // Carrega augmentações de tipo (request.user)
 import '../../presentation/http/types.js'
@@ -123,6 +125,7 @@ const getLeaderboardHistory = new GetLeaderboardHistory(leaderboardRepo)
 const bracketPropagation = new BracketPropagationService(loadBracketDependencias())
 const registerMatchResult = new RegisterMatchResult(partidaRepo, bracketPropagation)
 const calculateScoreForMatch = new CalculateScoreForMatch(tournamentReadPort, palpiteRepo)
+const saveStandingsSnapshot = new SaveStandingsSnapshot(leaderboardRepo, palpiteRepo, new FileSnapshotWriter())
 const getAdminUserPalpites = new GetAdminUserPalpites(palpiteRepo)
 const adminUpdatePalpite = new AdminUpdatePalpite(palpiteRepo, tournamentReadPort)
 const adminUpsertPalpite = new AdminUpsertPalpite(palpiteRepo, tournamentReadPort)
@@ -144,7 +147,7 @@ await app.register(partidasRoutes, { listMatches, listMataMataMatches })
 await app.register(palpitesRoutes, { submitPrediction, getMyPredictions, getPredictionsForMatch, tokenService })
 await app.register(palpitesEstaticosRoutes, { submitStaticMarketPrediction, getMyStaticPredictions, tokenService })
 await app.register(leaderboardRoutes, { getLeaderboard, getLeaderboardHistory, tokenService })
-await app.register(adminRoutes, { registerMatchResult, calculateScoreForMatch, getAdminUserPalpites, adminUpdatePalpite, adminUpsertPalpite, getAdminPartidasComPalpite, generateKnockoutBracket, listUsers, tokenService })
+await app.register(adminRoutes, { registerMatchResult, calculateScoreForMatch, saveStandingsSnapshot, getAdminUserPalpites, adminUpdatePalpite, adminUpsertPalpite, getAdminPartidasComPalpite, generateKnockoutBracket, listUsers, tokenService })
 await app.register(gruposRoutes, { getGroupStandings })
 
 // ─── Start ────────────────────────────────────────────────────────────────────

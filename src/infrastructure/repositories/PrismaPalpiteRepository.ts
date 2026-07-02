@@ -1,5 +1,12 @@
 import type { PrismaClient } from '@prisma/client'
-import type { PalpiteRepository, PalpiteData, PalpiteWithUser, PalpiteComPartida, PartidaComPalpiteData } from '../../application/bolao/ports/PalpiteRepository.js'
+import type {
+  PalpiteRepository,
+  PalpiteData,
+  PalpiteWithUser,
+  PalpiteComPartida,
+  PartidaComPalpiteData,
+  UltimoPalpiteFinalizadoRow,
+} from '../../application/bolao/ports/PalpiteRepository.js'
 
 export class PrismaPalpiteRepository implements PalpiteRepository {
   constructor(private readonly db: PrismaClient) {}
@@ -127,6 +134,55 @@ export class PrismaPalpiteRepository implements PalpiteRepository {
           }
         : null,
     }))
+  }
+
+  async findUltimosPalpitesFinalizados(): Promise<UltimoPalpiteFinalizadoRow[]> {
+    const rows = await this.db.palpite.findMany({
+      where: { partida: { status: 'encerrada' }, usuario: { nome: { not: 'Tester' } } },
+      orderBy: { partida: { dataHoraUtc: 'desc' } },
+      include: {
+        usuario: { select: { nome: true } },
+        partida: {
+          include: {
+            fase: { select: { id: true, nomeExibicao: true, multiplicador: true } },
+            equipeCasa: { select: { id: true, nome: true, sigla: true, bandeiraCodigo: true } },
+            equipeFora: { select: { id: true, nome: true, sigla: true, bandeiraCodigo: true } },
+          },
+        },
+      },
+    })
+
+    // Já ordenado por data_hora_utc desc — mantém apenas a primeira ocorrência (mais
+    // recente) de cada usuário.
+    const vistos = new Set<string>()
+    const resultado: UltimoPalpiteFinalizadoRow[] = []
+    for (const r of rows) {
+      if (vistos.has(r.usuarioId)) continue
+      vistos.add(r.usuarioId)
+      resultado.push({
+        usuarioId: r.usuarioId,
+        nomeUsuario: r.usuario.nome,
+        golsCasaPalpite: r.golsCasaPalpite,
+        golsForaPalpite: r.golsForaPalpite,
+        pontosObtidos: r.pontosObtidos,
+        partida: {
+          id: r.partida.id,
+          faseId: r.partida.faseId,
+          faseNome: r.partida.fase.nomeExibicao,
+          grupoId: r.partida.grupoId,
+          dataHoraUtc: r.partida.dataHoraUtc,
+          status: r.partida.status,
+          golsCasa: r.partida.golsCasa,
+          golsFora: r.partida.golsFora,
+          multiplicador: Number(r.partida.fase.multiplicador),
+          equipeCasa: r.partida.equipeCasa,
+          equipeFora: r.partida.equipeFora,
+          placeholderCasa: r.partida.placeholderCasa,
+          placeholderFora: r.partida.placeholderFora,
+        },
+      })
+    }
+    return resultado
   }
 
   private toData(row: {
