@@ -10,12 +10,24 @@ interface BracketTreeProps {
 const ORDEM_RODADAS = ['16-Avos de Final', 'Oitavas de Final', 'Quartas de Final', 'Semifinais', 'Final']
 const RODADA_TERCEIRO_LUGAR = 'Terceiro Lugar'
 
+// Ordem visual (não a ordem crescente de ID) para que jogos empilhados verticalmente
+// correspondam à árvore real do chaveamento — cada par adjacente alimenta o mesmo jogo da
+// rodada seguinte (docs/architecture/bracket_dependencias.json / docs/product/copa2026_chaveamento.md).
+const ORDEM_VISUAL_16AVOS = [74, 77, 73, 75, 83, 84, 81, 82, 76, 78, 79, 80, 86, 88, 85, 87]
+const ORDEM_VISUAL_OITAVAS = [89, 90, 93, 94, 91, 92, 95, 96]
+const POSICAO_VISUAL: Record<number, number> = Object.fromEntries(
+  [...ORDEM_VISUAL_16AVOS, ...ORDEM_VISUAL_OITAVAS].map((id, idx) => [id, idx]),
+)
+
 export function BracketTree({ partidas }: BracketTreeProps) {
   const porRodada = new Map<string, Partida[]>()
   for (const p of partidas) {
     if (p.faseNome === RODADA_TERCEIRO_LUGAR) continue
     if (!porRodada.has(p.faseNome)) porRodada.set(p.faseNome, [])
     porRodada.get(p.faseNome)!.push(p)
+  }
+  for (const jogos of porRodada.values()) {
+    jogos.sort((a, b) => (POSICAO_VISUAL[a.id] ?? a.id) - (POSICAO_VISUAL[b.id] ?? b.id))
   }
 
   const terceiroLugar = partidas.find((p) => p.faseNome === RODADA_TERCEIRO_LUGAR)
