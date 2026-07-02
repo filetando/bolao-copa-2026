@@ -20,6 +20,7 @@ export interface PartidaListItem {
   golsFora: number | null
   status: string
   grupoSimultaneoId: number | null
+  vencedorPenaltisEquipeId: number | null
 }
 
 export interface PartidaBasica {

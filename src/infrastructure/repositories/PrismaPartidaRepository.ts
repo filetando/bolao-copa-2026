@@ -27,6 +27,7 @@ function toListItem(row: {
   golsFora: number | null
   status: string
   grupoSimultaneoId: number | null
+  vencedorPenaltisEquipeId: number | null
 }): PartidaListItem {
   return {
     id: row.id,
@@ -44,6 +45,7 @@ function toListItem(row: {
     golsFora: row.golsFora,
     status: row.status,
     grupoSimultaneoId: row.grupoSimultaneoId,
+    vencedorPenaltisEquipeId: row.vencedorPenaltisEquipeId,
   }
 }
 
