@@ -6,4 +6,6 @@ build/
 .DS_Store
 coverage/
 *.tsbuildinfo
+.git.corrupted.bak/
+bolao_backup.dump
 snapshots/
