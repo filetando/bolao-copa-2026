@@ -18,16 +18,10 @@ const GRUPO_SIMULTANEO_GRUPO: Record<string, number> = {
   G: 7, H: 8, I: 9, J: 10, K: 11, L: 12,
 }
 
-// ─── Mata-mata: grupo_simultaneo_id ──────────────────────────────────────────
-// IDs 101+ para conjuntos simultâneos do mata-mata
-// Jogos 75 e 76: 29/06 21h00 ET (mesma hora → simultâneos)
-// Jogos 80-82: 02/07 "várias partidas simultâneas" (bolao-copa-2026_1.md §9)
-const SIMULTANEO_75_76 = 101
-const SIMULTANEO_80_82 = 102
-
 // ─── Mata-mata: dados das partidas 73-104 ────────────────────────────────────
-// Horários de bolao-copa-2026_1.md §9. Conversão: UTC = ET + 4h (ADR-005)
-// Jogos 80-85: datas provisórias (lacuna na fonte) — MARCO_1_PLAN.md, Tarefa 1
+// Fonte: docs/product/mataamata.md (numeração oficial FIFA, horários em BRT convertidos
+// para UTC = BRT + 3h). Nenhuma partida do mata-mata tem horário simultâneo — diferente da
+// fase de grupos (R3), o calendário oficial do mata-mata não agrupa kickoffs.
 type PartidaMata = {
   id: number
   faseId: string
@@ -41,47 +35,46 @@ type PartidaMata = {
 
 const PARTIDAS_MATA_MATA: PartidaMata[] = [
   // 16-Avos de Final (jogos 73-88) — fase_id: '16avos'
-  { id: 73,  faseId: '16avos', placeholderCasa: '2º Grupo A',              placeholderFora: '2º Grupo B',              dataHoraUtc: '2026-06-29T02:00:00Z', estadio: 'SoFi Stadium',           cidade: 'Los Angeles',      grupoSimultaneoId: null         },
-  { id: 74,  faseId: '16avos', placeholderCasa: '1º Grupo E',              placeholderFora: 'Melhor 3º (A/B/C/D/F)',   dataHoraUtc: '2026-06-29T20:00:00Z', estadio: 'Gillette Stadium',       cidade: 'Boston',           grupoSimultaneoId: null         },
-  { id: 75,  faseId: '16avos', placeholderCasa: '1º Grupo F',              placeholderFora: '2º Grupo C',              dataHoraUtc: '2026-06-30T01:00:00Z', estadio: 'Estadio BBVA',           cidade: 'Monterrey',        grupoSimultaneoId: SIMULTANEO_75_76 },
-  { id: 76,  faseId: '16avos', placeholderCasa: '1º Grupo C',              placeholderFora: '2º Grupo F',              dataHoraUtc: '2026-06-30T01:00:00Z', estadio: 'NRG Stadium',            cidade: 'Houston',          grupoSimultaneoId: SIMULTANEO_75_76 },
-  { id: 77,  faseId: '16avos', placeholderCasa: '1º Grupo I',              placeholderFora: 'Melhor 3º (C/D/F/G/H)',   dataHoraUtc: '2026-06-30T20:00:00Z', estadio: 'MetLife Stadium',        cidade: 'Nova Jersey',      grupoSimultaneoId: null         },
-  { id: 78,  faseId: '16avos', placeholderCasa: '2º Grupo E',              placeholderFora: '2º Grupo I',              dataHoraUtc: '2026-06-30T22:00:00Z', estadio: 'AT&T Stadium',           cidade: 'Dallas',           grupoSimultaneoId: null         },
-  { id: 79,  faseId: '16avos', placeholderCasa: '1º Grupo A',              placeholderFora: 'Melhor 3º (C/E/F/H/I)',   dataHoraUtc: '2026-07-01T01:00:00Z', estadio: 'Estádio Azteca',         cidade: 'Cidade do México', grupoSimultaneoId: null         },
-  // Jogos 80-85: datas provisórias (lacuna na fonte — ajustar quando oficial)
-  { id: 80,  faseId: '16avos', placeholderCasa: '1º Grupo L',              placeholderFora: 'Melhor 3º (E/H/I/J/K)',   dataHoraUtc: '2026-07-02T12:00:00Z', estadio: null,                     cidade: null,               grupoSimultaneoId: SIMULTANEO_80_82 },
-  { id: 81,  faseId: '16avos', placeholderCasa: '1º Grupo D',              placeholderFora: 'Melhor 3º (B/E/F/I/J)',   dataHoraUtc: '2026-07-02T12:00:00Z', estadio: null,                     cidade: null,               grupoSimultaneoId: SIMULTANEO_80_82 },
-  { id: 82,  faseId: '16avos', placeholderCasa: '1º Grupo G',              placeholderFora: 'Melhor 3º (A/E/H/I/J)',   dataHoraUtc: '2026-07-02T12:00:00Z', estadio: null,                     cidade: null,               grupoSimultaneoId: SIMULTANEO_80_82 },
-  { id: 83,  faseId: '16avos', placeholderCasa: '2º Grupo K',              placeholderFora: '2º Grupo L',              dataHoraUtc: '2026-07-02T12:00:00Z', estadio: null,                     cidade: null,               grupoSimultaneoId: null         },
-  { id: 84,  faseId: '16avos', placeholderCasa: '1º Grupo H',              placeholderFora: '2º Grupo J',              dataHoraUtc: '2026-07-02T12:00:00Z', estadio: null,                     cidade: null,               grupoSimultaneoId: null         },
-  { id: 85,  faseId: '16avos', placeholderCasa: '1º Grupo B',              placeholderFora: 'Melhor 3º (E/F/G/I/J)',   dataHoraUtc: '2026-07-02T12:00:00Z', estadio: null,                     cidade: null,               grupoSimultaneoId: null         },
-  { id: 86,  faseId: '16avos', placeholderCasa: '1º Grupo J',              placeholderFora: '2º Grupo H',              dataHoraUtc: '2026-07-03T19:00:00Z', estadio: 'Hard Rock Stadium',      cidade: 'Miami',            grupoSimultaneoId: null         },
-  { id: 87,  faseId: '16avos', placeholderCasa: '1º Grupo K',              placeholderFora: 'Melhor 3º (D/E/I/J/L)',   dataHoraUtc: '2026-07-03T22:00:00Z', estadio: 'Arrowhead Stadium',      cidade: 'Kansas City',      grupoSimultaneoId: null         },
-  { id: 88,  faseId: '16avos', placeholderCasa: '2º Grupo D',              placeholderFora: '2º Grupo G',              dataHoraUtc: '2026-07-04T01:00:00Z', estadio: 'AT&T Stadium',           cidade: 'Dallas',           grupoSimultaneoId: null         },
+  { id: 73,  faseId: '16avos', placeholderCasa: '2º Grupo A',              placeholderFora: '2º Grupo B',              dataHoraUtc: '2026-06-28T19:00:00Z', estadio: 'BC Place',                cidade: 'Vancouver',        grupoSimultaneoId: null },
+  { id: 74,  faseId: '16avos', placeholderCasa: '1º Grupo C',              placeholderFora: '2º Grupo F',              dataHoraUtc: '2026-06-29T17:00:00Z', estadio: 'SoFi Stadium',            cidade: 'Los Angeles',      grupoSimultaneoId: null },
+  { id: 75,  faseId: '16avos', placeholderCasa: '1º Grupo E',              placeholderFora: 'Melhor 3º (A/B/C/D/F)',   dataHoraUtc: '2026-06-29T20:30:00Z', estadio: 'Mercedes-Benz Stadium',   cidade: 'Atlanta',          grupoSimultaneoId: null },
+  { id: 76,  faseId: '16avos', placeholderCasa: '1º Grupo F',              placeholderFora: '2º Grupo C',              dataHoraUtc: '2026-06-30T01:00:00Z', estadio: 'MetLife Stadium',         cidade: 'Nova Jersey',      grupoSimultaneoId: null },
+  { id: 77,  faseId: '16avos', placeholderCasa: '2º Grupo E',              placeholderFora: '2º Grupo I',              dataHoraUtc: '2026-06-30T17:00:00Z', estadio: 'NRG Stadium',             cidade: 'Houston',          grupoSimultaneoId: null },
+  { id: 78,  faseId: '16avos', placeholderCasa: '1º Grupo I',              placeholderFora: 'Melhor 3º (C/D/F/G/H)',   dataHoraUtc: '2026-06-30T21:00:00Z', estadio: 'Lincoln Financial Field', cidade: 'Filadélfia',       grupoSimultaneoId: null },
+  { id: 79,  faseId: '16avos', placeholderCasa: '1º Grupo A',              placeholderFora: 'Melhor 3º (C/E/F/H/I)',   dataHoraUtc: '2026-07-01T16:00:00Z', estadio: 'Estádio Azteca',          cidade: 'Cidade do México', grupoSimultaneoId: null },
+  { id: 80,  faseId: '16avos', placeholderCasa: '1º Grupo L',              placeholderFora: 'Melhor 3º (E/H/I/J/K)',   dataHoraUtc: '2026-07-01T20:00:00Z', estadio: 'Lumen Field',             cidade: 'Seattle',          grupoSimultaneoId: null },
+  { id: 81,  faseId: '16avos', placeholderCasa: '1º Grupo G',              placeholderFora: 'Melhor 3º (A/E/H/I/J)',   dataHoraUtc: '2026-07-02T00:00:00Z', estadio: "Levi's Stadium",          cidade: 'Santa Clara',      grupoSimultaneoId: null },
+  { id: 82,  faseId: '16avos', placeholderCasa: '1º Grupo H',              placeholderFora: '2º Grupo J',              dataHoraUtc: '2026-07-02T19:00:00Z', estadio: 'AT&T Stadium',            cidade: 'Dallas',           grupoSimultaneoId: null },
+  { id: 83,  faseId: '16avos', placeholderCasa: '2º Grupo K',              placeholderFora: '2º Grupo L',              dataHoraUtc: '2026-07-02T23:00:00Z', estadio: 'Hard Rock Stadium',       cidade: 'Miami',            grupoSimultaneoId: null },
+  { id: 84,  faseId: '16avos', placeholderCasa: '1º Grupo B',              placeholderFora: 'Melhor 3º (E/F/G/I/J)',   dataHoraUtc: '2026-07-03T03:00:00Z', estadio: 'Arrowhead Stadium',       cidade: 'Kansas City',      grupoSimultaneoId: null },
+  { id: 85,  faseId: '16avos', placeholderCasa: '2º Grupo D',              placeholderFora: '2º Grupo G',              dataHoraUtc: '2026-07-03T18:00:00Z', estadio: 'AT&T Stadium',            cidade: 'Dallas',           grupoSimultaneoId: null },
+  { id: 86,  faseId: '16avos', placeholderCasa: '1º Grupo J',              placeholderFora: '2º Grupo H',              dataHoraUtc: '2026-07-03T22:00:00Z', estadio: 'Hard Rock Stadium',       cidade: 'Miami',            grupoSimultaneoId: null },
+  { id: 87,  faseId: '16avos', placeholderCasa: '1º Grupo K',              placeholderFora: 'Melhor 3º (D/E/I/J/L)',   dataHoraUtc: '2026-07-04T01:30:00Z', estadio: 'Arrowhead Stadium',       cidade: 'Kansas City',      grupoSimultaneoId: null },
+  { id: 88,  faseId: '16avos', placeholderCasa: '1º Grupo D',              placeholderFora: 'Melhor 3º (B/E/F/I/J)',   dataHoraUtc: '2026-07-04T02:59:00Z', estadio: 'Mercedes-Benz Stadium',   cidade: 'Atlanta',          grupoSimultaneoId: null },
 
   // Oitavas de Final (jogos 89-96) — fase_id: 'oitavas'
-  { id: 89,  faseId: 'oitavas', placeholderCasa: 'Venc. Jogo 74',          placeholderFora: 'Venc. Jogo 77',           dataHoraUtc: '2026-07-04T21:00:00Z', estadio: 'Lincoln Financial Field', cidade: 'Filadélfia',       grupoSimultaneoId: null         },
-  { id: 90,  faseId: 'oitavas', placeholderCasa: 'Venc. Jogo 73',          placeholderFora: 'Venc. Jogo 75',           dataHoraUtc: '2026-07-05T00:00:00Z', estadio: 'NRG Stadium',            cidade: 'Houston',          grupoSimultaneoId: null         },
-  { id: 91,  faseId: 'oitavas', placeholderCasa: 'Venc. Jogo 76',          placeholderFora: 'Venc. Jogo 78',           dataHoraUtc: '2026-07-05T20:00:00Z', estadio: 'MetLife Stadium',        cidade: 'Nova Jersey',      grupoSimultaneoId: null         },
-  { id: 92,  faseId: 'oitavas', placeholderCasa: 'Venc. Jogo 79',          placeholderFora: 'Venc. Jogo 80',           dataHoraUtc: '2026-07-06T01:00:00Z', estadio: 'Estádio Azteca',         cidade: 'Cidade do México', grupoSimultaneoId: null         },
-  { id: 93,  faseId: 'oitavas', placeholderCasa: 'Venc. Jogo 83',          placeholderFora: 'Venc. Jogo 84',           dataHoraUtc: '2026-07-06T20:00:00Z', estadio: 'AT&T Stadium',           cidade: 'Dallas',           grupoSimultaneoId: null         },
-  { id: 94,  faseId: 'oitavas', placeholderCasa: 'Venc. Jogo 81',          placeholderFora: 'Venc. Jogo 82',           dataHoraUtc: '2026-07-07T01:00:00Z', estadio: 'Lumen Field',            cidade: 'Seattle',          grupoSimultaneoId: null         },
-  { id: 95,  faseId: 'oitavas', placeholderCasa: 'Venc. Jogo 86',          placeholderFora: 'Venc. Jogo 88',           dataHoraUtc: '2026-07-07T17:00:00Z', estadio: 'Mercedes-Benz Stadium',  cidade: 'Atlanta',          grupoSimultaneoId: null         },
-  { id: 96,  faseId: 'oitavas', placeholderCasa: 'Venc. Jogo 85',          placeholderFora: 'Venc. Jogo 87',           dataHoraUtc: '2026-07-07T21:00:00Z', estadio: 'BC Place',               cidade: 'Vancouver',        grupoSimultaneoId: null         },
+  { id: 89,  faseId: 'oitavas', placeholderCasa: 'Venc. Jogo 73',          placeholderFora: 'Venc. Jogo 75',           dataHoraUtc: '2026-07-04T17:00:00Z', estadio: 'NRG Stadium',             cidade: 'Houston',          grupoSimultaneoId: null },
+  { id: 90,  faseId: 'oitavas', placeholderCasa: 'Venc. Jogo 74',          placeholderFora: 'Venc. Jogo 77',           dataHoraUtc: '2026-07-04T21:00:00Z', estadio: 'Lincoln Financial Field', cidade: 'Filadélfia',       grupoSimultaneoId: null },
+  { id: 91,  faseId: 'oitavas', placeholderCasa: 'Venc. Jogo 76',          placeholderFora: 'Venc. Jogo 78',           dataHoraUtc: '2026-07-05T20:00:00Z', estadio: 'Gillette Stadium',        cidade: 'Boston',           grupoSimultaneoId: null },
+  { id: 92,  faseId: 'oitavas', placeholderCasa: 'Venc. Jogo 79',          placeholderFora: 'Venc. Jogo 80',           dataHoraUtc: '2026-07-06T00:00:00Z', estadio: 'Estádio Azteca',          cidade: 'Cidade do México', grupoSimultaneoId: null },
+  { id: 93,  faseId: 'oitavas', placeholderCasa: 'Venc. Jogo 83',          placeholderFora: 'Venc. Jogo 84',           dataHoraUtc: '2026-07-06T19:00:00Z', estadio: 'Estadio BBVA',            cidade: 'Monterrey',        grupoSimultaneoId: null },
+  { id: 94,  faseId: 'oitavas', placeholderCasa: 'Venc. Jogo 81',          placeholderFora: 'Venc. Jogo 82',           dataHoraUtc: '2026-07-07T00:00:00Z', estadio: 'BMO Field',               cidade: 'Toronto',          grupoSimultaneoId: null },
+  { id: 95,  faseId: 'oitavas', placeholderCasa: 'Venc. Jogo 86',          placeholderFora: 'Venc. Jogo 88',           dataHoraUtc: '2026-07-07T16:00:00Z', estadio: 'Mercedes-Benz Stadium',   cidade: 'Atlanta',          grupoSimultaneoId: null },
+  { id: 96,  faseId: 'oitavas', placeholderCasa: 'Venc. Jogo 85',          placeholderFora: 'Venc. Jogo 87',           dataHoraUtc: '2026-07-07T20:00:00Z', estadio: 'Lumen Field',             cidade: 'Seattle',          grupoSimultaneoId: null },
 
   // Quartas de Final (jogos 97-100) — fase_id: 'quartas'
-  { id: 97,  faseId: 'quartas', placeholderCasa: 'Venc. Jogo 89',          placeholderFora: 'Venc. Jogo 90',           dataHoraUtc: '2026-07-09T21:00:00Z', estadio: 'Gillette Stadium',       cidade: 'Boston',           grupoSimultaneoId: null         },
-  { id: 98,  faseId: 'quartas', placeholderCasa: 'Venc. Jogo 93',          placeholderFora: 'Venc. Jogo 94',           dataHoraUtc: '2026-07-11T01:00:00Z', estadio: 'SoFi Stadium',           cidade: 'Los Angeles',      grupoSimultaneoId: null         },
-  { id: 99,  faseId: 'quartas', placeholderCasa: 'Venc. Jogo 91',          placeholderFora: 'Venc. Jogo 92',           dataHoraUtc: '2026-07-11T22:00:00Z', estadio: 'Hard Rock Stadium',      cidade: 'Miami',            grupoSimultaneoId: null         },
-  { id: 100, faseId: 'quartas', placeholderCasa: 'Venc. Jogo 95',          placeholderFora: 'Venc. Jogo 96',           dataHoraUtc: '2026-07-12T01:00:00Z', estadio: 'Arrowhead Stadium',      cidade: 'Kansas City',      grupoSimultaneoId: null         },
+  { id: 97,  faseId: 'quartas', placeholderCasa: 'Venc. Jogo 89',          placeholderFora: 'Venc. Jogo 90',           dataHoraUtc: '2026-07-09T20:00:00Z', estadio: 'Lincoln Financial Field', cidade: 'Filadélfia',       grupoSimultaneoId: null },
+  { id: 98,  faseId: 'quartas', placeholderCasa: 'Venc. Jogo 93',          placeholderFora: 'Venc. Jogo 94',           dataHoraUtc: '2026-07-10T19:00:00Z', estadio: 'Gillette Stadium',        cidade: 'Boston',           grupoSimultaneoId: null },
+  { id: 99,  faseId: 'quartas', placeholderCasa: 'Venc. Jogo 91',          placeholderFora: 'Venc. Jogo 92',           dataHoraUtc: '2026-07-11T21:00:00Z', estadio: 'Hard Rock Stadium',       cidade: 'Miami',            grupoSimultaneoId: null },
+  { id: 100, faseId: 'quartas', placeholderCasa: 'Venc. Jogo 95',          placeholderFora: 'Venc. Jogo 96',           dataHoraUtc: '2026-07-12T01:00:00Z', estadio: 'Arrowhead Stadium',       cidade: 'Kansas City',      grupoSimultaneoId: null },
 
   // Semifinais (jogos 101-102) — fase_id: 'semifinal'
-  { id: 101, faseId: 'semifinal',      placeholderCasa: 'Venc. Jogo 97',   placeholderFora: 'Venc. Jogo 98',           dataHoraUtc: '2026-07-14T19:00:00Z', estadio: 'AT&T Stadium',           cidade: 'Dallas',           grupoSimultaneoId: null         },
-  { id: 102, faseId: 'semifinal',      placeholderCasa: 'Venc. Jogo 99',   placeholderFora: 'Venc. Jogo 100',          dataHoraUtc: '2026-07-15T19:00:00Z', estadio: 'Mercedes-Benz Stadium',  cidade: 'Atlanta',          grupoSimultaneoId: null         },
+  { id: 101, faseId: 'semifinal',      placeholderCasa: 'Venc. Jogo 97',   placeholderFora: 'Venc. Jogo 98',           dataHoraUtc: '2026-07-14T19:00:00Z', estadio: 'AT&T Stadium',            cidade: 'Dallas',           grupoSimultaneoId: null },
+  { id: 102, faseId: 'semifinal',      placeholderCasa: 'Venc. Jogo 99',   placeholderFora: 'Venc. Jogo 100',          dataHoraUtc: '2026-07-15T19:00:00Z', estadio: 'Mercedes-Benz Stadium',   cidade: 'Atlanta',          grupoSimultaneoId: null },
 
   // 3º Lugar e Final — fase_id: 'terceiro_lugar' / 'final'
-  { id: 103, faseId: 'terceiro_lugar', placeholderCasa: 'Perd. Jogo 101',  placeholderFora: 'Perd. Jogo 102',          dataHoraUtc: '2026-07-18T19:00:00Z', estadio: 'Hard Rock Stadium',      cidade: 'Miami',            grupoSimultaneoId: null         },
-  { id: 104, faseId: 'final',          placeholderCasa: 'Venc. Jogo 101',  placeholderFora: 'Venc. Jogo 102',          dataHoraUtc: '2026-07-19T19:00:00Z', estadio: 'MetLife Stadium',        cidade: 'Nova Jersey',      grupoSimultaneoId: null         },
+  { id: 103, faseId: 'terceiro_lugar', placeholderCasa: 'Perd. Jogo 101',  placeholderFora: 'Perd. Jogo 102',          dataHoraUtc: '2026-07-18T21:00:00Z', estadio: 'Hard Rock Stadium',       cidade: 'Miami',            grupoSimultaneoId: null },
+  { id: 104, faseId: 'final',          placeholderCasa: 'Venc. Jogo 101',  placeholderFora: 'Venc. Jogo 102',          dataHoraUtc: '2026-07-19T19:00:00Z', estadio: 'MetLife Stadium',         cidade: 'Nova Jersey',      grupoSimultaneoId: null },
 ]
 
 // ─── Seed principal ───────────────────────────────────────────────────────────

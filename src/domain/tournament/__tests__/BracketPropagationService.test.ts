@@ -6,7 +6,7 @@ const rawPath = new URL('../../../../docs/architecture/bracket_dependencias.json
 const dependencias = JSON.parse(readFileSync(rawPath, 'utf-8')) as Record<string, DependenciaJogo>
 
 describe('BracketPropagationService', () => {
-  it('propaga vencedor do jogo 74 para o lado casa do jogo 89', () => {
+  it('propaga vencedor do jogo 74 para o lado casa do jogo 90', () => {
     const service = new BracketPropagationService(dependencias)
     const resolucoes = service.resolverProximaRodada({
       id: 74,
@@ -14,10 +14,10 @@ describe('BracketPropagationService', () => {
       equipeForaId: 20,
       vencedorEquipeId: 10,
     })
-    expect(resolucoes).toEqual([{ partidaId: 89, lado: 'casa', equipeId: 10 }])
+    expect(resolucoes).toEqual([{ partidaId: 90, lado: 'casa', equipeId: 10 }])
   })
 
-  it('propaga vencedor do jogo 77 para o lado fora do jogo 89', () => {
+  it('propaga vencedor do jogo 77 para o lado fora do jogo 90', () => {
     const service = new BracketPropagationService(dependencias)
     const resolucoes = service.resolverProximaRodada({
       id: 77,
@@ -25,7 +25,7 @@ describe('BracketPropagationService', () => {
       equipeForaId: 40,
       vencedorEquipeId: 40,
     })
-    expect(resolucoes).toEqual([{ partidaId: 89, lado: 'fora', equipeId: 40 }])
+    expect(resolucoes).toEqual([{ partidaId: 90, lado: 'fora', equipeId: 40 }])
   })
 
   it('fan-out: semifinal (101) alimenta tanto o 3º lugar (103, perdedor) quanto a final (104, vencedor)', () => {
