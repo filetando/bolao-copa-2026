@@ -70,10 +70,10 @@ function StatusBadge({
   resultado?: { golsCasa: number | null; golsFora: number | null }
 }) {
   if (status === 'encerrada') {
-    if (palpite && resultado?.golsCasa !== null && resultado?.golsFora !== null) {
+    if (palpite && resultado && resultado.golsCasa !== null && resultado.golsFora !== null) {
       const cat = getCategoriaPalpite(palpite, {
-        golsCasa: resultado.golsCasa!,
-        golsFora: resultado.golsFora!,
+        golsCasa: resultado.golsCasa,
+        golsFora: resultado.golsFora,
       })
       return <Badge variant={cat.variant}>{cat.label}</Badge>
     }

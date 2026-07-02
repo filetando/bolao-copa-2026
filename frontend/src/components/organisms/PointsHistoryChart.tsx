@@ -31,6 +31,7 @@ export function PointsHistoryChart({ data }: Props) {
 
   const formatDate = (iso: string) =>
     new Date(iso).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })
+  const formatTooltipLabel = (label: unknown) => formatDate(String(label))
 
   const chartData = data.pontos.map((ponto) => ({
     dataHoraUtc: ponto.dataHoraUtc,
@@ -51,7 +52,7 @@ export function PointsHistoryChart({ data }: Props) {
         <YAxis tick={{ fontSize: 11, fill: COR_EIXO }} axisLine={false} tickLine={false} allowDecimals={false} />
         <Tooltip
           contentStyle={{ borderRadius: 12, border: `1px solid ${COR_GRID}`, fontSize: 12 }}
-          labelFormatter={formatDate}
+          labelFormatter={formatTooltipLabel}
         />
         <Legend wrapperStyle={{ fontSize: 12 }} />
         {data.usuarios.map((usuario, idx) => (
