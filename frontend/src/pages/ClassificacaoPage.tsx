@@ -6,6 +6,10 @@ import type { ClassificacaoRow } from '../types/index.ts'
 
 const GRUPOS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L']
 
+// DOMAIN_RULES.md §5 (Anexo C) — os 8 melhores terceiros colocados desta edição, já
+// confirmados ao final da fase de grupos (chave "BDEFIJKL", ver TerceirosColocadosService).
+const GRUPOS_TERCEIRO_CLASSIFICADO = new Set(['B', 'D', 'E', 'F', 'I', 'J', 'K', 'L'])
+
 function saldoLabel(n: number): string {
   if (n > 0) return `+${n}`
   return String(n)
@@ -56,11 +60,13 @@ function GrupoTable({ grupoId }: { grupoId: string }) {
               {rows.map((row, idx) => {
                 // 1º e 2º lugar classificam para o mata-mata → destaque
                 const classificado = idx < 2
+                // 3º lugar que está entre os 8 melhores terceiros → destaque diferente
+                const terceiroClassificado = idx === 2 && GRUPOS_TERCEIRO_CLASSIFICADO.has(grupoId)
                 return (
                   <tr
                     key={row.equipe.id}
                     className={`border-b border-border last:border-0 ${
-                      classificado ? 'bg-success-soft' : ''
+                      classificado ? 'bg-success-soft' : terceiroClassificado ? 'bg-warning-soft' : ''
                     }`}
                   >
                     <td className="px-2 py-1.5 text-muted text-xs font-mono">{row.posicao}</td>
@@ -105,10 +111,16 @@ export function ClassificacaoPage() {
           <GrupoTable key={g} grupoId={g} />
         ))}
       </div>
-      <p className="text-xs text-muted flex items-center gap-1.5">
-        <span className="inline-block h-3 w-3 rounded-sm bg-success-soft border border-success/30" />
-        Fundo verde = classificados para o mata-mata (1º e 2º lugar).
-      </p>
+      <div className="text-xs text-muted flex flex-col gap-1.5">
+        <p className="flex items-center gap-1.5">
+          <span className="inline-block h-3 w-3 rounded-sm bg-success-soft border border-success/30" />
+          Fundo verde = classificados para o mata-mata (1º e 2º lugar).
+        </p>
+        <p className="flex items-center gap-1.5">
+          <span className="inline-block h-3 w-3 rounded-sm bg-warning-soft border border-warning/30" />
+          Fundo amarelo = 3º lugar entre os 8 melhores terceiros colocados, também classificado.
+        </p>
+      </div>
     </div>
   )
 }

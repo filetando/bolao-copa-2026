@@ -65,7 +65,7 @@ export function PointsHistoryChart({ data }: Props) {
             strokeWidth={3}
             strokeLinecap="round"
             strokeLinejoin="round"
-            dot={{ r: 3 }}
+            dot={false}
             activeDot={{ r: 5 }}
           />
         ))}
