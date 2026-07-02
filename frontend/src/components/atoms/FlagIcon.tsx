@@ -4,7 +4,7 @@ interface FlagIconProps {
 }
 
 export function FlagIcon({ codigo, nome }: FlagIconProps) {
-  if (!codigo) return <span className="inline-block w-6 h-4 bg-gray-200 rounded-sm" aria-label={nome} />
+  if (!codigo) return <span className="inline-block w-6 h-4 bg-surface-2 rounded-sm" aria-label={nome} />
   return (
     <img
       src={`https://flagcdn.com/24x18/${codigo.toLowerCase()}.png`}

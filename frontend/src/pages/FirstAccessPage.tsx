@@ -89,15 +89,15 @@ export function FirstAccessPage() {
     }
   }
 
-  if (loading) return <p className="text-gray-400 text-sm">Carregando…</p>
+  if (loading) return <p className="text-muted text-sm">Carregando…</p>
 
   return (
-    <div>
-      <h2 className="text-xl font-bold text-gray-900 mb-1">Palpites Estáticos</h2>
-      <p className="text-sm text-gray-500 mb-6">
+    <div className="max-w-lg mx-auto">
+      <h2 className="text-2xl font-extrabold text-text mb-1">Palpites Estáticos</h2>
+      <p className="text-sm text-muted mb-6">
         Campeão, vice, 3º lugar e artilheiro da Copa 2026.
         {locked && (
-          <span className="ml-1 font-medium text-amber-700">
+          <span className="ml-1 font-medium text-warning">
             (Período de palpites de longo prazo encerrado.)
           </span>
         )}
@@ -111,12 +111,12 @@ export function FirstAccessPage() {
           const err = errors[id]
 
           return (
-            <div key={id} className="bg-white rounded-xl border border-gray-200 shadow-sm p-4">
+            <div key={id} className="bg-surface rounded-lg border border-border shadow-sm p-4">
               <div className="flex items-center justify-between mb-3">
-                <span className="font-medium text-gray-800">{label}</span>
-                {isSaved && <span className="text-xs text-green-700 font-medium">✓ Salvo</span>}
+                <span className="font-semibold text-text">{label}</span>
+                {isSaved && <span className="text-xs text-success font-semibold">✓ Salvo</span>}
                 {existente?.pontosObtidos != null && (
-                  <span className="text-xs text-green-700 font-semibold">+{existente.pontosObtidos} pts</span>
+                  <span className="text-xs text-success font-semibold font-mono">+{existente.pontosObtidos} pts</span>
                 )}
               </div>
 
@@ -126,7 +126,7 @@ export function FirstAccessPage() {
                     value={equipeSelects[id] ?? ''}
                     onChange={(e) => setEquipeSelects((prev) => ({ ...prev, [id]: e.target.value }))}
                     disabled={locked}
-                    className="flex-1 border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 disabled:bg-gray-50 disabled:text-gray-400"
+                    className="flex-1 bg-surface-2 border border-border rounded-md px-3 py-2 text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary disabled:opacity-60 disabled:text-muted"
                     aria-label={label}
                   >
                     <option value="">Selecione uma seleção…</option>
@@ -150,16 +150,17 @@ export function FirstAccessPage() {
                   onChange={(e) => setArtilheiro(e.target.value)}
                   disabled={locked}
                   placeholder="Nome do artilheiro"
-                  className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 disabled:bg-gray-50 disabled:text-gray-400"
+                  className="w-full bg-surface-2 border border-border rounded-md px-3 py-2 text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary disabled:opacity-60 disabled:text-muted"
                   aria-label="Artilheiro"
                 />
               )}
 
-              {err && <p className="text-xs text-red-600 mt-1">{err}</p>}
+              {err && <p className="text-xs text-danger mt-1">{err}</p>}
 
               {!locked && (
                 <div className="mt-3">
                   <Button
+                    variant="accent"
                     size="sm"
                     loading={isSaving}
                     onClick={() => handleSave(id)}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { api } from '../lib/api.ts'
 import { FlagIcon } from '../components/atoms/FlagIcon.tsx'
+import { Skeleton } from '../components/atoms/Skeleton.tsx'
 import type { ClassificacaoRow } from '../types/index.ts'
 
 const GRUPOS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L']
@@ -25,21 +26,23 @@ function GrupoTable({ grupoId }: { grupoId: string }) {
 
   return (
     <section>
-      <h2 className="text-lg font-bold text-gray-900 mb-2">
-        Grupo {grupoId}
-      </h2>
-      <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-x-auto">
+      <h2 className="text-lg font-bold text-text mb-2">Grupo {grupoId}</h2>
+      <div className="bg-surface rounded-lg border border-border shadow-sm overflow-x-auto">
         {loading ? (
-          <p className="px-4 py-4 text-xs text-gray-400">Carregando…</p>
+          <div className="p-3 space-y-2">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <Skeleton key={i} className="h-7 w-full" />
+            ))}
+          </div>
         ) : error ? (
-          <p className="px-4 py-4 text-xs text-red-500">Erro ao carregar.</p>
+          <p className="px-4 py-4 text-xs text-danger">Erro ao carregar.</p>
         ) : (
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-gray-200 text-gray-500 text-xs uppercase tracking-wide">
+              <tr className="border-b border-border text-muted text-xs uppercase tracking-wide">
                 <th className="px-2 py-1.5 text-left w-6">#</th>
                 <th className="px-2 py-1.5 text-left">Equipe</th>
-                <th className="px-2 py-1.5 text-center font-bold text-gray-700">Pts</th>
+                <th className="px-2 py-1.5 text-center font-bold text-text">Pts</th>
                 <th className="px-2 py-1.5 text-center">J</th>
                 <th className="px-2 py-1.5 text-center">V</th>
                 <th className="px-2 py-1.5 text-center">E</th>
@@ -50,31 +53,37 @@ function GrupoTable({ grupoId }: { grupoId: string }) {
               </tr>
             </thead>
             <tbody>
-              {rows.map((row, idx) => (
-                <tr
-                  key={row.equipe.id}
-                  className={`border-b border-gray-100 last:border-0 ${idx < 2 ? 'bg-green-50' : ''}`}
-                >
-                  <td className="px-2 py-1.5 text-gray-400 text-xs">{row.posicao}</td>
-                  <td className="px-2 py-1.5">
-                    <div className="flex items-center gap-2">
-                      <FlagIcon codigo={row.equipe.bandeiraCodigo} nome={row.equipe.nome} />
-                      <span className="font-medium text-gray-800">{row.equipe.sigla ?? row.equipe.nome}</span>
-                    </div>
-                  </td>
-                  <td className="px-2 py-1.5 text-center font-bold text-gray-900">{row.pontos}</td>
-                  <td className="px-2 py-1.5 text-center text-gray-600">{row.jogos}</td>
-                  <td className="px-2 py-1.5 text-center text-gray-600">{row.vitorias}</td>
-                  <td className="px-2 py-1.5 text-center text-gray-600">{row.empates}</td>
-                  <td className="px-2 py-1.5 text-center text-gray-600">{row.derrotas}</td>
-                  <td className="px-2 py-1.5 text-center text-gray-600">{row.golsMarcados}</td>
-                  <td className="px-2 py-1.5 text-center text-gray-600">{row.golsSofridos}</td>
-                  <td className="px-2 py-1.5 text-center text-gray-600">{saldoLabel(row.saldoGols)}</td>
-                </tr>
-              ))}
+              {rows.map((row, idx) => {
+                // 1º e 2º lugar classificam para o mata-mata → destaque
+                const classificado = idx < 2
+                return (
+                  <tr
+                    key={row.equipe.id}
+                    className={`border-b border-border last:border-0 ${
+                      classificado ? 'bg-success-soft' : ''
+                    }`}
+                  >
+                    <td className="px-2 py-1.5 text-muted text-xs font-mono">{row.posicao}</td>
+                    <td className="px-2 py-1.5">
+                      <div className="flex items-center gap-2">
+                        <FlagIcon codigo={row.equipe.bandeiraCodigo} nome={row.equipe.nome} />
+                        <span className="font-semibold text-text">{row.equipe.sigla ?? row.equipe.nome}</span>
+                      </div>
+                    </td>
+                    <td className="px-2 py-1.5 text-center font-bold text-text font-mono tabular-nums">{row.pontos}</td>
+                    <td className="px-2 py-1.5 text-center text-muted tabular-nums">{row.jogos}</td>
+                    <td className="px-2 py-1.5 text-center text-muted tabular-nums">{row.vitorias}</td>
+                    <td className="px-2 py-1.5 text-center text-muted tabular-nums">{row.empates}</td>
+                    <td className="px-2 py-1.5 text-center text-muted tabular-nums">{row.derrotas}</td>
+                    <td className="px-2 py-1.5 text-center text-muted tabular-nums">{row.golsMarcados}</td>
+                    <td className="px-2 py-1.5 text-center text-muted tabular-nums">{row.golsSofridos}</td>
+                    <td className="px-2 py-1.5 text-center text-muted tabular-nums">{saldoLabel(row.saldoGols)}</td>
+                  </tr>
+                )
+              })}
               {!loading && rows.length === 0 && (
                 <tr>
-                  <td colSpan={10} className="px-4 py-4 text-center text-gray-400 text-xs">
+                  <td colSpan={10} className="px-4 py-4 text-center text-muted text-xs">
                     Nenhuma partida encerrada.
                   </td>
                 </tr>
@@ -89,12 +98,15 @@ function GrupoTable({ grupoId }: { grupoId: string }) {
 
 export function ClassificacaoPage() {
   return (
-    <div className="max-w-2xl mx-auto space-y-6">
-      <h1 className="text-xl font-bold text-gray-900">Classificação — Fase de Grupos</h1>
-      {GRUPOS.map((g) => (
-        <GrupoTable key={g} grupoId={g} />
-      ))}
-      <p className="text-xs text-gray-400">
+    <div className="max-w-4xl mx-auto space-y-6">
+      <h1 className="text-2xl font-extrabold text-text">Classificação — Fase de Grupos</h1>
+      <div className="grid gap-6 lg:grid-cols-2">
+        {GRUPOS.map((g) => (
+          <GrupoTable key={g} grupoId={g} />
+        ))}
+      </div>
+      <p className="text-xs text-muted flex items-center gap-1.5">
+        <span className="inline-block h-3 w-3 rounded-sm bg-success-soft border border-success/30" />
         Fundo verde = classificados para o mata-mata (1º e 2º lugar).
       </p>
     </div>

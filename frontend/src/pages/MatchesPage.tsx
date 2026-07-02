@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { api } from '../lib/api.ts'
 import { MatchCard } from '../components/organisms/MatchCard.tsx'
+import { Skeleton } from '../components/atoms/Skeleton.tsx'
 import { formatDateLabelBRT, getDateKeyBRT } from '../lib/time.ts'
 import type { Partida, PalpiteData } from '../types/index.ts'
 
@@ -52,17 +53,54 @@ export function MatchesPage() {
     return groups
   }, [partidas])
 
-  if (loading) return <p className="text-gray-400 text-sm">Carregando partidas…</p>
-  if (error) return <p className="text-red-600 text-sm">{error}</p>
+  // Jogos de hoje e amanhã (BRT) aparecem primeiro; o restante segue em ordem cronológica.
+  // Cada grupo carrega um marcador relativo ('hoje'/'amanha') para destaque visual.
+  const orderedGroups = useMemo(() => {
+    const todayKey = getDateKeyBRT(new Date().toISOString())
+    const tomorrowKey = getDateKeyBRT(new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString())
+    const relativo = (key: string): 'hoje' | 'amanha' | null =>
+      key === todayKey ? 'hoje' : key === tomorrowKey ? 'amanha' : null
+
+    const entries = Array.from(byDate.entries()).map(([key, group]) => ({
+      key,
+      group,
+      relativo: relativo(key),
+    }))
+    const priority = entries.filter((e) => e.relativo !== null)
+    const rest = entries.filter((e) => e.relativo === null)
+    return [...priority, ...rest]
+  }, [byDate])
+
+  if (error) return <p className="text-danger text-sm">{error}</p>
+
+  if (loading) {
+    return (
+      <div className="max-w-lg mx-auto space-y-8">
+        <h2 className="text-2xl font-extrabold text-text">Partidas</h2>
+        <div className="space-y-3">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <Skeleton key={i} className="h-28 w-full" />
+          ))}
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="max-w-lg mx-auto space-y-8">
-      <h2 className="text-xl font-bold text-gray-900">Partidas</h2>
-      {Array.from(byDate.entries()).map(([key, group]) => (
+      <h2 className="text-2xl font-extrabold text-text">Partidas</h2>
+      {orderedGroups.map(({ key, group, relativo }) => (
         <section key={key}>
-          <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3 capitalize">
-            {group.label}
-          </h3>
+          <div className="flex items-center gap-2 mb-3">
+            <h3 className="text-sm font-semibold text-muted uppercase tracking-wide capitalize">
+              {group.label}
+            </h3>
+            {relativo && (
+              <span className="inline-flex items-center rounded-full bg-primary/12 text-primary px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide">
+                {relativo === 'hoje' ? 'Hoje' : 'Amanhã'}
+              </span>
+            )}
+          </div>
           <div className="space-y-3">
             {group.partidas.map((partida) => {
               const cutoff =

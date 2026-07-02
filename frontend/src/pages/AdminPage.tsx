@@ -65,32 +65,32 @@ export function AdminPage() {
   const abertas = partidas.filter((p) => p.status !== 'encerrada')
   const encerradas = partidas.filter((p) => p.status === 'encerrada')
 
-  if (fetchError) return <p className="text-red-600 text-sm">{fetchError}</p>
+  if (fetchError) return <p className="text-danger text-sm">{fetchError}</p>
 
   return (
     <div className="space-y-8">
-      <div className="flex items-center justify-between">
-        <h1 className="text-xl font-bold text-gray-900">Painel Admin — Registrar Resultados</h1>
+      <div className="flex items-center justify-between gap-3 flex-wrap">
+        <h1 className="text-2xl font-extrabold text-text">Painel Admin — Registrar Resultados</h1>
         <Link
           to="/admin/palpites"
-          className="text-sm text-green-700 hover:text-green-900 border border-green-300 hover:border-green-500 rounded-md px-3 py-1.5 transition-colors"
+          className="text-sm text-primary hover:text-white hover:bg-primary border border-primary/40 rounded-md px-3 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
           Alterar Palpites dos Usuários →
         </Link>
       </div>
 
       <section>
-        <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
+        <h2 className="text-sm font-semibold text-muted uppercase tracking-wide mb-3">
           Aguardando resultado ({abertas.length})
         </h2>
-        {abertas.length === 0 && <p className="text-sm text-gray-400">Todas as partidas já foram encerradas.</p>}
+        {abertas.length === 0 && <p className="text-sm text-muted">Todas as partidas já foram encerradas.</p>}
         <div className="space-y-2">
           {abertas.map((p) => (
-            <div key={p.id} className="bg-white border border-gray-200 rounded-lg px-4 py-3 flex flex-wrap items-center gap-3">
-              <span className="text-xs text-gray-400 w-36 shrink-0">
+            <div key={p.id} className="bg-surface border border-border rounded-lg px-4 py-3 flex flex-wrap items-center gap-3">
+              <span className="text-xs text-muted w-36 shrink-0">
                 {formatDateLabelBRT(p.dataHoraUtc).slice(0, 10)} · {formatTimeBRT(p.dataHoraUtc)}
               </span>
-              <span className="font-medium text-gray-800 min-w-[7rem] text-center">
+              <span className="font-semibold text-text min-w-[7rem] text-center">
                 {teamLabel(p, 'casa')} × {teamLabel(p, 'fora')}
               </span>
               <div className="flex items-center gap-2">
@@ -100,27 +100,27 @@ export function AdminPage() {
                   placeholder="0"
                   value={inputs[p.id]?.golsCasa ?? ''}
                   onChange={(e) => setInputs((i) => ({ ...i, [p.id]: { ...i[p.id], golsCasa: e.target.value } }))}
-                  className="w-14 border border-gray-300 rounded px-2 py-1 text-sm text-center"
+                  className="w-14 bg-surface-2 border border-border rounded px-2 py-1 text-sm text-center text-text font-mono tabular-nums focus:outline-none focus:ring-2 focus:ring-primary"
                 />
-                <span className="text-gray-400">×</span>
+                <span className="text-muted">×</span>
                 <input
                   type="number"
                   min={0}
                   placeholder="0"
                   value={inputs[p.id]?.golsFora ?? ''}
                   onChange={(e) => setInputs((i) => ({ ...i, [p.id]: { ...i[p.id], golsFora: e.target.value } }))}
-                  className="w-14 border border-gray-300 rounded px-2 py-1 text-sm text-center"
+                  className="w-14 bg-surface-2 border border-border rounded px-2 py-1 text-sm text-center text-text font-mono tabular-nums focus:outline-none focus:ring-2 focus:ring-primary"
                 />
                 <button
                   onClick={() => handleRegister(p.id)}
                   disabled={loading[p.id]}
-                  className="bg-green-700 hover:bg-green-800 disabled:opacity-50 text-white text-sm px-3 py-1 rounded transition-colors"
+                  className="bg-primary hover:bg-primary-strong disabled:opacity-50 text-white text-sm px-3 py-1 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                 >
                   {loading[p.id] ? '…' : 'Registrar'}
                 </button>
               </div>
               {feedback[p.id]?.msg && (
-                <span className={`text-xs ${feedback[p.id].ok ? 'text-green-700' : 'text-red-600'}`}>
+                <span className={`text-xs ${feedback[p.id].ok ? 'text-success' : 'text-danger'}`}>
                   {feedback[p.id].msg}
                 </span>
               )}
@@ -130,18 +130,18 @@ export function AdminPage() {
       </section>
 
       <section>
-        <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
+        <h2 className="text-sm font-semibold text-muted uppercase tracking-wide mb-3">
           Encerradas — corrigir resultado ({encerradas.length})
         </h2>
-        {encerradas.length === 0 && <p className="text-sm text-gray-400">Nenhuma partida encerrada ainda.</p>}
+        {encerradas.length === 0 && <p className="text-sm text-muted">Nenhuma partida encerrada ainda.</p>}
         <div className="space-y-2">
           {encerradas.map((p) => (
-            <div key={p.id} className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 flex flex-wrap items-center gap-3">
-              <span className="text-xs text-gray-400 w-36 shrink-0">
+            <div key={p.id} className="bg-surface-2 border border-border rounded-lg px-4 py-3 flex flex-wrap items-center gap-3">
+              <span className="text-xs text-muted w-36 shrink-0">
                 {formatDateLabelBRT(p.dataHoraUtc).slice(0, 10)} · {formatTimeBRT(p.dataHoraUtc)}
               </span>
-              <span className="text-gray-500 min-w-[7rem] text-center text-sm">
-                {teamLabel(p, 'casa')} <span className="font-semibold text-gray-800">{p.golsCasa} × {p.golsFora}</span> {teamLabel(p, 'fora')}
+              <span className="text-muted min-w-[7rem] text-center text-sm">
+                {teamLabel(p, 'casa')} <span className="font-semibold text-text font-mono tabular-nums">{p.golsCasa} × {p.golsFora}</span> {teamLabel(p, 'fora')}
               </span>
               <div className="flex items-center gap-2">
                 <input
@@ -150,27 +150,27 @@ export function AdminPage() {
                   placeholder={String(p.golsCasa ?? 0)}
                   value={inputs[p.id]?.golsCasa ?? ''}
                   onChange={(e) => setInputs((i) => ({ ...i, [p.id]: { ...i[p.id], golsCasa: e.target.value } }))}
-                  className="w-14 border border-gray-300 rounded px-2 py-1 text-sm text-center"
+                  className="w-14 bg-surface-2 border border-border rounded px-2 py-1 text-sm text-center text-text font-mono tabular-nums focus:outline-none focus:ring-2 focus:ring-primary"
                 />
-                <span className="text-gray-400">×</span>
+                <span className="text-muted">×</span>
                 <input
                   type="number"
                   min={0}
                   placeholder={String(p.golsFora ?? 0)}
                   value={inputs[p.id]?.golsFora ?? ''}
                   onChange={(e) => setInputs((i) => ({ ...i, [p.id]: { ...i[p.id], golsFora: e.target.value } }))}
-                  className="w-14 border border-gray-300 rounded px-2 py-1 text-sm text-center"
+                  className="w-14 bg-surface-2 border border-border rounded px-2 py-1 text-sm text-center text-text font-mono tabular-nums focus:outline-none focus:ring-2 focus:ring-primary"
                 />
                 <button
                   onClick={() => handleRegister(p.id)}
                   disabled={loading[p.id]}
-                  className="bg-amber-600 hover:bg-amber-700 disabled:opacity-50 text-white text-sm px-3 py-1 rounded transition-colors"
+                  className="bg-warning hover:brightness-95 disabled:opacity-50 text-white text-sm px-3 py-1 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-warning focus-visible:ring-offset-2"
                 >
                   {loading[p.id] ? '…' : 'Corrigir'}
                 </button>
               </div>
               {feedback[p.id]?.msg && (
-                <span className={`text-xs ${feedback[p.id].ok ? 'text-green-700' : 'text-red-600'}`}>
+                <span className={`text-xs ${feedback[p.id].ok ? 'text-success' : 'text-danger'}`}>
                   {feedback[p.id].msg}
                 </span>
               )}

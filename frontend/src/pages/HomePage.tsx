@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { api } from '../lib/api.ts'
 import { LeaderboardTable } from '../components/organisms/LeaderboardTable.tsx'
 import { PointsHistoryChart } from '../components/organisms/PointsHistoryChart.tsx'
+import { Skeleton } from '../components/atoms/Skeleton.tsx'
 import type { LeaderboardRow, LeaderboardHistoryResponse } from '../types/index.ts'
 
 export function HomePage() {
@@ -21,21 +22,35 @@ export function HomePage() {
   }, [])
 
   return (
-    <div>
-      <h2 className="text-xl font-bold text-gray-900 mb-4">Ranking Geral</h2>
+    <div className="max-w-2xl mx-auto">
+      <h2 className="text-2xl font-extrabold text-text mb-4">Ranking Geral</h2>
 
-      {loading && <p className="text-gray-400 text-sm">Carregando…</p>}
-      {error && <p className="text-red-600 text-sm">{error}</p>}
-      {!loading && !error && (
+      {error && <p className="text-danger text-sm">{error}</p>}
+
+      {loading ? (
+        // Skeletons no lugar de "Carregando…"
         <div className="space-y-6">
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4">
-            <LeaderboardTable rows={rows} />
+          <div className="bg-surface rounded-lg border border-border shadow-sm p-4 space-y-2">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <Skeleton key={i} className="h-10 w-full" />
+            ))}
           </div>
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4">
-            <h3 className="text-sm font-semibold text-gray-700 mb-2">Disputa de pontos</h3>
-            {historico && <PointsHistoryChart data={historico} />}
+          <div className="bg-surface rounded-lg border border-border shadow-sm p-4">
+            <Skeleton className="h-48 w-full" />
           </div>
         </div>
+      ) : (
+        !error && (
+          <div className="space-y-6">
+            <div className="bg-surface rounded-lg border border-border shadow-sm p-4 motion-safe:animate-[rise_0.32s_var(--ease-standard)]">
+              <LeaderboardTable rows={rows} />
+            </div>
+            <div className="bg-surface rounded-lg border border-border shadow-sm p-4 motion-safe:animate-[rise_0.32s_var(--ease-standard)]">
+              <h3 className="text-sm font-semibold text-text mb-2">Disputa de pontos</h3>
+              {historico && <PointsHistoryChart data={historico} />}
+            </div>
+          </div>
+        )
       )}
     </div>
   )

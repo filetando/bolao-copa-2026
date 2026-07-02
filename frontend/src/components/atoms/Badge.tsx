@@ -6,15 +6,23 @@ interface BadgeProps {
 }
 
 export function Badge({ children, variant = 'neutral' }: BadgeProps) {
+  // Cada variante usa fundo "soft" + texto da cor semântica (contraste AA).
+  // O rótulo textual sempre acompanha a cor — nunca comunicamos status só por cor (daltonismo).
   const variants = {
-    success: 'bg-green-100 text-green-800',
-    warning: 'bg-yellow-100 text-yellow-800',
-    neutral: 'bg-gray-100 text-gray-600',
-    locked: 'bg-gray-200 text-gray-500',
-    live: 'bg-red-100 text-red-700',
+    success: 'bg-success-soft text-success',
+    warning: 'bg-warning-soft text-warning',
+    neutral: 'bg-neutral-soft text-muted',
+    locked: 'bg-locked-soft text-locked',
+    live: 'bg-live-soft text-live',
   }
   return (
-    <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${variants[variant]}`}>
+    <span
+      className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-semibold ${variants[variant]}`}
+    >
+      {variant === 'live' && (
+        // Ponto pulsante "ao vivo"
+        <span className="h-1.5 w-1.5 rounded-full bg-live motion-safe:animate-[livePulse_1.6s_ease-in-out_infinite]" aria-hidden="true" />
+      )}
       {children}
     </span>
   )

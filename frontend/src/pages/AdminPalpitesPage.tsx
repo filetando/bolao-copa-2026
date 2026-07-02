@@ -171,11 +171,11 @@ export function AdminPalpitesPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-xl font-bold text-gray-900">Painel Admin — Palpites dos Usuários</h1>
+      <div className="flex items-center justify-between gap-3 flex-wrap">
+        <h1 className="text-2xl font-extrabold text-text">Painel Admin — Palpites dos Usuários</h1>
         <Link
           to="/admin"
-          className="text-sm text-gray-500 hover:text-gray-700 border border-gray-300 hover:border-gray-400 rounded-md px-3 py-1.5 transition-colors"
+          className="text-sm text-muted hover:text-text border border-border hover:border-muted rounded-md px-3 py-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
         >
           ← Registrar Resultados
         </Link>
@@ -183,11 +183,11 @@ export function AdminPalpitesPage() {
 
       {/* Seletor de usuário */}
       <div className="flex items-center gap-3 flex-wrap">
-        <label className="text-sm font-medium text-gray-700 whitespace-nowrap">Usuário:</label>
+        <label className="text-sm font-medium text-text whitespace-nowrap">Usuário:</label>
         <select
           value={selectedId}
           onChange={(e) => setSelectedId(e.target.value)}
-          className="border border-gray-300 rounded-md px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-green-600 min-w-[220px]"
+          className="border border-border rounded-md px-3 py-2 text-sm bg-surface text-text focus:outline-none focus:ring-2 focus:ring-primary min-w-[220px]"
         >
           <option value="">— Selecione um usuário —</option>
           {usuarios.map((u) => (
@@ -199,7 +199,7 @@ export function AdminPalpitesPage() {
 
         {/* Filtro de faltantes */}
         {items.length > 0 && (
-          <label className="flex items-center gap-2 text-sm text-gray-600 cursor-pointer select-none">
+          <label className="flex items-center gap-2 text-sm text-muted cursor-pointer select-none">
             <input
               type="checkbox"
               checked={showOnlyMissing}
@@ -208,7 +208,7 @@ export function AdminPalpitesPage() {
             />
             Mostrar só faltantes
             {missingCount > 0 && (
-              <span className="bg-amber-100 text-amber-800 text-xs font-medium px-2 py-0.5 rounded-full">
+              <span className="bg-warning-soft text-warning text-xs font-semibold px-2 py-0.5 rounded-full">
                 {missingCount}
               </span>
             )}
@@ -216,20 +216,20 @@ export function AdminPalpitesPage() {
         )}
       </div>
 
-      {fetchError && <p className="text-red-600 text-sm">{fetchError}</p>}
+      {fetchError && <p className="text-danger text-sm">{fetchError}</p>}
 
       {loadingList && (
-        <p className="text-sm text-gray-400">Carregando partidas…</p>
+        <p className="text-sm text-muted">Carregando partidas…</p>
       )}
 
       {selectedId && !loadingList && items.length === 0 && (
-        <p className="text-sm text-gray-400">Nenhuma partida encontrada.</p>
+        <p className="text-sm text-muted">Nenhuma partida encontrada.</p>
       )}
 
       {/* Partidas agrupadas por fase */}
       {rodadasPresentes.map((rodada) => (
         <section key={rodada}>
-          <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">
+          <h2 className="text-sm font-semibold text-muted uppercase tracking-wide mb-2">
             {rodada} ({grupos[rodada].length})
           </h2>
           <div className="space-y-2">
@@ -252,23 +252,23 @@ export function AdminPalpitesPage() {
                 <div
                   key={pid}
                   className={`border rounded-lg px-4 py-3 flex flex-wrap items-center gap-3 ${
-                    hasPalpite ? 'bg-white border-gray-200' : 'bg-amber-50 border-amber-200'
+                    hasPalpite ? 'bg-surface border-border' : 'bg-warning-soft border-warning/30'
                   }`}
                 >
                   {/* Nº da partida */}
-                  <span className="text-xs text-gray-400 w-6 shrink-0 font-mono">{pid}</span>
+                  <span className="text-xs text-muted w-6 shrink-0 font-mono">{pid}</span>
 
                   {/* Data e hora */}
-                  <span className="text-xs text-gray-400 w-24 shrink-0">{date} · {hora}</span>
+                  <span className="text-xs text-muted w-24 shrink-0">{date} · {hora}</span>
 
                   {/* Times */}
-                  <span className="text-sm text-gray-700 font-medium min-w-[6rem] text-center">
+                  <span className="text-sm text-text font-medium min-w-[6rem] text-center">
                     {casaLabel} × {foraLabel}
                   </span>
 
                   {/* Resultado real (se encerrada) */}
                   {isEncerrada && partida.golsCasa !== null && (
-                    <span className="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">
+                    <span className="text-xs text-muted bg-surface-2 rounded px-2 py-0.5">
                       Real: {partida.golsCasa}×{partida.golsFora}
                     </span>
                   )}
@@ -281,38 +281,38 @@ export function AdminPalpitesPage() {
                         min={0}
                         value={inputs[pid]?.casa ?? ''}
                         onChange={(e) => setInputs((i) => ({ ...i, [pid]: { ...i[pid], casa: e.target.value } }))}
-                        className="w-14 border border-gray-300 rounded px-2 py-1 text-sm text-center"
+                        className="w-14 bg-surface-2 border border-border rounded px-2 py-1 text-sm text-center text-text font-mono tabular-nums focus:outline-none focus:ring-2 focus:ring-primary"
                         autoFocus
                       />
-                      <span className="text-gray-400">×</span>
+                      <span className="text-muted">×</span>
                       <input
                         type="number"
                         min={0}
                         value={inputs[pid]?.fora ?? ''}
                         onChange={(e) => setInputs((i) => ({ ...i, [pid]: { ...i[pid], fora: e.target.value } }))}
-                        className="w-14 border border-gray-300 rounded px-2 py-1 text-sm text-center"
+                        className="w-14 bg-surface-2 border border-border rounded px-2 py-1 text-sm text-center text-text font-mono tabular-nums focus:outline-none focus:ring-2 focus:ring-primary"
                       />
                       <button
                         onClick={() => handleSave(item)}
                         disabled={saving === pid}
-                        className="bg-green-700 hover:bg-green-800 disabled:opacity-50 text-white text-xs px-3 py-1 rounded"
+                        className="bg-primary hover:bg-primary-strong disabled:opacity-50 text-white text-xs px-3 py-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                       >
                         {saving === pid ? '…' : 'Salvar'}
                       </button>
                       <button
                         onClick={() => handleCancel(item)}
-                        className="bg-gray-200 hover:bg-gray-300 text-gray-700 text-xs px-3 py-1 rounded"
+                        className="bg-surface-2 hover:bg-border text-text text-xs px-3 py-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-muted"
                       >
                         Cancelar
                       </button>
                     </div>
                   ) : hasPalpite ? (
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-semibold text-gray-800">
+                      <span className="text-sm font-semibold text-text font-mono tabular-nums">
                         {item.palpite!.golsCasaPalpite} × {item.palpite!.golsForaPalpite}
                       </span>
                       {item.palpite!.pontosObtidos !== null && (
-                        <span className="text-xs text-blue-700 bg-blue-50 rounded px-2 py-0.5">
+                        <span className="text-xs text-accent bg-accent/10 rounded px-2 py-0.5 font-mono">
                           {item.palpite!.pontosObtidos} pts
                         </span>
                       )}
@@ -321,20 +321,20 @@ export function AdminPalpitesPage() {
                           setEditing(pid)
                           setFeedback((f) => ({ ...f, [pid]: { ok: false, msg: '' } }))
                         }}
-                        className="text-xs text-amber-700 hover:text-amber-900 border border-amber-300 hover:border-amber-500 px-2 py-0.5 rounded transition-colors"
+                        className="text-xs text-warning hover:text-white hover:bg-warning border border-warning/40 px-2 py-0.5 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-warning"
                       >
                         Alterar
                       </button>
                     </div>
                   ) : (
                     <div className="flex items-center gap-2">
-                      <span className="text-xs text-amber-600 italic">sem palpite</span>
+                      <span className="text-xs text-warning italic">sem palpite</span>
                       <button
                         onClick={() => {
                           setEditing(pid)
                           setFeedback((f) => ({ ...f, [pid]: { ok: false, msg: '' } }))
                         }}
-                        className="text-xs text-white bg-amber-500 hover:bg-amber-600 px-2 py-0.5 rounded transition-colors"
+                        className="text-xs text-white bg-warning hover:brightness-95 px-2 py-0.5 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-warning focus-visible:ring-offset-2"
                       >
                         Inserir
                       </button>
@@ -343,7 +343,7 @@ export function AdminPalpitesPage() {
 
                   {/* Feedback */}
                   {feedback[pid]?.msg && (
-                    <span className={`text-xs ${feedback[pid].ok ? 'text-green-700' : 'text-red-600'}`}>
+                    <span className={`text-xs ${feedback[pid].ok ? 'text-success' : 'text-danger'}`}>
                       {feedback[pid].msg}
                     </span>
                   )}

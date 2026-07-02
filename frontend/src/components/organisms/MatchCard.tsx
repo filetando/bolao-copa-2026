@@ -18,11 +18,11 @@ function TeamLabel({ equipe, placeholder }: { equipe: Partida['equipeCasa']; pla
     return (
       <span className="flex items-center gap-1.5 min-w-0">
         <FlagIcon codigo={equipe.bandeiraCodigo} nome={equipe.nome} />
-        <span className="font-medium text-gray-900 truncate">{equipe.sigla ?? equipe.nome}</span>
+        <span className="font-semibold text-text truncate">{equipe.sigla ?? equipe.nome}</span>
       </span>
     )
   }
-  return <span className="text-gray-400 text-xs italic truncate">{placeholder ?? '?'}</span>
+  return <span className="text-muted text-xs italic truncate">{placeholder ?? '?'}</span>
 }
 
 // DOMAIN_RULES.md §7 — replica a cascata de pontuação para exibição da categoria
@@ -36,26 +36,26 @@ function getCategoriaPalpite(
   const rf = resultado.golsFora
 
   if (pc === rc && pf === rf)
-    return { label: 'Placar Exato', variant: 'success', palpiteColor: 'text-green-800' }
+    return { label: 'Placar Exato', variant: 'success', palpiteColor: 'text-success' }
 
   const pEmpate = pc === pf
   const rEmpate = rc === rf
   if (pEmpate && rEmpate)
-    return { label: 'Empate', variant: 'success', palpiteColor: 'text-green-400' }
+    return { label: 'Empate', variant: 'success', palpiteColor: 'text-success' }
   if (pEmpate || rEmpate)
-    return { label: 'Errou', variant: 'neutral', palpiteColor: 'text-red-600' }
+    return { label: 'Errou', variant: 'neutral', palpiteColor: 'text-danger' }
 
   const mesmoVencedor = (pc > pf && rc > rf) || (pc < pf && rc < rf)
   if (!mesmoVencedor)
-    return { label: 'Errou', variant: 'neutral', palpiteColor: 'text-red-600' }
+    return { label: 'Errou', variant: 'neutral', palpiteColor: 'text-danger' }
 
   const rVencGols = rc > rf ? rc : rf
   const pVencGols = rc > rf ? pc : pf
   if (pVencGols === rVencGols)
-    return { label: 'Vencedor + Gols', variant: 'success', palpiteColor: 'text-green-400' }
+    return { label: 'Vencedor + Gols', variant: 'success', palpiteColor: 'text-success' }
   if (pc - pf === rc - rf)
-    return { label: 'Vencedor + Saldo', variant: 'success', palpiteColor: 'text-green-400' }
-  return { label: 'Só Vencedor', variant: 'warning', palpiteColor: 'text-green-400' }
+    return { label: 'Vencedor + Saldo', variant: 'success', palpiteColor: 'text-success' }
+  return { label: 'Só Vencedor', variant: 'warning', palpiteColor: 'text-warning' }
 }
 
 function StatusBadge({
@@ -146,12 +146,23 @@ export function MatchCard({ partida, meuPalpite: initialPalpite, lockCutoffUtc }
   // Filtra o palpite do próprio usuário da lista de "outros"
   const othersFiltered = others?.filter((p) => p.usuarioId !== user?.id) ?? []
 
+  // Cor da borda lateral conforme o estado da partida (leitura rápida do status)
+  const stateBorder = ended
+    ? 'border-l-neutral'
+    : live
+      ? 'border-l-live'
+      : locked
+        ? 'border-l-locked'
+        : 'border-l-primary' // aberto: convida ao palpite
+
   return (
-    <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden">
+    <div
+      className={`bg-surface rounded-lg border border-border border-l-4 ${stateBorder} shadow-sm overflow-hidden transition-shadow hover:shadow-md`}
+    >
       {/* Cabeçalho — grid de 3 colunas para centralizar o horário */}
-      <div className="bg-gray-50 px-4 py-2 grid grid-cols-3 items-center text-xs text-gray-500 border-b border-gray-100">
-        <span className="font-medium text-gray-700">{partida.faseNome}</span>
-        <span className="text-center">{formatTimeBRT(partida.dataHoraUtc)} BRT</span>
+      <div className="bg-surface-2 px-4 py-2 grid grid-cols-3 items-center text-xs text-muted border-b border-border">
+        <span className="font-semibold text-text truncate">{partida.faseNome}</span>
+        <span className="text-center font-mono">{formatTimeBRT(partida.dataHoraUtc)} BRT</span>
         {partida.estadio ? (
           <span className="hidden sm:block text-right truncate">{partida.estadio}</span>
         ) : (
@@ -169,20 +180,20 @@ export function MatchCard({ partida, meuPalpite: initialPalpite, lockCutoffUtc }
               <div className="flex-1 min-w-0">
                 <TeamLabel equipe={partida.equipeCasa} placeholder={partida.placeholderCasa} />
               </div>
-              <div className="flex items-center gap-2 font-mono font-bold text-xl text-gray-800 shrink-0">
+              <div className="flex items-center gap-2 font-mono font-bold text-2xl text-text tabular-nums shrink-0">
                 {ended ? (
                   <>
                     <span>{partida.golsCasa ?? '-'}</span>
-                    <span className="text-gray-400 text-sm">×</span>
+                    <span className="text-muted text-sm">×</span>
                     <span>{partida.golsFora ?? '-'}</span>
                   </>
                 ) : (
                   <>
-                    <span className={hasPalpite ? 'text-gray-800' : 'text-gray-300'}>
+                    <span className={hasPalpite ? 'text-text' : 'text-locked'}>
                       {hasPalpite ? meuPalpite!.golsCasaPalpite : '-'}
                     </span>
-                    <span className="text-gray-400 text-sm">×</span>
-                    <span className={hasPalpite ? 'text-gray-800' : 'text-gray-300'}>
+                    <span className="text-muted text-sm">×</span>
+                    <span className={hasPalpite ? 'text-text' : 'text-locked'}>
                       {hasPalpite ? meuPalpite!.golsForaPalpite : '-'}
                     </span>
                   </>
@@ -219,17 +230,19 @@ export function MatchCard({ partida, meuPalpite: initialPalpite, lockCutoffUtc }
                   max={20}
                   value={golsCasa}
                   onChange={(e) => setGolsCasa(e.target.value)}
-                  className="w-12 text-center border border-gray-300 rounded-md py-1 text-lg font-bold font-mono focus:outline-none focus:ring-2 focus:ring-green-500"
+                  inputMode="numeric"
+                  className="w-12 h-11 text-center bg-surface-2 border border-border rounded-md text-lg font-bold font-mono tabular-nums text-text focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                   aria-label={`Gols ${partida.equipeCasa?.nome ?? partida.placeholderCasa ?? 'Casa'}`}
                 />
-                <span className="text-gray-400 font-mono">×</span>
+                <span className="text-muted font-mono">×</span>
                 <input
                   type="number"
                   min={0}
                   max={20}
                   value={golsFora}
                   onChange={(e) => setGolsFora(e.target.value)}
-                  className="w-12 text-center border border-gray-300 rounded-md py-1 text-lg font-bold font-mono focus:outline-none focus:ring-2 focus:ring-green-500"
+                  inputMode="numeric"
+                  className="w-12 h-11 text-center bg-surface-2 border border-border rounded-md text-lg font-bold font-mono tabular-nums text-text focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
                   aria-label={`Gols ${partida.equipeFora?.nome ?? partida.placeholderFora ?? 'Fora'}`}
                 />
               </div>
@@ -241,13 +254,18 @@ export function MatchCard({ partida, meuPalpite: initialPalpite, lockCutoffUtc }
 
             <div className="mt-3 flex items-center justify-between">
               {saveError ? (
-                <p className="text-xs text-red-600">{saveError}</p>
+                <p className="text-xs text-danger">{saveError}</p>
               ) : hasPalpite ? (
-                <p className="text-xs text-green-700">✓ Palpite salvo</p>
+                <p
+                  key={`${meuPalpite!.golsCasaPalpite}-${meuPalpite!.golsForaPalpite}`}
+                  className="text-xs font-semibold text-success motion-safe:animate-[pop_0.32s_var(--ease-emphasized)]"
+                >
+                  ✓ Palpite salvo
+                </p>
               ) : (
                 <span />
               )}
-              <Button type="submit" size="sm" loading={saving}>
+              <Button type="submit" variant="accent" size="sm" loading={saving}>
                 {hasPalpite ? 'Atualizar' : 'Salvar palpite'}
               </Button>
             </div>
@@ -264,7 +282,7 @@ export function MatchCard({ partida, meuPalpite: initialPalpite, lockCutoffUtc }
               resultado={{ golsCasa: partida.golsCasa, golsFora: partida.golsFora }}
             />
             {ended && hasPalpite && meuPalpite!.pontosObtidos !== null && (
-              <span className="text-xs font-semibold text-green-700">
+              <span className="inline-flex items-center rounded-full bg-success-soft px-2 py-0.5 text-xs font-bold text-success font-mono tabular-nums motion-safe:animate-[pop_0.32s_var(--ease-emphasized)]">
                 +{meuPalpite!.pontosObtidos} pts
               </span>
             )}
@@ -272,7 +290,7 @@ export function MatchCard({ partida, meuPalpite: initialPalpite, lockCutoffUtc }
           {blocked && (
             <button
               onClick={handleToggleOthers}
-              className="text-xs text-blue-600 hover:text-blue-800 underline underline-offset-2"
+              className="text-xs font-medium text-accent hover:text-accent-strong rounded px-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               {showOthers ? 'Ocultar palpites' : 'Ver palpites'}
             </button>
@@ -282,24 +300,24 @@ export function MatchCard({ partida, meuPalpite: initialPalpite, lockCutoffUtc }
 
       {/* Palpites de outros (sem o do usuário atual) */}
       {showOthers && (
-        <div className="border-t border-gray-100 bg-gray-50 px-4 py-3">
+        <div className="border-t border-border bg-surface-2 px-4 py-3 motion-safe:animate-[rise_0.32s_var(--ease-standard)]">
           {loadingOthers ? (
-            <p className="text-xs text-gray-400">Carregando…</p>
+            <p className="text-xs text-muted">Carregando…</p>
           ) : !othersVisible ? (
-            <p className="text-xs text-gray-500 italic">
+            <p className="text-xs text-muted italic">
               Palpites de outros participantes serão visíveis após o início da partida.
             </p>
           ) : othersFiltered.length === 0 ? (
-            <p className="text-xs text-gray-400">Nenhum palpite de outros participantes.</p>
+            <p className="text-xs text-muted">Nenhum palpite de outros participantes.</p>
           ) : (
             <ul className="space-y-1">
               {othersFiltered.map((p) => (
-                <li key={p.id} className="flex items-center justify-end gap-3 text-xs text-gray-700">
+                <li key={p.id} className="flex items-center justify-end gap-3 text-xs text-text">
                   <span>{p.nomeUsuario}</span>
-                  <span className="font-mono">
+                  <span className="font-mono tabular-nums">
                     {p.golsCasaPalpite} × {p.golsForaPalpite}
                     {p.pontosObtidos !== null && (
-                      <span className="ml-2 text-green-700 font-semibold">+{p.pontosObtidos}</span>
+                      <span className="ml-2 text-success font-semibold">+{p.pontosObtidos}</span>
                     )}
                   </span>
                 </li>

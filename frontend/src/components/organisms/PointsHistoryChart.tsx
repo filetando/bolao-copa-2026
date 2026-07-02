@@ -14,12 +14,16 @@ interface Props {
   data: LeaderboardHistoryResponse
 }
 
-const CORES = ['#16a34a', '#2563eb', '#dc2626', '#ca8a04', '#9333ea', '#0891b2', '#db2777', '#65a30d']
+// Série de cores alinhada à paleta "Festa nas Arquibancadas" (DESIGN_SYSTEM.md).
+// Recharts exige valores de cor em JS — não há como usar utilitários do Tailwind aqui.
+const CORES = ['#e0480e', '#6d28d9', '#0ea5a5', '#15803d', '#d99412', '#dc2626', '#2563eb', '#db2777']
+const COR_GRID = '#e7ded2' // --color-border
+const COR_EIXO = '#6b6275' // --color-muted
 
 export function PointsHistoryChart({ data }: Props) {
   if (data.usuarios.length === 0 || data.pontos.length === 0) {
     return (
-      <p className="text-gray-500 text-center py-8 text-sm">
+      <p className="text-muted text-center py-8 text-sm">
         Ainda não há partidas encerradas para exibir o histórico.
       </p>
     )
@@ -36,17 +40,17 @@ export function PointsHistoryChart({ data }: Props) {
   return (
     <ResponsiveContainer width="100%" height={320}>
       <LineChart data={chartData} margin={{ top: 8, right: 16, left: -8, bottom: 0 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
+        <CartesianGrid strokeDasharray="3 3" stroke={COR_GRID} vertical={false} />
         <XAxis
           dataKey="dataHoraUtc"
           tickFormatter={formatDate}
-          tick={{ fontSize: 11, fill: '#9ca3af' }}
-          axisLine={{ stroke: '#e5e7eb' }}
+          tick={{ fontSize: 11, fill: COR_EIXO }}
+          axisLine={{ stroke: COR_GRID }}
           tickLine={false}
         />
-        <YAxis tick={{ fontSize: 11, fill: '#9ca3af' }} axisLine={false} tickLine={false} allowDecimals={false} />
+        <YAxis tick={{ fontSize: 11, fill: COR_EIXO }} axisLine={false} tickLine={false} allowDecimals={false} />
         <Tooltip
-          contentStyle={{ borderRadius: 12, border: '1px solid #e5e7eb', fontSize: 12 }}
+          contentStyle={{ borderRadius: 12, border: `1px solid ${COR_GRID}`, fontSize: 12 }}
           labelFormatter={formatDate}
         />
         <Legend wrapperStyle={{ fontSize: 12 }} />

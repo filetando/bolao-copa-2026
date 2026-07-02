@@ -1,20 +1,130 @@
 @import "tailwindcss";
 
+/*
+  Sistema de Design — "Festa nas Arquibancadas" (Paleta B)
+  Ver frontend/DESIGN_SYSTEM.md. Todos os tokens são semânticos:
+  componentes devem usar utilitários gerados destes tokens
+  (bg-primary, text-muted, rounded-md, shadow-md…), nunca cores cruas.
+*/
 @theme {
-  --color-success: #16a34a;
-  --color-warning: #d97706;
-  --color-neutral: #6b7280;
-  --color-locked: #9ca3af;
-  --color-live: #dc2626;
+  /* === Cores: superfícies e neutros === */
+  --color-bg: #fbf7f2;           /* fundo geral (off-white quente) */
+  --color-surface: #ffffff;      /* cards, header */
+  --color-surface-2: #f4eee6;    /* inputs, hover, faixas */
+  --color-border: #e7ded2;       /* bordas sutis */
 
+  /* === Cores: marca === */
+  --color-primary: #e0480e;        /* ações principais, links (laranja profundo) — AA c/ texto branco */
+  --color-primary-strong: #b83a0b; /* hover/active do primary */
+  --color-primary-bright: #ff5a1f; /* decorativo/ícones/headlines grandes (laranja vivo) */
+
+  --color-accent: #6d28d9;         /* destaques, líder do ranking, foco (roxo vibrante) */
+  --color-accent-strong: #5b21b6;  /* hover/active do accent */
+  --color-accent-2: #0ea5a5;       /* detalhe fresco secundário (teal) */
+
+  /* === Cores: texto === */
+  --color-text: #1c1622;   /* texto principal (plum quase preto) */
+  --color-muted: #6b6275;  /* texto secundário */
+
+  /* === Cores: semânticas (base + variante "soft" p/ fundos de badge) === */
+  --color-success: #15803d;
+  --color-success-soft: #dcfce7;
+  --color-warning: #b45309;
+  --color-warning-soft: #fef3c7;
+  --color-danger: #dc2626;
+  --color-danger-soft: #fee2e2;
+  --color-live: #dc2626;
+  --color-live-soft: #fee2e2;
+  --color-neutral: #6b6275;
+  --color-neutral-soft: #f1ece4;
+  --color-locked: #9c94a3;
+  --color-locked-soft: #efebf0;
+
+  /* Medalhas do pódio */
+  --color-gold: #d99412;
+  --color-silver: #8a8a93;
+  --color-bronze: #b06a32;
+
+  /* === Tipografia === */
+  --font-sans: 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Archivo', system-ui, sans-serif;
+  --font-mono: 'Chivo Mono', ui-monospace, 'Cascadia Code', monospace;
+  --text-score: 2rem; /* placar grande */
+
+  /* === Espaçamento === */
   --spacing-card-gap: 1rem;
 
-  --font-score: 2rem;
+  /* === Raios === */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  /* === Elevação === */
+  --shadow-sm: 0 1px 2px rgba(28, 22, 34, 0.06), 0 1px 3px rgba(28, 22, 34, 0.08);
+  --shadow-md: 0 6px 16px rgba(28, 22, 34, 0.12);
+  --shadow-glow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 28%, transparent);
+
+  /* === Movimento === */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasized: cubic-bezier(0.2, 0, 0, 1.2);
+
+  /* === Animações reutilizáveis === */
+  --animate-shimmer: shimmer 1.4s ease-in-out infinite;
+  --animate-pop: pop 0.32s var(--ease-emphasized);
+  --animate-live: livePulse 1.6s ease-in-out infinite;
+  --animate-rise: rise 0.32s var(--ease-standard);
 }
 
-body {
-  margin: 0;
-  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  body {
+    margin: 0;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Títulos usam a fonte de display por padrão */
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+
+  /* Foco visível global (acessibilidade) — componentes podem refinar */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+/* Keyframes das microinterações (usadas via --animate-* / classes utilitárias) */
+@keyframes shimmer {
+  0% { opacity: 0.55; }
+  50% { opacity: 1; }
+  100% { opacity: 0.55; }
+}
+@keyframes pop {
+  0% { transform: scale(0.9); opacity: 0; }
+  60% { transform: scale(1.04); opacity: 1; }
+  100% { transform: scale(1); }
+}
+@keyframes livePulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.85); }
+}
+@keyframes rise {
+  0% { transform: translateY(6px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Respeita a preferência de menos movimento (acessibilidade) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
