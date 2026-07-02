@@ -1,6 +1,6 @@
 {
-  "89":  { "casa": { "tipo": "vencedor", "jogo": 73 }, "fora": { "tipo": "vencedor", "jogo": 75 } },
-  "90":  { "casa": { "tipo": "vencedor", "jogo": 74 }, "fora": { "tipo": "vencedor", "jogo": 77 } },
+  "89":  { "casa": { "tipo": "vencedor", "jogo": 74 }, "fora": { "tipo": "vencedor", "jogo": 77 } },
+  "90":  { "casa": { "tipo": "vencedor", "jogo": 73 }, "fora": { "tipo": "vencedor", "jogo": 75 } },
   "91":  { "casa": { "tipo": "vencedor", "jogo": 76 }, "fora": { "tipo": "vencedor", "jogo": 78 } },
   "92":  { "casa": { "tipo": "vencedor", "jogo": 79 }, "fora": { "tipo": "vencedor", "jogo": 80 } },
   "93":  { "casa": { "tipo": "vencedor", "jogo": 83 }, "fora": { "tipo": "vencedor", "jogo": 84 } },
