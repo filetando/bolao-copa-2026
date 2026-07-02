@@ -87,9 +87,37 @@ Cada entrada segue o formato: **Contexto → Decisão → Alternativas considera
 
 ---
 
+## ADR-006 — Critério 6 de desempate (Fair Play) fora de escopo
+
+**Status:** Aceito
+
+**Contexto:** `DOMAIN_RULES.md` §3 define 7 critérios de desempate, com o 6º sendo Fair Play
+(pontuação de cartões). Implementá-lo exige rastrear cartões amarelos/vermelhos por partida e
+equipe — dado que não existe no schema atual (`equipes`/`partidas` não têm colunas de
+disciplina) e exigiria uma fonte de dados adicional (não há entidade `Cartao` modelada).
+
+**Decisão:** O critério 6 fica **fora de escopo** para esta edição — confirmado pelo dono do
+projeto: nenhum empate real da Copa 2026 precisou chegar até esse critério para ser resolvido.
+`ClassificacaoService` e `TerceirosColocadosService` (Marco 3) pulam diretamente do critério 5
+(gols marcados geral) para o critério 7 (ranking FIFA) quando os critérios 1–5 não separam as
+equipes empatadas.
+
+**Alternativas consideradas:** Modelar `Cartao` (partida, equipe, tipo, jogador) e calcular
+Fair Play dinamicamente — descartado por YAGNI (`ARCHITECTURE.md` §0/§8): custo de
+implementação e de captura manual de dado (admin teria que registrar cada cartão de cada
+partida) sem nenhum caso real que dependesse disso.
+
+**Consequências:** Se, em uma edição futura ou em caso de erro de dados, um empate real cair
+no critério 6, o sistema hoje avança incorretamente para o critério 7 (ranking FIFA) sem
+aplicar Fair Play. Isso deve ser tratado como um risco documentado — se acontecer, o admin
+resolve manualmente e este ADR deve ser revisitado antes de reabrir o módulo.
+
+---
+
 ## Histórico de revisões
 
 | Data | Alteração | Autor |
 |------|-----------|-------|
 | 2026-06-11 | Criação do documento (fundação do projeto) | Claude (revisão pendente do dono do projeto) |
 | 2026-06-11 | ADR-005 — calendário completo da fase de grupos | Claude |
+| 2026-07-01 | ADR-006 — critério 6 (Fair Play) fora de escopo, decisão do dono do projeto | Claude |
