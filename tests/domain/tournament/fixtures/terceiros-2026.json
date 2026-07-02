@@ -1,0 +1,116 @@
+{
+  "descricao": "Os 12 terceiros colocados reais da fase de grupos da Copa 2026 (jogos 1-72, banco de produção), com seus 3 jogos de grupo cada. Fonte: tabela `partidas` (fase_id='grupos', status='encerrada') via docker exec psql, extraída em 2026-07-02. Usado por TerceirosColocadosService.test.ts para validar contra o resultado real confirmado pelo dono do projeto.",
+  "classificadosEsperados": ["B", "D", "E", "F", "I", "J", "K", "L"],
+  "eliminadosEsperados": ["A", "C", "G", "H"],
+  "chaveAnexoCEsperada": "BDEFIJKL",
+  "terceiros": [
+    {
+      "grupoId": "A",
+      "equipe": { "id": 3, "nome": "Coreia do Sul", "sigla": "COR", "bandeiraCodigo": "KR", "rankingFifa": 999 },
+      "partidas": [
+        { "equipeCasaId": 3, "equipeForaId": 4, "golsCasa": 2, "golsFora": 1 },
+        { "equipeCasaId": 1, "equipeForaId": 3, "golsCasa": 1, "golsFora": 0 },
+        { "equipeCasaId": 2, "equipeForaId": 3, "golsCasa": 1, "golsFora": 0 }
+      ]
+    },
+    {
+      "grupoId": "B",
+      "equipe": { "id": 6, "nome": "Bósnia e Herzegovina", "sigla": "BOS", "bandeiraCodigo": "BA", "rankingFifa": 999 },
+      "partidas": [
+        { "equipeCasaId": 5, "equipeForaId": 6, "golsCasa": 1, "golsFora": 1 },
+        { "equipeCasaId": 8, "equipeForaId": 6, "golsCasa": 4, "golsFora": 1 },
+        { "equipeCasaId": 6, "equipeForaId": 7, "golsCasa": 3, "golsFora": 1 }
+      ]
+    },
+    {
+      "grupoId": "C",
+      "equipe": { "id": 10, "nome": "Escócia", "sigla": "ESC", "bandeiraCodigo": "GB-SCT", "rankingFifa": 999 },
+      "partidas": [
+        { "equipeCasaId": 9, "equipeForaId": 10, "golsCasa": 0, "golsFora": 1 },
+        { "equipeCasaId": 10, "equipeForaId": 12, "golsCasa": 0, "golsFora": 1 },
+        { "equipeCasaId": 10, "equipeForaId": 11, "golsCasa": 0, "golsFora": 3 }
+      ]
+    },
+    {
+      "grupoId": "D",
+      "equipe": { "id": 14, "nome": "Paraguai", "sigla": "PAR", "bandeiraCodigo": "PY", "rankingFifa": 999 },
+      "partidas": [
+        { "equipeCasaId": 13, "equipeForaId": 14, "golsCasa": 4, "golsFora": 1 },
+        { "equipeCasaId": 16, "equipeForaId": 14, "golsCasa": 0, "golsFora": 1 },
+        { "equipeCasaId": 14, "equipeForaId": 15, "golsCasa": 0, "golsFora": 0 }
+      ]
+    },
+    {
+      "grupoId": "E",
+      "equipe": { "id": 18, "nome": "Equador", "sigla": "EQU", "bandeiraCodigo": "EC", "rankingFifa": 999 },
+      "partidas": [
+        { "equipeCasaId": 17, "equipeForaId": 18, "golsCasa": 1, "golsFora": 0 },
+        { "equipeCasaId": 18, "equipeForaId": 20, "golsCasa": 0, "golsFora": 0 },
+        { "equipeCasaId": 18, "equipeForaId": 19, "golsCasa": 2, "golsFora": 1 }
+      ]
+    },
+    {
+      "grupoId": "F",
+      "equipe": { "id": 23, "nome": "Suécia", "sigla": "SUE", "bandeiraCodigo": "SE", "rankingFifa": 999 },
+      "partidas": [
+        { "equipeCasaId": 23, "equipeForaId": 24, "golsCasa": 5, "golsFora": 1 },
+        { "equipeCasaId": 21, "equipeForaId": 23, "golsCasa": 5, "golsFora": 1 },
+        { "equipeCasaId": 22, "equipeForaId": 23, "golsCasa": 1, "golsFora": 1 }
+      ]
+    },
+    {
+      "grupoId": "G",
+      "equipe": { "id": 25, "nome": "Irã", "sigla": "IRA", "bandeiraCodigo": "IR", "rankingFifa": 999 },
+      "partidas": [
+        { "equipeCasaId": 25, "equipeForaId": 26, "golsCasa": 2, "golsFora": 2 },
+        { "equipeCasaId": 27, "equipeForaId": 25, "golsCasa": 0, "golsFora": 0 },
+        { "equipeCasaId": 28, "equipeForaId": 25, "golsCasa": 1, "golsFora": 1 }
+      ]
+    },
+    {
+      "grupoId": "H",
+      "equipe": { "id": 30, "nome": "Uruguai", "sigla": "URU", "bandeiraCodigo": "UY", "rankingFifa": 999 },
+      "partidas": [
+        { "equipeCasaId": 29, "equipeForaId": 30, "golsCasa": 1, "golsFora": 1 },
+        { "equipeCasaId": 30, "equipeForaId": 32, "golsCasa": 2, "golsFora": 2 },
+        { "equipeCasaId": 30, "equipeForaId": 31, "golsCasa": 0, "golsFora": 1 }
+      ]
+    },
+    {
+      "grupoId": "I",
+      "equipe": { "id": 34, "nome": "Senegal", "sigla": "SEN", "bandeiraCodigo": "SN", "rankingFifa": 999 },
+      "partidas": [
+        { "equipeCasaId": 33, "equipeForaId": 34, "golsCasa": 3, "golsFora": 1 },
+        { "equipeCasaId": 36, "equipeForaId": 34, "golsCasa": 3, "golsFora": 2 },
+        { "equipeCasaId": 34, "equipeForaId": 35, "golsCasa": 5, "golsFora": 0 }
+      ]
+    },
+    {
+      "grupoId": "J",
+      "equipe": { "id": 38, "nome": "Argélia", "sigla": "ALG", "bandeiraCodigo": "DZ", "rankingFifa": 999 },
+      "partidas": [
+        { "equipeCasaId": 37, "equipeForaId": 38, "golsCasa": 3, "golsFora": 0 },
+        { "equipeCasaId": 40, "equipeForaId": 38, "golsCasa": 1, "golsFora": 2 },
+        { "equipeCasaId": 38, "equipeForaId": 39, "golsCasa": 3, "golsFora": 3 }
+      ]
+    },
+    {
+      "grupoId": "K",
+      "equipe": { "id": 42, "nome": "Congo DR", "sigla": "CDR", "bandeiraCodigo": "CD", "rankingFifa": 999 },
+      "partidas": [
+        { "equipeCasaId": 41, "equipeForaId": 42, "golsCasa": 1, "golsFora": 1 },
+        { "equipeCasaId": 44, "equipeForaId": 42, "golsCasa": 1, "golsFora": 0 },
+        { "equipeCasaId": 42, "equipeForaId": 43, "golsCasa": 3, "golsFora": 1 }
+      ]
+    },
+    {
+      "grupoId": "L",
+      "equipe": { "id": 45, "nome": "Gana", "sigla": "GAN", "bandeiraCodigo": "GH", "rankingFifa": 999 },
+      "partidas": [
+        { "equipeCasaId": 45, "equipeForaId": 46, "golsCasa": 1, "golsFora": 0 },
+        { "equipeCasaId": 47, "equipeForaId": 45, "golsCasa": 0, "golsFora": 0 },
+        { "equipeCasaId": 48, "equipeForaId": 45, "golsCasa": 2, "golsFora": 1 }
+      ]
+    }
+  ]
+}

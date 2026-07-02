@@ -1,5 +1,10 @@
 import type { PrismaClient } from '@prisma/client'
-import type { PartidaRepository, PartidaListItem, PartidaBasica } from '../../application/tournament/ports/PartidaRepository.js'
+import type {
+  PartidaRepository,
+  PartidaListItem,
+  PartidaBasica,
+  AtualizacaoEquipesResolvidas,
+} from '../../application/tournament/ports/PartidaRepository.js'
 
 export class PrismaPartidaRepository implements PartidaRepository {
   constructor(private readonly db: PrismaClient) {}
@@ -42,5 +47,16 @@ export class PrismaPartidaRepository implements PartidaRepository {
       status: row.status,
       grupoSimultaneoId: row.grupoSimultaneoId,
     }))
+  }
+
+  async updateEquipesResolvidas(updates: AtualizacaoEquipesResolvidas[]): Promise<void> {
+    await this.db.$transaction(
+      updates.map((u) =>
+        this.db.partida.update({
+          where: { id: u.id },
+          data: { equipeCasaId: u.equipeCasaId, equipeForaId: u.equipeForaId },
+        }),
+      ),
+    )
   }
 }

@@ -38,6 +38,9 @@ import { ListUsers } from '../../application/identity/use-cases/ListUsers.js'
 import { gruposRoutes } from '../../presentation/http/routes/grupos.js'
 import { PrismaGrupoRepository } from '../repositories/PrismaGrupoRepository.js'
 import { GetGroupStandings } from '../../application/tournament/use-cases/GetGroupStandings.js'
+import { GenerateKnockoutBracket } from '../../application/tournament/use-cases/GenerateKnockoutBracket.js'
+import { AnexoCLookup } from '../../domain/tournament/AnexoCLookup.js'
+import { loadAnexoCTable } from '../tournament/loadAnexoCTable.js'
 
 // Carrega augmentações de tipo (request.user)
 import '../../presentation/http/types.js'
@@ -73,6 +76,8 @@ app.setErrorHandler((error, request, reply) => {
       MATCH_ALREADY_FINISHED: 409,
       MATCH_NOT_ENCERRADA: 422,
       GROUP_NOT_FOUND: 404,
+      GROUP_STAGE_NOT_COMPLETE: 422,
+      INVALID_COMBINACAO: 422,
     }
     return reply
       .status(statusMap[error.code] ?? 400)
@@ -121,6 +126,9 @@ const listUsers = new ListUsers(usuarioRepo)
 const grupoRepo = new PrismaGrupoRepository(prisma)
 const getGroupStandings = new GetGroupStandings(grupoRepo)
 
+const anexoCLookup = new AnexoCLookup(loadAnexoCTable())
+const generateKnockoutBracket = new GenerateKnockoutBracket(grupoRepo, partidaRepo, anexoCLookup)
+
 // ─── Rotas ────────────────────────────────────────────────────────────────────
 
 app.get('/health', async () => ({ status: 'ok' }))
@@ -130,7 +138,7 @@ await app.register(partidasRoutes, { listMatches })
 await app.register(palpitesRoutes, { submitPrediction, getMyPredictions, getPredictionsForMatch, tokenService })
 await app.register(palpitesEstaticosRoutes, { submitStaticMarketPrediction, getMyStaticPredictions, tokenService })
 await app.register(leaderboardRoutes, { getLeaderboard, getLeaderboardHistory, tokenService })
-await app.register(adminRoutes, { registerMatchResult, calculateScoreForMatch, getAdminUserPalpites, adminUpdatePalpite, adminUpsertPalpite, getAdminPartidasComPalpite, listUsers, tokenService })
+await app.register(adminRoutes, { registerMatchResult, calculateScoreForMatch, getAdminUserPalpites, adminUpdatePalpite, adminUpsertPalpite, getAdminPartidasComPalpite, generateKnockoutBracket, listUsers, tokenService })
 await app.register(gruposRoutes, { getGroupStandings })
 
 // ─── Start ────────────────────────────────────────────────────────────────────

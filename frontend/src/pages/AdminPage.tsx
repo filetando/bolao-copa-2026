@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { api } from '../lib/api.ts'
 import { formatDateLabelBRT, formatTimeBRT } from '../lib/time.ts'
-import type { Partida } from '../types/index.ts'
+import type { Partida, ConfrontoGerado } from '../types/index.ts'
 import type { ApiError } from '../lib/api.ts'
 
 interface MatchInput {
@@ -26,17 +26,45 @@ export function AdminPage() {
   const [feedback, setFeedback] = useState<Record<number, Feedback>>({})
   const [loading, setLoading] = useState<Record<number, boolean>>({})
   const [fetchError, setFetchError] = useState<string | null>(null)
+  const [bracketLoading, setBracketLoading] = useState(false)
+  const [bracketError, setBracketError] = useState<string | null>(null)
+  const [bracketResult, setBracketResult] = useState<ConfrontoGerado[] | null>(null)
+
+  function loadPartidas() {
+    return api.partidas.list().then((data) => {
+      setPartidas(data)
+      setInputs((prev) => {
+        const next = { ...prev }
+        for (const p of data) if (!next[p.id]) next[p.id] = { golsCasa: '', golsFora: '' }
+        return next
+      })
+      return data
+    })
+  }
 
   useEffect(() => {
-    api.partidas.list()
-      .then((data) => {
-        setPartidas(data)
-        const init: Record<number, MatchInput> = {}
-        for (const p of data) init[p.id] = { golsCasa: '', golsFora: '' }
-        setInputs(init)
-      })
-      .catch(() => setFetchError('Erro ao carregar partidas.'))
+    loadPartidas().catch(() => setFetchError('Erro ao carregar partidas.'))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  const jogosDeGrupo = partidas.filter((p) => p.faseNome === 'Fase de Grupos')
+  const grupoCompleto = jogosDeGrupo.length > 0 && jogosDeGrupo.every((p) => p.status === 'encerrada')
+  const jogosMataMataResolvidos = partidas.some((p) => p.id >= 73 && p.id <= 88 && p.equipeCasa !== null)
+
+  async function handleGenerateBracket() {
+    setBracketLoading(true)
+    setBracketError(null)
+    try {
+      const res = await api.admin.generateBracket()
+      setBracketResult(res.confrontos)
+      await loadPartidas() // recarrega para exibir nomes reais nos jogos 73-88
+    } catch (err) {
+      const e = err as ApiError
+      setBracketError(e.error?.message ?? 'Erro ao gerar o chaveamento.')
+    } finally {
+      setBracketLoading(false)
+    }
+  }
 
   async function handleRegister(id: number) {
     const { golsCasa, golsFora } = inputs[id] ?? {}
@@ -126,6 +154,50 @@ export function AdminPage() {
               )}
             </div>
           ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-sm font-semibold text-muted uppercase tracking-wide mb-3">Mata-mata</h2>
+        <div className="bg-surface border border-border rounded-lg px-4 py-4 space-y-3">
+          {jogosMataMataResolvidos ? (
+            <p className="text-sm text-success">✓ Chaveamento já gerado — jogos 73–88 com times reais.</p>
+          ) : (
+            <>
+              <p className="text-sm text-muted">
+                {grupoCompleto
+                  ? 'Fase de grupos completa. Gera os 16 confrontos dos jogos 73–88 (ADR-003).'
+                  : 'Aguardando o encerramento de todos os jogos da fase de grupos (1–72).'}
+              </p>
+              <button
+                onClick={() => {
+                  if (window.confirm('Gerar o chaveamento do mata-mata agora? Esta ação atualiza os jogos 73–88.')) {
+                    handleGenerateBracket()
+                  }
+                }}
+                disabled={!grupoCompleto || bracketLoading}
+                className="bg-accent hover:brightness-95 disabled:opacity-50 text-white text-sm px-4 py-2 rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+              >
+                {bracketLoading ? 'Gerando…' : 'Gerar chaveamento do mata-mata'}
+              </button>
+            </>
+          )}
+          {bracketError && <p className="text-sm text-danger">{bracketError}</p>}
+          {bracketResult && (
+            <ul className="text-sm text-text space-y-1 pt-2 border-t border-border">
+              {bracketResult.map((c) => {
+                const partida = partidas.find((p) => p.id === c.partidaId)
+                return (
+                  <li key={c.partidaId} className="flex justify-between gap-2">
+                    <span className="text-muted">Jogo {c.partidaId}</span>
+                    <span className="font-semibold">
+                      {partida?.equipeCasa?.nome ?? c.equipeCasaId} × {partida?.equipeFora?.nome ?? c.equipeForaId}
+                    </span>
+                  </li>
+                )
+              })}
+            </ul>
+          )}
         </div>
       </section>
 

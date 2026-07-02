@@ -10,6 +10,7 @@ import type {
   UsuarioBasico,
   PalpiteComPartida,
   PartidaComPalpiteAdmin,
+  GenerateBracketResponse,
 } from '../types/index.ts'
 
 const BASE = '/api'
@@ -80,6 +81,8 @@ export const api = {
         `/admin/usuarios/${usuarioId}/palpites`,
         { method: 'POST', body: JSON.stringify({ partidaId, golsCasaPalpite, golsForaPalpite }) },
       ),
+    generateBracket: () =>
+      request<GenerateBracketResponse>('/admin/mata-mata/gerar', { method: 'POST' }),
   },
   palpitesEstaticos: {
     me: () => request<PalpiteEstaticoData[]>('/palpites-estaticos/me'),

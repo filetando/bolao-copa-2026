@@ -129,3 +129,14 @@ export interface PalpiteEstaticoData {
   valorTexto: string | null
   pontosObtidos: number | null
 }
+
+export interface ConfrontoGerado {
+  partidaId: number
+  equipeCasaId: number | null
+  equipeForaId: number | null
+}
+
+export interface GenerateBracketResponse {
+  confrontos: ConfrontoGerado[]
+  chaveAnexoC: string
+}

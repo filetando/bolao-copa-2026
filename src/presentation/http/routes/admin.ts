@@ -6,6 +6,7 @@ import type { GetAdminUserPalpites } from '../../../application/bolao/use-cases/
 import type { AdminUpdatePalpite } from '../../../application/bolao/use-cases/AdminUpdatePalpite.js'
 import type { AdminUpsertPalpite } from '../../../application/bolao/use-cases/AdminUpsertPalpite.js'
 import type { GetAdminPartidasComPalpite } from '../../../application/bolao/use-cases/GetAdminPartidasComPalpite.js'
+import type { GenerateKnockoutBracket } from '../../../application/tournament/use-cases/GenerateKnockoutBracket.js'
 import type { ListUsers } from '../../../application/identity/use-cases/ListUsers.js'
 import type { ITokenService } from '../../../application/identity/ports/ITokenService.js'
 import { createAuthMiddleware } from '../middlewares/authenticate.js'
@@ -18,6 +19,7 @@ interface AdminRouteOptions {
   adminUpdatePalpite: AdminUpdatePalpite
   adminUpsertPalpite: AdminUpsertPalpite
   getAdminPartidasComPalpite: GetAdminPartidasComPalpite
+  generateKnockoutBracket: GenerateKnockoutBracket
   listUsers: ListUsers
   tokenService: ITokenService
 }
@@ -106,6 +108,12 @@ export const adminRoutes: FastifyPluginAsync<AdminRouteOptions> = async (fastify
       golsCasaPalpite: body.golsCasaPalpite,
       golsForaPalpite: body.golsForaPalpite,
     })
+    return reply.status(200).send(result)
+  })
+
+  // POST /admin/mata-mata/gerar — gera os 16 confrontos dos jogos 73-88 (ADR-003, disparo manual)
+  fastify.post('/admin/mata-mata/gerar', { preHandler: guard }, async (_request, reply) => {
+    const result = await opts.generateKnockoutBracket.execute()
     return reply.status(200).send(result)
   })
 }
