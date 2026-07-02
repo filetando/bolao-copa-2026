@@ -38,6 +38,14 @@ function IconShield({ className = '' }: { className?: string }) {
     </svg>
   )
 }
+function IconBracket({ className = '' }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M4 5h4v4H4zM4 15h4v4H4zM16 10h4v4h-4z" />
+      <path d="M8 7h4v6a2 2 0 0 0 2 2h2M8 17h4v-6" />
+    </svg>
+  )
+}
 
 interface NavItem {
   to: string
@@ -51,6 +59,7 @@ const NAV_ITEMS: NavItem[] = [
   { to: '/', label: 'Ranking', icon: IconTrophy, exact: true },
   { to: '/partidas', label: 'Partidas', icon: IconBall },
   { to: '/classificacao', label: 'Grupos', icon: IconTable },
+  { to: '/mata-mata', label: 'Mata-mata', icon: IconBracket },
   { to: '/primeiro-acesso', label: 'Estáticos', icon: IconStar },
   { to: '/admin', label: 'Admin', icon: IconShield, adminOnly: true },
 ]

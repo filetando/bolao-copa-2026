@@ -46,6 +46,9 @@ export const api = {
   partidas: {
     list: () => request<Partida[]>('/partidas'),
   },
+  mataMata: {
+    list: () => request<Partida[]>('/mata-mata'),
+  },
   palpites: {
     me: () => request<PalpiteData[]>('/palpites/me'),
     submit: (partidaId: number, golsCasaPalpite: number, golsForaPalpite: number) =>
@@ -63,10 +66,17 @@ export const api = {
     classificacao: (grupoId: string) => request<ClassificacaoRow[]>(`/grupos/${grupoId}/classificacao`),
   },
   admin: {
-    registerResult: (id: number, golsCasa: number, golsFora: number) =>
+    registerResult: (id: number, golsCasa: number, golsFora: number, vencedorPenaltisEquipeId?: number) =>
       request<{ partidaId: number; golsCasa: number; golsFora: number; palpitesCalculados: number }>(
         `/admin/partidas/${id}/resultado`,
-        { method: 'POST', body: JSON.stringify({ golsCasa, golsFora }) },
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            golsCasa,
+            golsFora,
+            ...(vencedorPenaltisEquipeId != null ? { vencedorPenaltisEquipeId } : {}),
+          }),
+        },
       ),
     listUsuarios: () => request<UsuarioBasico[]>('/admin/usuarios'),
     getPalpitesUsuario: (usuarioId: string) => request<PalpiteComPartida[]>(`/admin/usuarios/${usuarioId}/palpites`),

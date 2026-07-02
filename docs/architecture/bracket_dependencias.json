@@ -1,0 +1,18 @@
+{
+  "89":  { "casa": { "tipo": "vencedor", "jogo": 74 }, "fora": { "tipo": "vencedor", "jogo": 77 } },
+  "90":  { "casa": { "tipo": "vencedor", "jogo": 73 }, "fora": { "tipo": "vencedor", "jogo": 75 } },
+  "91":  { "casa": { "tipo": "vencedor", "jogo": 76 }, "fora": { "tipo": "vencedor", "jogo": 78 } },
+  "92":  { "casa": { "tipo": "vencedor", "jogo": 79 }, "fora": { "tipo": "vencedor", "jogo": 80 } },
+  "93":  { "casa": { "tipo": "vencedor", "jogo": 83 }, "fora": { "tipo": "vencedor", "jogo": 84 } },
+  "94":  { "casa": { "tipo": "vencedor", "jogo": 81 }, "fora": { "tipo": "vencedor", "jogo": 82 } },
+  "95":  { "casa": { "tipo": "vencedor", "jogo": 86 }, "fora": { "tipo": "vencedor", "jogo": 88 } },
+  "96":  { "casa": { "tipo": "vencedor", "jogo": 85 }, "fora": { "tipo": "vencedor", "jogo": 87 } },
+  "97":  { "casa": { "tipo": "vencedor", "jogo": 89 }, "fora": { "tipo": "vencedor", "jogo": 90 } },
+  "98":  { "casa": { "tipo": "vencedor", "jogo": 93 }, "fora": { "tipo": "vencedor", "jogo": 94 } },
+  "99":  { "casa": { "tipo": "vencedor", "jogo": 91 }, "fora": { "tipo": "vencedor", "jogo": 92 } },
+  "100": { "casa": { "tipo": "vencedor", "jogo": 95 }, "fora": { "tipo": "vencedor", "jogo": 96 } },
+  "101": { "casa": { "tipo": "vencedor", "jogo": 97 }, "fora": { "tipo": "vencedor", "jogo": 98 } },
+  "102": { "casa": { "tipo": "vencedor", "jogo": 99 }, "fora": { "tipo": "vencedor", "jogo": 100 } },
+  "103": { "casa": { "tipo": "perdedor", "jogo": 101 }, "fora": { "tipo": "perdedor", "jogo": 102 } },
+  "104": { "casa": { "tipo": "vencedor", "jogo": 101 }, "fora": { "tipo": "vencedor", "jogo": 102 } }
+}

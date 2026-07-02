@@ -75,6 +75,7 @@ confrontos_terceiros (tabela de referência estática, sem FKs — ver Anexo C)
 | placeholder_fora | VARCHAR(60) NULL | idem |
 | gols_casa | SMALLINT NULL | preenchido ao registrar resultado |
 | gols_fora | SMALLINT NULL | |
+| vencedor_penaltis_equipe_id | INTEGER NULL | FK → `equipes.id`; Marco 4, `DOMAIN_RULES.md` §6 — preenchida apenas quando `fase_id != 'grupos'` E `gols_casa = gols_fora` no tempo normal. O placar de `gols_casa`/`gols_fora` usado por `RegraPontuacao` continua sendo o do tempo normal; este campo só existe para saber quem propaga para a rodada seguinte |
 | status | VARCHAR(20) NOT NULL DEFAULT 'agendada' | `agendada` \| `ao_vivo` \| `encerrada` |
 | data_hora_utc | TIMESTAMPTZ NOT NULL | sempre UTC |
 | estadio | VARCHAR(80) | |

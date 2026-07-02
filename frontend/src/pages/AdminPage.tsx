@@ -8,6 +8,11 @@ import type { ApiError } from '../lib/api.ts'
 interface MatchInput {
   golsCasa: string
   golsFora: string
+  vencedorPenaltisEquipeId: string
+}
+
+function isMataMata(p: Partida): boolean {
+  return p.faseNome !== 'Fase de Grupos'
 }
 
 interface Feedback {
@@ -35,7 +40,8 @@ export function AdminPage() {
       setPartidas(data)
       setInputs((prev) => {
         const next = { ...prev }
-        for (const p of data) if (!next[p.id]) next[p.id] = { golsCasa: '', golsFora: '' }
+        for (const p of data)
+          if (!next[p.id]) next[p.id] = { golsCasa: '', golsFora: '', vencedorPenaltisEquipeId: '' }
         return next
       })
       return data
@@ -67,17 +73,24 @@ export function AdminPage() {
   }
 
   async function handleRegister(id: number) {
-    const { golsCasa, golsFora } = inputs[id] ?? {}
+    const partida = partidas.find((p) => p.id === id)
+    const { golsCasa, golsFora, vencedorPenaltisEquipeId } = inputs[id] ?? {}
     const gc = parseInt(golsCasa, 10)
     const gf = parseInt(golsFora, 10)
     if (isNaN(gc) || isNaN(gf) || gc < 0 || gf < 0) {
       setFeedback((f) => ({ ...f, [id]: { ok: false, msg: 'Gols inválidos.' } }))
       return
     }
+    const precisaPenaltis = !!partida && isMataMata(partida) && gc === gf
+    const vencedorId = vencedorPenaltisEquipeId ? parseInt(vencedorPenaltisEquipeId, 10) : undefined
+    if (precisaPenaltis && !vencedorId) {
+      setFeedback((f) => ({ ...f, [id]: { ok: false, msg: 'Empate no mata-mata: selecione o vencedor nos pênaltis.' } }))
+      return
+    }
     setLoading((l) => ({ ...l, [id]: true }))
     setFeedback((f) => ({ ...f, [id]: { ok: false, msg: '' } }))
     try {
-      const res = await api.admin.registerResult(id, gc, gf)
+      const res = await api.admin.registerResult(id, gc, gf, precisaPenaltis ? vencedorId : undefined)
       setFeedback((f) => ({ ...f, [id]: { ok: true, msg: `✓ ${res.palpitesCalculados} palpites calculados` } }))
       setPartidas((ps) =>
         ps.map((p) => (p.id === id ? { ...p, golsCasa: gc, golsFora: gf, status: 'encerrada' } : p)),
@@ -139,6 +152,22 @@ export function AdminPage() {
                   onChange={(e) => setInputs((i) => ({ ...i, [p.id]: { ...i[p.id], golsFora: e.target.value } }))}
                   className="w-14 bg-surface-2 border border-border rounded px-2 py-1 text-sm text-center text-text font-mono tabular-nums focus:outline-none focus:ring-2 focus:ring-primary"
                 />
+                {isMataMata(p) &&
+                  inputs[p.id]?.golsCasa !== '' &&
+                  inputs[p.id]?.golsFora !== '' &&
+                  inputs[p.id]?.golsCasa === inputs[p.id]?.golsFora && (
+                    <select
+                      value={inputs[p.id]?.vencedorPenaltisEquipeId ?? ''}
+                      onChange={(e) =>
+                        setInputs((i) => ({ ...i, [p.id]: { ...i[p.id], vencedorPenaltisEquipeId: e.target.value } }))
+                      }
+                      className="bg-surface-2 border border-border rounded px-2 py-1 text-xs text-text focus:outline-none focus:ring-2 focus:ring-primary"
+                    >
+                      <option value="">Vencedor nos pênaltis…</option>
+                      {p.equipeCasa && <option value={p.equipeCasa.id}>{p.equipeCasa.sigla ?? p.equipeCasa.nome}</option>}
+                      {p.equipeFora && <option value={p.equipeFora.id}>{p.equipeFora.sigla ?? p.equipeFora.nome}</option>}
+                    </select>
+                  )}
                 <button
                   onClick={() => handleRegister(p.id)}
                   disabled={loading[p.id]}

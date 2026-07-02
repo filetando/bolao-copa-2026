@@ -50,9 +50,11 @@ function makeGrupoRepo(gruposIncompletos: string[] = []): GrupoRepository {
 function makePartidaRepo(): PartidaRepository {
   return {
     findAllOrderedByDate: vi.fn(),
+    findMataMata: vi.fn(),
     findById: vi.fn(),
     registerResult: vi.fn(),
     updateEquipesResolvidas: vi.fn().mockResolvedValue(undefined),
+    resolverLadosPartidas: vi.fn().mockResolvedValue(undefined),
   }
 }
 

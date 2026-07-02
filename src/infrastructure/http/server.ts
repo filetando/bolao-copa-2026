@@ -41,6 +41,9 @@ import { GetGroupStandings } from '../../application/tournament/use-cases/GetGro
 import { GenerateKnockoutBracket } from '../../application/tournament/use-cases/GenerateKnockoutBracket.js'
 import { AnexoCLookup } from '../../domain/tournament/AnexoCLookup.js'
 import { loadAnexoCTable } from '../tournament/loadAnexoCTable.js'
+import { BracketPropagationService } from '../../domain/tournament/BracketPropagationService.js'
+import { loadBracketDependencias } from '../tournament/loadBracketDependencias.js'
+import { ListMataMataMatches } from '../../application/tournament/use-cases/ListMataMataMatches.js'
 
 // Carrega augmentações de tipo (request.user)
 import '../../presentation/http/types.js'
@@ -78,6 +81,7 @@ app.setErrorHandler((error, request, reply) => {
       GROUP_NOT_FOUND: 404,
       GROUP_STAGE_NOT_COMPLETE: 422,
       INVALID_COMBINACAO: 422,
+      PENALTY_WINNER_REQUIRED: 422,
     }
     return reply
       .status(statusMap[error.code] ?? 400)
@@ -100,6 +104,7 @@ const loginUser = new LoginUser(usuarioRepo, hasher, tokenService)
 
 const partidaRepo = new PrismaPartidaRepository(prisma)
 const listMatches = new ListMatches(partidaRepo)
+const listMataMataMatches = new ListMataMataMatches(partidaRepo)
 
 const palpiteRepo = new PrismaPalpiteRepository(prisma)
 const tournamentReadPort = new PrismaTournamentReadPort(prisma)
@@ -115,7 +120,8 @@ const leaderboardRepo = new PrismaLeaderboardRepository(prisma)
 const getLeaderboard = new GetLeaderboard(leaderboardRepo)
 const getLeaderboardHistory = new GetLeaderboardHistory(leaderboardRepo)
 
-const registerMatchResult = new RegisterMatchResult(partidaRepo)
+const bracketPropagation = new BracketPropagationService(loadBracketDependencias())
+const registerMatchResult = new RegisterMatchResult(partidaRepo, bracketPropagation)
 const calculateScoreForMatch = new CalculateScoreForMatch(tournamentReadPort, palpiteRepo)
 const getAdminUserPalpites = new GetAdminUserPalpites(palpiteRepo)
 const adminUpdatePalpite = new AdminUpdatePalpite(palpiteRepo, tournamentReadPort)
@@ -134,7 +140,7 @@ const generateKnockoutBracket = new GenerateKnockoutBracket(grupoRepo, partidaRe
 app.get('/health', async () => ({ status: 'ok' }))
 
 await app.register(authRoutes, { prefix: '/auth', registerUser, loginUser, tokenService })
-await app.register(partidasRoutes, { listMatches })
+await app.register(partidasRoutes, { listMatches, listMataMataMatches })
 await app.register(palpitesRoutes, { submitPrediction, getMyPredictions, getPredictionsForMatch, tokenService })
 await app.register(palpitesEstaticosRoutes, { submitStaticMarketPrediction, getMyStaticPredictions, tokenService })
 await app.register(leaderboardRoutes, { getLeaderboard, getLeaderboardHistory, tokenService })

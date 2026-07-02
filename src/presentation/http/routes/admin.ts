@@ -27,6 +27,7 @@ interface AdminRouteOptions {
 const RegisterResultBodySchema = z.object({
   golsCasa: z.number().int().min(0),
   golsFora: z.number().int().min(0),
+  vencedorPenaltisEquipeId: z.number().int().optional(),
 })
 
 const UpdatePalpiteBodySchema = z.object({
@@ -59,6 +60,7 @@ export const adminRoutes: FastifyPluginAsync<AdminRouteOptions> = async (fastify
       partidaId,
       golsCasa: body.golsCasa,
       golsFora: body.golsFora,
+      vencedorPenaltisEquipeId: body.vencedorPenaltisEquipeId,
     })
 
     const { count } = await opts.calculateScoreForMatch.execute({ partidaId })

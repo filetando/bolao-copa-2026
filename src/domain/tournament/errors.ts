@@ -31,3 +31,11 @@ export class MatchNotEncerradaError extends AppError {
     super('MATCH_NOT_ENCERRADA', 'Partida ainda não encerrada.')
   }
 }
+
+export class PenaltyWinnerRequiredError extends AppError {
+  constructor() {
+    // DOMAIN_RULES.md §6 — mata-mata empatado no tempo normal exige vencedor de pênaltis
+    // para saber quem propaga para a rodada seguinte
+    super('PENALTY_WINNER_REQUIRED', 'Empate em jogo de mata-mata exige o vencedor nos pênaltis.')
+  }
+}

@@ -24,6 +24,9 @@ export interface PartidaListItem {
 
 export interface PartidaBasica {
   id: number
+  faseId: string
+  equipeCasaId: number | null
+  equipeForaId: number | null
   status: string
 }
 
@@ -33,11 +36,21 @@ export interface AtualizacaoEquipesResolvidas {
   equipeForaId: number | null
 }
 
+export interface ResolucaoLadoPartida {
+  partidaId: number
+  lado: 'casa' | 'fora'
+  equipeId: number
+}
+
 export interface PartidaRepository {
   findAllOrderedByDate(): Promise<PartidaListItem[]>
+  findMataMata(): Promise<PartidaListItem[]>
   findById(id: number): Promise<PartidaBasica | null>
-  registerResult(id: number, golsCasa: number, golsFora: number): Promise<void>
-  // Marco 3 (BracketGeneratorService) / Marco 4 (propagação de vencedores) — atualiza
-  // equipe_casa_id/equipe_fora_id de várias partidas em UMA transação (DATABASE.md §4).
+  registerResult(id: number, golsCasa: number, golsFora: number, vencedorPenaltisEquipeId?: number): Promise<void>
+  // Marco 3 (BracketGeneratorService) — atualiza equipe_casa_id/equipe_fora_id de várias
+  // partidas (ambos os lados conhecidos de uma vez) em UMA transação (DATABASE.md §4).
   updateEquipesResolvidas(updates: AtualizacaoEquipesResolvidas[]): Promise<void>
+  // Marco 4 (BracketPropagationService) — atualiza apenas UM lado (casa OU fora) de cada
+  // partida, preservando o outro lado (que pode já estar resolvido ou ainda pendente).
+  resolverLadosPartidas(resolucoes: ResolucaoLadoPartida[]): Promise<void>
 }

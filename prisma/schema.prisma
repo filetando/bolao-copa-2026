@@ -40,6 +40,7 @@ model Equipe {
 
   partidasCasa      Partida[]       @relation("EquipeCasa")
   partidasFora      Partida[]       @relation("EquipeFora")
+  partidasVencidasPenaltis Partida[] @relation("VencedorPenaltis")
   palpitesEstaticos PalpiteEstatico[]
 
   @@map("equipes")
@@ -70,6 +71,10 @@ model Partida {
   placeholderFora   String?  @map("placeholder_fora") @db.VarChar(60)
   golsCasa          Int?     @map("gols_casa") @db.SmallInt
   golsFora          Int?     @map("gols_fora") @db.SmallInt
+  // Marco 4 — DOMAIN_RULES.md §6: preenchida só quando fase != 'grupos' e houve empate no
+  // tempo normal (gols_casa = gols_fora); usada para saber quem propaga para a rodada seguinte.
+  vencedorPenaltisEquipeId Int? @map("vencedor_penaltis_equipe_id")
+  vencedorPenaltisEquipe   Equipe? @relation("VencedorPenaltis", fields: [vencedorPenaltisEquipeId], references: [id])
   status            String   @default("agendada") @db.VarChar(20)
   dataHoraUtc       DateTime @map("data_hora_utc") @db.Timestamptz(6)
   estadio           String?  @db.VarChar(80)
