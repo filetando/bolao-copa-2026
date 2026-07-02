@@ -61,7 +61,8 @@ export function BracketTree({ partidas }: BracketTreeProps) {
   return (
     <div className="space-y-6">
       {/* Mobile/tablet: uma coluna por rodada, com scroll horizontal (não dá pra desenhar os
-          dois lados convergindo em telas estreitas sem virar ilegível). */}
+          dois lados convergindo em telas estreitas sem virar ilegível). A final e a disputa
+          de 3º lugar ficam juntas na última coluna, o 3º lugar embaixo da final. */}
       <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 lg:hidden">
         {ORDEM_RODADAS.filter((rodada) => porRodada.has(rodada)).map((rodada) => (
           <div key={rodada} className="snap-start shrink-0 flex flex-col gap-4 min-w-[14rem]">
@@ -71,29 +72,41 @@ export function BracketTree({ partidas }: BracketTreeProps) {
                 <BracketMatchNode key={p.id} partida={p} />
               ))}
             </div>
+            {rodada === RODADA_FINAL && terceiroLugar && (
+              <div className="pt-3 border-t border-border">
+                <h4 className="text-xs font-semibold text-muted uppercase tracking-wide mb-2">3º Lugar</h4>
+                <BracketMatchNode partida={terceiroLugar} />
+              </div>
+            )}
           </div>
         ))}
       </div>
 
-      {/* Desktop: dois lados convergindo para a final no centro. */}
+      {/* Desktop: dois lados convergindo para a final no centro; 3º lugar logo abaixo dela. */}
       <div className="hidden lg:flex gap-4 overflow-x-auto pb-2">
         <Coluna titulo="16-Avos" partidas={porTodasIds(LADO_ESQUERDO.dezesseisAvos)} />
         <Coluna titulo="Oitavas" partidas={porTodasIds(LADO_ESQUERDO.oitavas)} />
         <Coluna titulo="Quartas" partidas={porTodasIds(LADO_ESQUERDO.quartas)} />
         <Coluna titulo="Semifinal" partidas={semiEsquerda} className="justify-center" />
-        <Coluna titulo="🏆 Final" partidas={final} className="justify-center" />
+        <div className="shrink-0 flex flex-col gap-4 min-w-[14rem]">
+          <h3 className="text-xs font-semibold text-muted uppercase tracking-wide text-center">🏆 Final</h3>
+          <div className="flex flex-col items-center gap-6 justify-center flex-1">
+            {final.map((p) => (
+              <BracketMatchNode key={p.id} partida={p} />
+            ))}
+            {terceiroLugar && (
+              <div className="w-full pt-4 border-t border-border">
+                <h4 className="text-xs font-semibold text-muted uppercase tracking-wide mb-2 text-center">3º Lugar</h4>
+                <BracketMatchNode partida={terceiroLugar} />
+              </div>
+            )}
+          </div>
+        </div>
         <Coluna titulo="Semifinal" partidas={semiDireita} className="justify-center" />
         <Coluna titulo="Quartas" partidas={porTodasIds(LADO_DIREITO.quartas)} />
         <Coluna titulo="Oitavas" partidas={porTodasIds(LADO_DIREITO.oitavas)} />
         <Coluna titulo="16-Avos" partidas={porTodasIds(LADO_DIREITO.dezesseisAvos)} />
       </div>
-
-      {terceiroLugar && (
-        <div className="pt-4 border-t border-border">
-          <h3 className="text-xs font-semibold text-muted uppercase tracking-wide mb-3">Disputa de 3º Lugar</h3>
-          <BracketMatchNode partida={terceiroLugar} />
-        </div>
-      )}
     </div>
   )
 }
