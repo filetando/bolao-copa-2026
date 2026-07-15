@@ -7,7 +7,7 @@
 
 ## 1. Objetivo
 
-Sistema web (intranet) onde colegas fazem palpites de placar para os 104 jogos da Copa 2026 + 4 mercados estáticos, acumulam pontos conforme `DOMAIN_RULES.md`, e disputam um ranking.
+Sistema web (intranet) onde colegas fazem palpites de placar para os 104 jogos da Copa 2026, acumulam pontos conforme `DOMAIN_RULES.md`, e disputam um ranking.
 
 ## 2. MVP — escopo funcional
 
@@ -16,15 +16,10 @@ Sistema web (intranet) onde colegas fazem palpites de placar para os 104 jogos d
 - Login: username, senha.
 - `nome` exibido em toda a aplicação (header, leaderboard, lista de palpites).
 
-### 2.2 Primeiro acesso (Bolão — mercados estáticos)
-- Após o primeiro login, formulário obrigatório com 4 perguntas: campeão, vice-campeão, terceiro lugar (do torneio), artilheiro.
-- Travado/imutável a partir de 11/06/2026 (abertura) — ver `DOMAIN_RULES.md` §9.
-- Se o usuário se cadastrar **depois** de 11/06, esses campos ficam visíveis mas desabilitados/somente leitura, com explicação ("período de palpites de longo prazo encerrado").
-
-### 2.3 Home
+### 2.2 Home
 - Ranking geral (leaderboard): posição, nome, pontos totais.
 
-### 2.4 Partidas
+### 2.3 Partidas
 - Lista agrupada por data (fuso BRT), conforme `FRONTEND_GUIDELINES.md` §6.
 - `MatchCard` por partida conforme `FRONTEND_GUIDELINES.md` §3.
 - Envio/edição de palpite (gols casa/fora) respeitando bloqueio (`DOMAIN_RULES.md` §10, ADR-004).
@@ -42,7 +37,6 @@ Sistema web (intranet) onde colegas fazem palpites de placar para os 104 jogos d
 ## 4. Critérios de aceite do MVP (resumo)
 
 - [ ] Usuário consegue se cadastrar e logar.
-- [ ] Usuário novo é direcionado ao formulário de mercados estáticos antes de acessar o resto do app (se antes de 11/06).
 - [ ] Usuário vê a lista de partidas agrupadas por data, em BRT.
 - [ ] Usuário consegue enviar/editar palpite até o horário de bloqueio; após isso, recebe erro claro (frontend e backend).
 - [ ] Após admin registrar resultado de uma partida, pontos são calculados e refletidos no leaderboard.

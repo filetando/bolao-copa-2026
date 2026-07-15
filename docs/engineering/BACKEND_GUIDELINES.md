@@ -13,7 +13,7 @@ src/
 │   ├── identity/          # Usuario
 │   ├── tournament/         # Equipe, Grupo, Partida, Fase, ClassificacaoService,
 │   │                        # TerceirosColocadosService, AnexoCLookup, BracketGeneratorService
-│   └── bolao/              # Palpite, PalpiteEstatico, RegraPontuacao, MultiplicadorFase
+│   └── bolao/              # Palpite, RegraPontuacao, MultiplicadorFase
 │
 ├── application/
 │   ├── identity/use-cases/        # RegisterUser, LoginUser

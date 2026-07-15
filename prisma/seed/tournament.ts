@@ -11,7 +11,7 @@ const prisma = new PrismaClient()
 const GRUPOS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L']
 
 // ─── grupo_simultaneo_id para partidas R3 ────────────────────────────────────
-// DOMAIN_RULES.md §10 — R3 de cada grupo são simultâneas; corte = menor horário do conjunto
+// DOMAIN_RULES.md §9 — R3 de cada grupo são simultâneas; corte = menor horário do conjunto
 // IDs 1-12 reservados para R3 de grupos (A=1, B=2, ..., L=12)
 const GRUPO_SIMULTANEO_GRUPO: Record<string, number> = {
   A: 1, B: 2, C: 3, D: 4, E: 5, F: 6,

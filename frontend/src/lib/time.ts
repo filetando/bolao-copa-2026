@@ -1,15 +1,7 @@
 const BRT = 'America/Sao_Paulo'
 
-// DOMAIN_RULES.md §10 — bloqueio no horário exato de início
+// DOMAIN_RULES.md §9 — bloqueio no horário exato de início
 export const LOCK_WINDOW_MS = 0
-
-// Date da abertura do torneio — mercados estáticos travados a partir daqui
-// DOMAIN_RULES.md §9
-export const STATIC_MARKET_LOCK = new Date('2026-06-11T03:00:00Z')
-
-export function isStaticMarketLocked(): boolean {
-  return Date.now() >= STATIC_MARKET_LOCK.getTime()
-}
 
 export function isMatchLocked(cutoffUtc: string): boolean {
   return Date.now() >= new Date(cutoffUtc).getTime() - LOCK_WINDOW_MS

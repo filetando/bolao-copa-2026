@@ -10,8 +10,8 @@
 
 ```
 usuarios ──< palpites >── partidas ──< partidas_grupos >── grupos ──< grupos_equipes >── equipes
-   │                          │
-   └──< palpites_estaticos    └── (FK fase_id) fases
+                              │
+                              └── (FK fase_id) fases
 
 confrontos_terceiros (tabela de referência estática, sem FKs — ver Anexo C)
 ```
@@ -118,21 +118,7 @@ Restrições:
 - `idx_palpites_partida` em `partida_id` (para "ver palpites de todos nesta partida").
 - `idx_palpites_usuario` em `usuario_id` (perfil do usuário, leaderboard).
 
-### 2.7 `palpites_estaticos` (bolao)
-
-| Coluna | Tipo | Notas |
-|---|---|---|
-| id | UUID PK | |
-| usuario_id | UUID NOT NULL | FK → `usuarios.id` |
-| mercado | VARCHAR(20) NOT NULL | `campeao` \| `vice` \| `terceiro_lugar` \| `artilheiro` |
-| valor_equipe_id | INTEGER NULL | FK → `equipes.id`, usado para campeão/vice/terceiro |
-| valor_texto | VARCHAR(80) NULL | usado para artilheiro (nome do jogador, texto livre ou FK futura para tabela `jogadores`) |
-| pontos_obtidos | SMALLINT NULL | preenchido em 19/07 |
-| travado_em | TIMESTAMPTZ NOT NULL DEFAULT now() | |
-
-Restrições: `UNIQUE (usuario_id, mercado)`.
-
-### 2.8 `confrontos_terceiros` (tournament — Anexo C, dado estático)
+### 2.7 `confrontos_terceiros` (tournament — Anexo C, dado estático)
 
 > Já especificada e populada em `confrontos_terceiros.sql` / `.csv` / `.json` (gerados a partir do Anexo C oficial da FIFA — ver entrega anterior). Reproduzida aqui para referência:
 
@@ -159,7 +145,6 @@ Carga inicial: importar `confrontos_terceiros.sql` (495 linhas) via migration de
 ## 3. Relacionamentos N:N
 
 - `usuarios` ↔ `partidas` via `palpites` (com atributos próprios — pontos, placares — por isso é uma **tabela associativa real**, não uma tabela de junção pura).
-- `usuarios` ↔ `equipes`/mercados via `palpites_estaticos`, mesma lógica.
 
 > Guia Seção 2 alerta contra modelar N:N "via listas literais" (ex.: array de IDs em uma coluna JSON). Aqui ambos os relacionamentos N:N viram tabelas próprias com FKs e `UNIQUE` compostas — modelo relacional correto.
 

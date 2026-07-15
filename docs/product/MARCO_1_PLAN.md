@@ -77,7 +77,7 @@ Não implemente nenhuma entidade/use case ainda — apenas o esqueleto.
 Leia docs/architecture/DATABASE.md e docs/architecture/DOMAIN_RULES.md.
 
 1. Crie o schema Prisma com as tabelas: usuarios, grupos, equipes, fases,
-   partidas, palpites, palpites_estaticos, confrontos_terceiros — exatamente
+   partidas, palpites, confrontos_terceiros — exatamente
    conforme os campos/índices/constraints descritos em DATABASE.md (siga o
    checklist "antes de criar migrations" do AGENTS.md).
 
@@ -191,7 +191,7 @@ podem ficar abertas).
 
 **Prompt sugerido:**
 ```
-Leia docs/architecture/DOMAIN_RULES.md §10, docs/architecture/DECISIONS_LOG.md
+Leia docs/architecture/DOMAIN_RULES.md §9, docs/architecture/DECISIONS_LOG.md
 (ADR-004), docs/architecture/ARCHITECTURE.md §3.3/§4 (Bolão) e
 docs/ai-workflow/skills/security-reviewer.md.
 
@@ -231,46 +231,9 @@ Use exceções tipadas (PredictionLockedError, MatchNotFoundError).
 
 ---
 
-## Tarefa 5 — Bolão: mercados estáticos (primeiro acesso)
+## Tarefa 5 — Leaderboard (Home)
 
-**Objetivo:** formulário obrigatório de campeão/vice/3º/artilheiro no primeiro login, travado após 11/06.
-
-**Prompt sugerido:**
-```
-Leia docs/architecture/DOMAIN_RULES.md §9 e
-docs/product/PRODUCT_REQUIREMENTS.md §2.2.
-
-Implemente:
-- application/bolao/use-cases: SubmitStaticMarketPrediction(usuarioId,
-  mercado, valor) — valida now() < dataAberturaTorneio (11/06/2026,
-  configurável via env ou tabela de configuração simples) e que o
-  mercado é um dos 4 válidos (campeao, vice, terceiro_lugar, artilheiro).
-- application/bolao/use-cases: GetMyStaticPredictions(usuarioId) e
-  HasCompletedFirstAccess(usuarioId) -> boolean (true se os 4 mercados
-  já têm registro).
-- presentation/http: POST /palpites-estaticos, GET /palpites-estaticos/me.
-- Reaproveite PalpiteEstaticoRepository seguindo o mesmo padrão das
-  tarefas anteriores.
-
-Atenção: "terceiro_lugar" aqui é o MERCADO ESTÁTICO (3º lugar do
-TORNEIO, jogo 103) — não confundir com "3º colocado de grupo"
-(DOMAIN_RULES.md, nota do Glossário). Use nomes de variável que deixem
-isso explícito.
-```
-
-**Arquivos esperados:** `src/application/bolao/use-cases/{SubmitStaticMarketPrediction,GetMyStaticPredictions,HasCompletedFirstAccess}.ts`, `src/infrastructure/repositories/PrismaPalpiteEstaticoRepository.ts`, `src/presentation/http/routes/palpites-estaticos.ts`.
-
-**Critério de aceite:** os 4 mercados podem ser enviados uma vez; reenvio após "abertura" retorna erro; `HasCompletedFirstAccess` reflete corretamente o estado.
-
-
-
-*(Ao concluir, faça commit e push — ver seção "Versionamento" no topo deste documento.)*
-
----
-
-## Tarefa 6 — Leaderboard (Home)
-
-**Objetivo:** ranking geral simples (soma de `pontos_obtidos` de `palpites` + `palpites_estaticos`).
+**Objetivo:** ranking geral simples (soma de `pontos_obtidos` de `palpites`).
 
 **Prompt sugerido:**
 ```
@@ -280,8 +243,8 @@ Implemente application/bolao/use-cases/GetLeaderboard() que retorna,
 ordenado por pontos desc:
   [{ usuarioId, nome, pontosTotais, posicao }]
 
-pontosTotais = soma(palpites.pontos_obtidos) + soma(palpites_estaticos.pontos_obtidos),
-tratando NULL como 0 (partidas/mercados ainda não avaliados).
+pontosTotais = soma(palpites.pontos_obtidos),
+tratando NULL como 0 (partidas ainda não avaliadas).
 
 Para o MVP, calcule sob demanda com uma query agregada (sem
 materialização/cache — ROADMAP.md §3 trata isso como melhoria futura,
@@ -301,9 +264,9 @@ decida e justifique brevemente).
 
 ---
 
-## Tarefa 7 — Frontend: telas principais
+## Tarefa 6 — Frontend: telas principais
 
-**Objetivo:** páginas de Login/Cadastro, Primeiro Acesso, Home (leaderboard) e Partidas, consumindo as rotas das tarefas anteriores.
+**Objetivo:** páginas de Login/Cadastro, Home (leaderboard) e Partidas, consumindo as rotas das tarefas anteriores.
 
 **Prompt sugerido:**
 ```
@@ -313,8 +276,6 @@ MatchCard, §6 fuso horário) e docs/product/PRODUCT_REQUIREMENTS.md.
 Implemente, seguindo Atomic Design (frontend/src/components/{atoms,
 molecules,organisms,templates,pages}):
 - pages/LoginPage, pages/RegisterPage
-- pages/FirstAccessPage (formulário dos 4 mercados estáticos, só
-  acessível se HasCompletedFirstAccess === false e antes de 11/06)
 - pages/HomePage (leaderboard)
 - pages/MatchesPage:
   - organisms/MatchCard conforme a especificação completa do
@@ -338,7 +299,7 @@ hardcode cores).
 
 ---
 
-## Tarefa 8 — Testes (domain crítico + E2E do bloqueio)
+## Tarefa 7 — Testes (domain crítico + E2E do bloqueio)
 
 **Objetivo:** cobrir os casos obrigatórios de `TESTING_STRATEGY.md` que já se aplicam ao Marco 1.
 

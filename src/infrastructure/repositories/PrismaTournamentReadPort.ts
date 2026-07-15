@@ -29,7 +29,7 @@ export class PrismaTournamentReadPort implements TournamentReadPort {
     }
   }
 
-  // DOMAIN_RULES.md §10 — retorna o menor dataHoraUtc do conjunto simultâneo
+  // DOMAIN_RULES.md §9 — retorna o menor dataHoraUtc do conjunto simultâneo
   async getMinDataHoraUtcForGrupoSimultaneo(grupoSimultaneoId: number): Promise<Date> {
     const row = await this.db.partida.findFirst({
       where: { grupoSimultaneoId },

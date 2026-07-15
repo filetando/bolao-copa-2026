@@ -15,8 +15,7 @@ model Usuario {
   role         String   @default("user") @db.VarChar(20)
   createdAt    DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
 
-  palpites          Palpite[]
-  palpitesEstaticos PalpiteEstatico[]
+  palpites Palpite[]
 
   @@map("usuarios")
 }
@@ -41,7 +40,6 @@ model Equipe {
   partidasCasa      Partida[]       @relation("EquipeCasa")
   partidasFora      Partida[]       @relation("EquipeFora")
   partidasVencidasPenaltis Partida[] @relation("VencedorPenaltis")
-  palpitesEstaticos PalpiteEstatico[]
 
   @@map("equipes")
 }
@@ -105,21 +103,6 @@ model Palpite {
   @@index([partidaId], name: "idx_palpites_partida")
   @@index([usuarioId], name: "idx_palpites_usuario")
   @@map("palpites")
-}
-
-model PalpiteEstatico {
-  id            String   @id @default(uuid()) @db.Uuid
-  usuarioId     String   @map("usuario_id") @db.Uuid
-  usuario       Usuario  @relation(fields: [usuarioId], references: [id])
-  mercado       String   @db.VarChar(20)
-  valorEquipeId Int?     @map("valor_equipe_id")
-  valorEquipe   Equipe?  @relation(fields: [valorEquipeId], references: [id])
-  valorTexto    String?  @map("valor_texto") @db.VarChar(80)
-  pontosObtidos Int?     @map("pontos_obtidos") @db.SmallInt
-  travadoEm     DateTime @default(now()) @map("travado_em") @db.Timestamptz(6)
-
-  @@unique([usuarioId, mercado])
-  @@map("palpites_estaticos")
 }
 
 // Tabela Anexo C (495 combinações possíveis dos 8 melhores 3os colocados)

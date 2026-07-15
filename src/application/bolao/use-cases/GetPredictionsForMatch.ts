@@ -14,7 +14,7 @@ export class GetPredictionsForMatch {
     private readonly tournament: TournamentReadPort,
   ) {}
 
-  // DOMAIN_RULES.md §10 — palpites de outros usuários só são visíveis após o bloqueio
+  // DOMAIN_RULES.md §9 — palpites de outros usuários só são visíveis após o bloqueio
   async execute(partidaId: number, requestingUserId: string): Promise<Result> {
     const partida = await this.tournament.getPartida(partidaId)
     if (!partida) throw new MatchNotFoundError()

@@ -36,7 +36,7 @@ export const palpitesRoutes: FastifyPluginAsync<PalpitesRouteOptions> = async (f
   })
 
   // GET /palpites/partida/:id — palpites de uma partida
-  // DOMAIN_RULES.md §10 — outros usuários visíveis apenas após o bloqueio
+  // DOMAIN_RULES.md §9 — outros usuários visíveis apenas após o bloqueio
   fastify.get('/palpites/partida/:id', { preHandler: [authenticate] }, async (request, reply) => {
     const { id } = request.params as { id: string }
     const partidaId = parseInt(id, 10)

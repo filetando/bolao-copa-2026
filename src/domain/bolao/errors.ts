@@ -11,10 +11,3 @@ export class MatchNotFoundError extends AppError {
     super('MATCH_NOT_FOUND', 'Partida não encontrada.')
   }
 }
-
-export class StaticMarketLockedError extends AppError {
-  constructor() {
-    // DOMAIN_RULES.md §9 — imutável após 11/06/2026 (abertura do torneio)
-    super('STATIC_MARKET_LOCKED', 'Palpites estáticos encerrados: o torneio já começou.')
-  }
-}

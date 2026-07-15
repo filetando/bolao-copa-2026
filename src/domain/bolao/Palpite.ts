@@ -1,6 +1,6 @@
 import { PredictionLockedError } from './errors.js'
 
-// DOMAIN_RULES.md §10 — bloqueio no horário exato de início da partida
+// DOMAIN_RULES.md §9 — bloqueio no horário exato de início da partida
 export const LOCK_WINDOW_MS = 0
 
 export class Palpite {
@@ -21,7 +21,7 @@ export class Palpite {
     this.golsForaPalpite = props.golsForaPalpite
   }
 
-  // DOMAIN_RULES.md §10 + ADR-004: bloqueio validado no backend
+  // DOMAIN_RULES.md §9 + ADR-004: bloqueio validado no backend
   // lockCutoff = menor dataHoraUtc do grupoSimultaneo (ou a própria partida, se não houver grupo)
   static create(
     usuarioId: string,

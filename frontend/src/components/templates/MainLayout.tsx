@@ -24,13 +24,6 @@ function IconTable({ className = '' }: { className?: string }) {
     </svg>
   )
 }
-function IconStar({ className = '' }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="m12 3 2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8L6.6 19.6l1-6L3.3 9.4l6-.9L12 3Z" />
-    </svg>
-  )
-}
 function IconShield({ className = '' }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -60,7 +53,6 @@ const NAV_ITEMS: NavItem[] = [
   { to: '/partidas', label: 'Partidas', icon: IconBall },
   { to: '/classificacao', label: 'Grupos', icon: IconTable },
   { to: '/mata-mata', label: 'Mata-mata', icon: IconBracket },
-  { to: '/primeiro-acesso', label: 'Estáticos', icon: IconStar },
   { to: '/admin', label: 'Admin', icon: IconShield, adminOnly: true },
 ]
 

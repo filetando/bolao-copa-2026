@@ -19,10 +19,6 @@ import { PrismaTournamentReadPort } from '../repositories/PrismaTournamentReadPo
 import { SubmitPrediction } from '../../application/bolao/use-cases/SubmitPrediction.js'
 import { GetMyPredictions } from '../../application/bolao/use-cases/GetMyPredictions.js'
 import { GetPredictionsForMatch } from '../../application/bolao/use-cases/GetPredictionsForMatch.js'
-import { palpitesEstaticosRoutes } from '../../presentation/http/routes/palpitesEstaticos.js'
-import { PrismaPalpiteEstaticoRepository } from '../repositories/PrismaPalpiteEstaticoRepository.js'
-import { SubmitStaticMarketPrediction } from '../../application/bolao/use-cases/SubmitStaticMarketPrediction.js'
-import { GetMyStaticPredictions } from '../../application/bolao/use-cases/GetMyStaticPredictions.js'
 import { leaderboardRoutes } from '../../presentation/http/routes/leaderboard.js'
 import { PrismaLeaderboardRepository } from '../repositories/PrismaLeaderboardRepository.js'
 import { GetLeaderboard } from '../../application/bolao/use-cases/GetLeaderboard.js'
@@ -77,7 +73,6 @@ app.setErrorHandler((error, request, reply) => {
       INVALID_CREDENTIALS: 401,
       PREDICTION_LOCKED: 409,
       MATCH_NOT_FOUND: 404,
-      STATIC_MARKET_LOCKED: 409,
       MATCH_ALREADY_FINISHED: 409,
       MATCH_NOT_ENCERRADA: 422,
       GROUP_NOT_FOUND: 404,
@@ -114,10 +109,6 @@ const submitPrediction = new SubmitPrediction(palpiteRepo, tournamentReadPort)
 const getMyPredictions = new GetMyPredictions(palpiteRepo)
 const getPredictionsForMatch = new GetPredictionsForMatch(palpiteRepo, tournamentReadPort)
 
-const palpiteEstaticoRepo = new PrismaPalpiteEstaticoRepository(prisma)
-const submitStaticMarketPrediction = new SubmitStaticMarketPrediction(palpiteEstaticoRepo)
-const getMyStaticPredictions = new GetMyStaticPredictions(palpiteEstaticoRepo)
-
 const leaderboardRepo = new PrismaLeaderboardRepository(prisma)
 const getLeaderboard = new GetLeaderboard(leaderboardRepo)
 const getLeaderboardHistory = new GetLeaderboardHistory(leaderboardRepo)
@@ -145,7 +136,6 @@ app.get('/health', async () => ({ status: 'ok' }))
 await app.register(authRoutes, { prefix: '/auth', registerUser, loginUser, tokenService })
 await app.register(partidasRoutes, { listMatches, listMataMataMatches })
 await app.register(palpitesRoutes, { submitPrediction, getMyPredictions, getPredictionsForMatch, tokenService })
-await app.register(palpitesEstaticosRoutes, { submitStaticMarketPrediction, getMyStaticPredictions, tokenService })
 await app.register(leaderboardRoutes, { getLeaderboard, getLeaderboardHistory, tokenService })
 await app.register(adminRoutes, { registerMatchResult, calculateScoreForMatch, saveStandingsSnapshot, getAdminUserPalpites, adminUpdatePalpite, adminUpsertPalpite, getAdminPartidasComPalpite, generateKnockoutBracket, listUsers, tokenService })
 await app.register(gruposRoutes, { getGroupStandings })

@@ -97,26 +97,13 @@ Estrutura completa em `bolao-copa-2026_1.md`, Seção 6. Resumo do fluxo de depe
 
 `Pontuação final = Pontos base × Multiplicador da fase`
 
-## 9. Mercados estáticos (palpites de longo prazo)
-
-| Mercado | Avaliado em | Bônus |
-|---|---|---|
-| Campeão | 19/07 | +100 |
-| Vice-campeão | 19/07 | +70 |
-| Terceiro lugar (do torneio) | 19/07 | +40 |
-| Artilheiro (Chuteira de Ouro) | fim do torneio | +30 |
-
-> ⚠️ Não confundir "Terceiro lugar (do torneio)" (mercado estático, jogo 103) com "3º colocado de grupo" (Seção 4/5). São conceitos homônimos em contextos diferentes — **linguagem ubíqua exige nomes distintos no código**: `terceiroColocadoGrupo` vs. `terceiroLugarTorneio`.
-
-**Trava:** registrados/travados antes de 11/06/2026 (abertura), imutáveis depois.
-
-## 10. Bloqueio de palpites de partida
+## 9. Bloqueio de palpites de partida
 
 - Bloqueado no horário exato de início (UTC).
 - Partidas simultâneas (R3 da fase de grupos, e diversos jogos do mata-mata) travam **todos** os formulários do conjunto ao mesmo tempo — o "horário de corte" é o **menor** horário de início entre as partidas do conjunto simultâneo.
 - **Validação é responsabilidade do backend** (ADR-004 em `DECISIONS_LOG.md`); frontend apenas reflete o estado.
 
-## 11. Fusos horários
+## 10. Fusos horários
 
 - Backend: sempre UTC (`Partida.dataHoraUTC`).
 - Frontend: converte para o fuso do usuário via `Intl`/API do navegador. Exibição padrão do bolão é BRT (UTC-3 fixo, Brasil não tem horário de verão durante o torneio).
@@ -129,7 +116,6 @@ Estrutura completa em `bolao-copa-2026_1.md`, Seção 6. Resumo do fluxo de depe
 | Termo | Significado | Contexto |
 |---|---|---|
 | Palpite | Previsão de placar de uma partida específica feita por um usuário | `bolao` |
-| Palpite estático | Previsão de mercado de longo prazo (campeão, artilheiro, etc.) | `bolao` |
 | Pontos (de tabela) | Pontuação de V/E/D usada para classificação | `tournament` |
 | Pontos (do bolão) | Pontuação obtida por um palpite após aplicar a cascata + multiplicador | `bolao` |
 | Confronto direto | Resultado de jogos entre as equipes empatadas, dentro do próprio grupo | `tournament` |

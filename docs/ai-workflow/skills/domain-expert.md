@@ -3,9 +3,9 @@
 **Responsabilidade:** garantir que qualquer feature, regra ou cálculo implementado reflita exatamente `DOMAIN_RULES.md` (e, na dúvida, `bolao-copa-2026_1.md`). É o "guardião" da linguagem ubíqua e das regras do bolão — primeira skill acionada na etapa de **Análise** do `WORKFLOW.md`.
 
 **Quando usar:**
-- Antes de implementar qualquer lógica de pontuação, desempate, Anexo C, multiplicadores ou mercados estáticos.
+- Antes de implementar qualquer lógica de pontuação, desempate, Anexo C ou multiplicadores.
 - Quando o usuário descrever uma regra nova ou uma exceção não coberta em `DOMAIN_RULES.md`.
-- Para revisar se um termo usado no código (`terceiroColocadoGrupo` vs `terceiroLugarTorneio`, por exemplo) está correto.
+- Para revisar se um termo usado no código reflete corretamente a linguagem ubíqua de `DOMAIN_RULES.md`.
 
 **Entrada esperada:**
 - Descrição da feature/regra em linguagem natural.

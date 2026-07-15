@@ -14,7 +14,7 @@ interface Output {
   pontosObtidos: number | null
 }
 
-// Admin bypassa a janela de bloqueio — DOMAIN_RULES.md §10 aplica somente a usuários comuns
+// Admin bypassa a janela de bloqueio — DOMAIN_RULES.md §9 aplica somente a usuários comuns
 export class AdminUpsertPalpite {
   constructor(
     private readonly palpiteRepo: PalpiteRepository,

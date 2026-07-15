@@ -70,7 +70,7 @@ Este projeto é classificado como:
 
 ### 2.3 Bolão / Predictions & Scoring (`bolao`)
 
-**Responsabilidade:** palpites dos usuários (partida a partida + mercados estáticos), cálculo de pontuação (cascata de regras + multiplicadores), leaderboard.
+**Responsabilidade:** palpites dos usuários (partida a partida), cálculo de pontuação (cascata de regras + multiplicadores), leaderboard.
 
 **Anti-Corruption Layer (ACL):** `bolao` **lê** dados de `tournament` (resultado oficial de uma partida, status "finalizada") através de uma interface própria (`TournamentReadPort`), nunca acessando as tabelas de `tournament` diretamente. Isso evita que uma mudança no modelo de `tournament` quebre `bolao` silenciosamente.
 
@@ -107,8 +107,6 @@ Este projeto é classificado como:
 | Elemento | Tipo | Notas |
 |---|---|---|
 | `Palpite` | Aggregate Root | id, usuarioId, partidaId, golsCasaPalpite, golsForaPalpite, criadoEm, atualizadoEm. Invariante: não pode existir/ser alterado se `now() > partida.dataHoraUTC - janelaBloqueio` |
-| `MercadoEstatico` | Value Object/Enum | `campeao`, `vice`, `terceiro_lugar`, `artilheiro` |
-| `PalpiteEstatico` | Aggregate Root | id, usuarioId, mercado, valorPalpite (equipeId ou jogadorId/nome), travadoEm. Invariante: não pode existir/ser alterado após `dataAberturaTorneio` |
 | `RegraPontuacao` | Domain Service | implementa a cascata de pontuação (placar exato → vencedor+gols → vencedor+saldo → empate correto → só vencedor → 0) |
 | `MultiplicadorFase` | Value Object | mapeia `Fase` → multiplicador (1, 1.5, 2, 4) |
 | `PontuacaoPartida` | Value Object | resultado de `RegraPontuacao × MultiplicadorFase` para um `Palpite` já resolvido |
@@ -131,7 +129,6 @@ Este projeto é classificado como:
 
 ### Bolão
 - `SubmitPrediction(usuarioId, partidaId, golsCasa, golsFora)` — valida janela de bloqueio (ADR-004) **no backend**
-- `SubmitStaticMarketPrediction(usuarioId, mercado, valor)` — valida `dataAberturaTorneio`
 - `CalculateScoreForMatch(partidaId)` — disparado por `MatchFinished`, aplica `RegraPontuacao` + `MultiplicadorFase` para todos os `Palpite` daquela partida
 - `GetLeaderboard()`
 - `GetUserPredictionsForMatch(partidaId)` — respeita regra de visibilidade ("exibir palpites de outros usuários quando permitido")

@@ -7,7 +7,7 @@
 
 ## 1. Convenções gerais
 
-- **Idioma do domínio:** português, refletindo a linguagem ubíqua de `DOMAIN_RULES.md` (`Palpite`, `Partida`, `Grupo`, `Equipe`, `MercadoEstatico`...). Termos técnicos genéricos (sem significado de domínio) podem ficar em inglês (`Repository`, `UseCase`, `DTO`).
+- **Idioma do domínio:** português, refletindo a linguagem ubíqua de `DOMAIN_RULES.md` (`Palpite`, `Partida`, `Grupo`, `Equipe`...). Termos técnicos genéricos (sem significado de domínio) podem ficar em inglês (`Repository`, `UseCase`, `DTO`).
 - **Nomenclatura:** `camelCase` para variáveis/funções TS, `PascalCase` para classes/tipos/entidades, `snake_case` para colunas de banco, `kebab-case` para nomes de arquivo de componentes React (`match-card.tsx`).
 - **Sem magic numbers/strings:** valores como `25, 18, 15, 10` (pontuação) e `1, 1.5, 2, 4` (multiplicadores) vivem em `RegraPontuacao`/`MultiplicadorFase` como constantes nomeadas, nunca espalhados em condicionais.
 - **Complexidade ciclomática:** funções com complexidade > 10 (McCabe) devem ser refatoradas — sinal claro disso é a `ClassificacaoService`, que deve ser quebrada em funções menores por critério de desempate, não um único `if/else` gigante.

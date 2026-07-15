@@ -120,17 +120,6 @@ export interface PartidaComPalpiteAdmin {
   palpite: PalpiteResumo | null
 }
 
-export type MercadoEstatico = 'campeao' | 'vice' | 'terceiro_lugar' | 'artilheiro'
-
-export interface PalpiteEstaticoData {
-  id: string
-  usuarioId: string
-  mercado: MercadoEstatico
-  valorEquipeId: number | null
-  valorTexto: string | null
-  pontosObtidos: number | null
-}
-
 export interface ConfrontoGerado {
   partidaId: number
   equipeCasaId: number | null

@@ -15,7 +15,7 @@ Sistema web de bolão da Copa do Mundo FIFA 2026 (intranet corporativa). Regras 
 Na ordem de relevância:
 
 1. `AGENTS.md` (este arquivo) — regras globais.
-2. `docs/architecture/DOMAIN_RULES.md` — se a tarefa envolve QUALQUER cálculo/regra de negócio (pontuação, desempate, Anexo C, multiplicadores, mercados estáticos, bloqueio de palpites).
+2. `docs/architecture/DOMAIN_RULES.md` — se a tarefa envolve QUALQUER cálculo/regra de negócio (pontuação, desempate, Anexo C, multiplicadores, bloqueio de palpites).
 3. `docs/architecture/ARCHITECTURE.md` — se a tarefa cria/altera entidades, use cases, ou mexe em mais de um Bounded Context.
 4. `docs/architecture/DATABASE.md` — se a tarefa cria/altera schema.
 5. `docs/engineering/SECURITY.md` — se a tarefa toca autenticação, autorização, ou input de usuário.

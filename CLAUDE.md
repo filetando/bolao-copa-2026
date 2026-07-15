@@ -10,7 +10,7 @@
 
 Antes de escrever qualquer linha de código, responda internamente (e, se relevante, explicite na resposta):
 
-1. **Que problema de negócio isso resolve?** Mapeie para `DOMAIN_RULES.md`. Se a tarefa fala em "terceiro lugar", pergunte-se: terceiro colocado de grupo (`tournament`) ou terceiro lugar do torneio (mercado estático, `bolao`)? São conceitos diferentes com nomes parecidos — confundi-los é o tipo de erro que "parece certo" mas está errado.
+1. **Que problema de negócio isso resolve?** Mapeie para `DOMAIN_RULES.md`. Se a tarefa fala em "terceiro lugar", verifique se é o terceiro colocado de grupo (`tournament`, `DOMAIN_RULES.md` §4/§5) — o único conceito de "terceiro lugar" que existe no domínio hoje.
 2. **Em qual camada e Bounded Context isso vive?** (`ARCHITECTURE.md`). Se a resposta não for óbvia, é sinal de que a tarefa pode estar misturando responsabilidades — separe antes de codar.
 3. **Quais invariantes não podem ser quebradas?** Ex.: "um palpite não pode existir após o bloqueio", "a combinação do Anexo C sempre tem 8 letras únicas", "pontos de palpite só existem após a partida ser `encerrada`".
 

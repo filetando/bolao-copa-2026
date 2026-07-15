@@ -12,6 +12,6 @@ export interface PartidaInfo {
 
 export interface TournamentReadPort {
   getPartida(id: number): Promise<PartidaInfo | null>
-  // DOMAIN_RULES.md §10 — retorna o menor dataHoraUtc do conjunto simultâneo
+  // DOMAIN_RULES.md §9 — retorna o menor dataHoraUtc do conjunto simultâneo
   getMinDataHoraUtcForGrupoSimultaneo(grupoSimultaneoId: number): Promise<Date>
 }

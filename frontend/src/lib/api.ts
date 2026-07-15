@@ -5,7 +5,6 @@ import type {
   PredictionsForMatch,
   LeaderboardRow,
   LeaderboardHistoryResponse,
-  PalpiteEstaticoData,
   ClassificacaoRow,
   UsuarioBasico,
   PalpiteComPartida,
@@ -93,17 +92,5 @@ export const api = {
       ),
     generateBracket: () =>
       request<GenerateBracketResponse>('/admin/mata-mata/gerar', { method: 'POST' }),
-  },
-  palpitesEstaticos: {
-    me: () => request<PalpiteEstaticoData[]>('/palpites-estaticos/me'),
-    submit: (mercado: string, valorEquipeId?: number, valorTexto?: string) =>
-      request<PalpiteEstaticoData>('/palpites-estaticos', {
-        method: 'POST',
-        body: JSON.stringify({
-          mercado,
-          ...(valorEquipeId != null ? { valorEquipeId } : {}),
-          ...(valorTexto != null ? { valorTexto } : {}),
-        }),
-      }),
   },
 }

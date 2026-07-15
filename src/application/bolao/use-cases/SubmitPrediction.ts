@@ -20,7 +20,7 @@ export class SubmitPrediction {
     const partida = await this.tournament.getPartida(input.partidaId)
     if (!partida) throw new MatchNotFoundError()
 
-    // DOMAIN_RULES.md §10 — partidas simultâneas usam o menor horário do conjunto
+    // DOMAIN_RULES.md §9 — partidas simultâneas usam o menor horário do conjunto
     const cutoff =
       partida.grupoSimultaneoId !== null
         ? await this.tournament.getMinDataHoraUtcForGrupoSimultaneo(partida.grupoSimultaneoId)

@@ -5,7 +5,6 @@ import { LoginPage } from './pages/LoginPage.tsx'
 import { RegisterPage } from './pages/RegisterPage.tsx'
 import { HomePage } from './pages/HomePage.tsx'
 import { MatchesPage } from './pages/MatchesPage.tsx'
-import { FirstAccessPage } from './pages/FirstAccessPage.tsx'
 import { AdminPage } from './pages/AdminPage.tsx'
 import { AdminPalpitesPage } from './pages/AdminPalpitesPage.tsx'
 import { ClassificacaoPage } from './pages/ClassificacaoPage.tsx'
@@ -43,7 +42,6 @@ export const router = createBrowserRouter([
           { path: '/partidas', element: <MatchesPage /> },
           { path: '/classificacao', element: <ClassificacaoPage /> },
           { path: '/mata-mata', element: <BracketPage /> },
-          { path: '/primeiro-acesso', element: <FirstAccessPage /> },
         ],
       },
       {

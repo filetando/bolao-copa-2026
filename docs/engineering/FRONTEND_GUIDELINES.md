@@ -60,7 +60,6 @@ Conforme prompt original, cada card de partida tem:
 - **Visibilidade de status (Nielsen #1):** todo `MatchCard` deixa claro o estado — agendado / travado / ao vivo / encerrado + pontuação.
 - **Prevenção de erros (Nielsen #5):** inputs de gols são `<input type="number" min="0" max="20">`, evitando valores absurdos antes mesmo de chegar ao backend (mas backend revalida — defesa em profundidade).
 - **Doherty Threshold (<400ms):** ao salvar um palpite, UI otimista (mostra o palpite salvo imediatamente) com rollback se a API rejeitar (ex.: `409 PREDICTION_LOCKED`).
-- **Lei de Hick:** tela de "primeiro acesso" pede só 4 palpites estáticos (campeão, vice, 3º, artilheiro) — não sobrecarregar com opções extras nessa etapa.
 - **Lei de Jakob:** ranking geral como home segue convenção de "leaderboard" comum (posição, nome, pontos), sem reinventar.
 
 ## 5. Acessibilidade (WCAG)

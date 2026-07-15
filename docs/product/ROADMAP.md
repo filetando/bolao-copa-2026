@@ -14,7 +14,7 @@
 ### Marco 1 — MVP (hoje, 11/06)
 - Identity: cadastro/login.
 - Tournament: seed de equipes/grupos/calendário (jogos 1–104, com placeholders no mata-mata).
-- Bolão: mercados estáticos (primeiro acesso), submissão de palpites de grupo (jogos 1–72), bloqueio de horário (backend), home/leaderboard básico.
+- Bolão: submissão de palpites de grupo (jogos 1–72), bloqueio de horário (backend), home/leaderboard básico.
 - **Entrega de código:** apenas isso. Resto fica em placeholders/dados estáticos.
 
 ### Marco 2 — Operação da fase de grupos (11/06–27/06)
@@ -32,7 +32,6 @@
 - Após cada rodada, vencedores/perdedores propagam para a rodada seguinte (lógica já coberta por `BracketGeneratorService`/use cases equivalentes para fases posteriores — generalizar o serviço para qualquer "Venc. Jogo X" / "Perd. Jogo X", não só os 73–88).
 
 ### Marco 5 — Encerramento (19/07+)
-- Avaliação dos mercados estáticos (campeão, vice, 3º lugar, artilheiro) → bônus aplicados.
 - Leaderboard final, possível exportação/relatório.
 
 ---
@@ -60,4 +59,4 @@
 
 ## 4. Próximo passo imediato
 
-Com a fundação pronta, o próximo passo é **Marco 1**: gerar o plano técnico detalhado (use cases + schema Prisma + rotas) **apenas** para Identity + Tournament (seed) + Bolão (palpites de grupo + mercados estáticos), seguindo o fluxo descrito em `docs/ai-workflow/WORKFLOW.md`.
+Com a fundação pronta, o próximo passo é **Marco 1**: gerar o plano técnico detalhado (use cases + schema Prisma + rotas) **apenas** para Identity + Tournament (seed) + Bolão (palpites de grupo), seguindo o fluxo descrito em `docs/ai-workflow/WORKFLOW.md`.
