@@ -1,5 +1,5 @@
 import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
-import type { CategoriaPalpite, PerfilAcertoUsuario } from '../../../types/index.ts'
+import type { CategoriaPerfil, PerfilAcertoUsuario } from '../../../types/index.ts'
 import { COR_CATEGORIA, ORDEM_CATEGORIAS, ROTULO_CATEGORIA } from '../../../lib/categoriaColors.ts'
 
 interface Props {
@@ -80,21 +80,38 @@ export function AccuracyProfileChart({ data }: Props) {
         <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(0,0,0,0.03)' }} />
         <Legend
           wrapperStyle={{ fontSize: 11 }}
-          itemSorter={(item) => ORDEM_CATEGORIAS.indexOf(item.dataKey as CategoriaPalpite)}
+          itemSorter={(item) => ORDEM_CATEGORIAS.indexOf(item.dataKey as CategoriaPerfil)}
         />
-        {ORDEM_CATEGORIAS.map((categoria) =>
-          categoria === 'erro' ? (
-            <Bar
-              key={categoria}
-              dataKey={categoria}
-              name={ROTULO_CATEGORIA[categoria]}
-              stackId="perfil"
-              fill={COR_CATEGORIA.erro}
-              fillOpacity={0.35}
-              stroke={COR_CATEGORIA.erro}
-              strokeWidth={1}
-            />
-          ) : (
+        {ORDEM_CATEGORIAS.map((categoria) => {
+          if (categoria === 'nao_palpitou') {
+            return (
+              <Bar
+                key={categoria}
+                dataKey={categoria}
+                name={ROTULO_CATEGORIA[categoria]}
+                stackId="perfil"
+                fill="transparent"
+                stroke={COR_CATEGORIA.nao_palpitou}
+                strokeDasharray="3 2"
+                strokeWidth={1}
+              />
+            )
+          }
+          if (categoria === 'erro') {
+            return (
+              <Bar
+                key={categoria}
+                dataKey={categoria}
+                name={ROTULO_CATEGORIA[categoria]}
+                stackId="perfil"
+                fill={COR_CATEGORIA.erro}
+                fillOpacity={0.35}
+                stroke={COR_CATEGORIA.erro}
+                strokeWidth={1}
+              />
+            )
+          }
+          return (
             <Bar
               key={categoria}
               dataKey={categoria}
@@ -102,8 +119,8 @@ export function AccuracyProfileChart({ data }: Props) {
               stackId="perfil"
               fill={COR_CATEGORIA[categoria]}
             />
-          ),
-        )}
+          )
+        })}
       </BarChart>
     </ResponsiveContainer>
   )

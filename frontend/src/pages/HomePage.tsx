@@ -9,6 +9,7 @@ import { PhaseEfficiencyChart } from '../components/organisms/dashboard/PhaseEff
 import { MultiplierCounterfactualChart } from '../components/organisms/dashboard/MultiplierCounterfactualChart.tsx'
 import { AccuracyDonutChart } from '../components/organisms/dashboard/AccuracyDonutChart.tsx'
 import { RecordCards } from '../components/organisms/dashboard/RecordCards.tsx'
+import { ScoringRulesCard } from '../components/organisms/ScoringRulesCard.tsx'
 import { Skeleton } from '../components/atoms/Skeleton.tsx'
 import type { LeaderboardRow, LeaderboardHistoryResponse, DashboardEstatisticas } from '../types/index.ts'
 
@@ -33,6 +34,8 @@ export function HomePage() {
   return (
     <div className="max-w-2xl mx-auto">
       <h2 className="text-2xl font-extrabold text-text mb-4">Ranking Geral</h2>
+
+      <ScoringRulesCard />
 
       {error && <p className="text-danger text-sm">{error}</p>}
 

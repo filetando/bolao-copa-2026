@@ -64,6 +64,7 @@ export interface LeaderboardHistoryPoint {
   pontosPorUsuario: Record<string, number>
   equipeCasaSigla: string | null
   equipeForaSigla: string | null
+  faseId: string
 }
 
 export interface LeaderboardHistoryResponse {
@@ -141,11 +142,15 @@ export type CategoriaPalpite =
   | 'so_vencedor'
   | 'erro'
 
+// Só o perfil de acerto distingue "não apostou" de "apostou e errou" — em todo o resto do
+// dashboard (contrafactual, recordes) as duas contam como "erro" pra fins de pontuação.
+export type CategoriaPerfil = CategoriaPalpite | 'nao_palpitou'
+
 export interface PerfilAcertoUsuario {
   usuarioId: string
   nome: string
   totalPalpites: number
-  categorias: Record<CategoriaPalpite, { quantidade: number; percentual: number }>
+  categorias: Record<CategoriaPerfil, { quantidade: number; percentual: number }>
 }
 
 export interface PontosPorFaseUsuario {

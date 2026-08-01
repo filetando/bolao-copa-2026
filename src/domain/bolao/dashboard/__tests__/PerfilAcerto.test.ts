@@ -40,8 +40,8 @@ describe('calcularPerfilAcerto', () => {
     expect(perfil.categorias.vencedor_gols).toEqual({ quantidade: 0, percentual: 0 })
   })
 
-  it('não apostar (golsCasaPalpite null) conta como erro, não é excluído do total', () => {
-    // 1 placar exato + 1 não-apostado = 2 palpites → 50% placar_exato, 50% erro
+  it('não apostar (golsCasaPalpite null) vira categoria própria "nao_palpitou", separada de "erro"', () => {
+    // 1 placar exato + 1 não-apostado = 2 palpites → 50% placar_exato, 50% nao_palpitou, 0% erro
     const rows = [
       row({ partidaId: 1, golsCasaPalpite: 2, golsForaPalpite: 1, golsCasa: 2, golsFora: 1 }),
       row({ partidaId: 2, golsCasaPalpite: null, golsForaPalpite: null, golsCasa: 2, golsFora: 1 }),
@@ -51,7 +51,8 @@ describe('calcularPerfilAcerto', () => {
 
     expect(perfil.totalPalpites).toBe(2)
     expect(perfil.categorias.placar_exato).toEqual({ quantidade: 1, percentual: 50 })
-    expect(perfil.categorias.erro).toEqual({ quantidade: 1, percentual: 50 })
+    expect(perfil.categorias.nao_palpitou).toEqual({ quantidade: 1, percentual: 50 })
+    expect(perfil.categorias.erro).toEqual({ quantidade: 0, percentual: 0 })
   })
 
   it('separa usuários distintos', () => {

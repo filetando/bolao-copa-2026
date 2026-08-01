@@ -51,19 +51,11 @@ export function RecordCards({ data }: Props) {
         detalhe={data.rodadaMaisPontuada?.rotulo ?? 'sem dados'}
       />
       <Card
-        rotulo="O jogo que todo mundo errou"
-        valor={
-          data.jogoQueTodosErraram && data.jogoQueTodosErraram.equipeCasaSigla && data.jogoQueTodosErraram.equipeForaSigla
-            ? `${data.jogoQueTodosErraram.equipeCasaSigla} x ${data.jogoQueTodosErraram.equipeForaSigla}`
-            : '—'
-        }
+        rotulo="Jogos que todos erraram"
+        valor={data.jogoQueTodosErraram ? String(data.jogoQueTodosErraram.totalDeJogosAssim) : '0'}
         detalhe={
-          data.jogoQueTodosErraram
-            ? `${data.jogoQueTodosErraram.faseNomeExibicao} · ×${data.jogoQueTodosErraram.multiplicador}${
-                data.jogoQueTodosErraram.totalDeJogosAssim > 1
-                  ? ` · ${data.jogoQueTodosErraram.totalDeJogosAssim} jogos assim`
-                  : ''
-              }`
+          data.jogoQueTodosErraram && data.jogoQueTodosErraram.equipeCasaSigla && data.jogoQueTodosErraram.equipeForaSigla
+            ? `ex.: ${data.jogoQueTodosErraram.equipeCasaSigla} x ${data.jogoQueTodosErraram.equipeForaSigla} (${data.jogoQueTodosErraram.faseNomeExibicao})`
             : 'ninguém errou tudo'
         }
       />

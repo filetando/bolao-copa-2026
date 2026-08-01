@@ -7,6 +7,7 @@ export interface LeaderboardHistoryPoint {
   pontosPorUsuario: Record<string, number>
   equipeCasaSigla: string | null
   equipeForaSigla: string | null
+  faseId: string
 }
 
 export interface LeaderboardHistoryResponse {
@@ -26,6 +27,7 @@ export class GetLeaderboardHistory {
       dataHoraUtc: string
       equipeCasaSigla: string | null
       equipeForaSigla: string | null
+      faseId: string
     }[] = []
     const partidaIndex = new Map<number, number>()
     const ganhosPorPartida: Record<number, Record<string, number>> = {}
@@ -40,6 +42,7 @@ export class GetLeaderboardHistory {
           dataHoraUtc: row.dataHoraUtc,
           equipeCasaSigla: row.equipeCasaSigla,
           equipeForaSigla: row.equipeForaSigla,
+          faseId: row.faseId,
         })
         ganhosPorPartida[row.partidaId] = {}
       }
@@ -62,6 +65,7 @@ export class GetLeaderboardHistory {
         pontosPorUsuario: { ...acumulado },
         equipeCasaSigla: partida.equipeCasaSigla,
         equipeForaSigla: partida.equipeForaSigla,
+        faseId: partida.faseId,
       }
     })
 

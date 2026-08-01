@@ -28,9 +28,9 @@ const LADO_DIREITO = { dezesseisAvos: [76, 78, 79, 80, 86, 88, 85, 87], oitavas:
 
 function Coluna({ titulo, partidas, className = '' }: { titulo: string; partidas: Partida[]; className?: string }) {
   return (
-    <div className={`shrink-0 flex flex-col gap-4 min-w-[14rem] ${className}`}>
+    <div className={`shrink-0 flex flex-col gap-4 min-w-[9rem] ${className}`}>
       <h3 className="text-xs font-semibold text-muted uppercase tracking-wide text-center">{titulo}</h3>
-      <div className="flex flex-col gap-4 justify-around flex-1">
+      <div className="flex flex-col gap-4 justify-start flex-1">
         {partidas.map((p) => (
           <BracketMatchNode key={p.id} partida={p} />
         ))}
@@ -65,9 +65,9 @@ export function BracketTree({ partidas }: BracketTreeProps) {
           de 3º lugar ficam juntas na última coluna, o 3º lugar embaixo da final. */}
       <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 lg:hidden">
         {ORDEM_RODADAS.filter((rodada) => porRodada.has(rodada)).map((rodada) => (
-          <div key={rodada} className="snap-start shrink-0 flex flex-col gap-4 min-w-[14rem]">
+          <div key={rodada} className="snap-start shrink-0 flex flex-col gap-4 min-w-[9rem]">
             <h3 className="text-xs font-semibold text-muted uppercase tracking-wide">{rodada}</h3>
-            <div className="flex flex-col gap-4 justify-around flex-1">
+            <div className="flex flex-col gap-4 justify-start flex-1">
               {porRodada.get(rodada)!.map((p) => (
                 <BracketMatchNode key={p.id} partida={p} />
               ))}
@@ -87,10 +87,10 @@ export function BracketTree({ partidas }: BracketTreeProps) {
         <Coluna titulo="16-Avos" partidas={porTodasIds(LADO_ESQUERDO.dezesseisAvos)} />
         <Coluna titulo="Oitavas" partidas={porTodasIds(LADO_ESQUERDO.oitavas)} />
         <Coluna titulo="Quartas" partidas={porTodasIds(LADO_ESQUERDO.quartas)} />
-        <Coluna titulo="Semifinal" partidas={semiEsquerda} className="justify-center" />
-        <div className="shrink-0 flex flex-col gap-4 min-w-[14rem]">
+        <Coluna titulo="Semifinal" partidas={semiEsquerda} />
+        <div className="shrink-0 flex flex-col gap-4 min-w-[9rem]">
           <h3 className="text-xs font-semibold text-muted uppercase tracking-wide text-center">🏆 Final</h3>
-          <div className="flex flex-col items-center gap-6 justify-center flex-1">
+          <div className="flex flex-col items-center gap-6 justify-start flex-1">
             {final.map((p) => (
               <BracketMatchNode key={p.id} partida={p} />
             ))}
@@ -102,7 +102,7 @@ export function BracketTree({ partidas }: BracketTreeProps) {
             )}
           </div>
         </div>
-        <Coluna titulo="Semifinal" partidas={semiDireita} className="justify-center" />
+        <Coluna titulo="Semifinal" partidas={semiDireita} />
         <Coluna titulo="Quartas" partidas={porTodasIds(LADO_DIREITO.quartas)} />
         <Coluna titulo="Oitavas" partidas={porTodasIds(LADO_DIREITO.oitavas)} />
         <Coluna titulo="16-Avos" partidas={porTodasIds(LADO_DIREITO.dezesseisAvos)} />

@@ -16,6 +16,7 @@ type RawHistoricoRow = {
   pontos_obtidos: number
   equipe_casa_sigla: string | null
   equipe_fora_sigla: string | null
+  fase_id: string
 }
 
 type RawDetalhePalpiteRow = {
@@ -69,7 +70,8 @@ export class PrismaLeaderboardRepository implements LeaderboardRepository {
         u.nome          AS nome,
         pa.pontos_obtidos AS pontos_obtidos,
         ec.sigla        AS equipe_casa_sigla,
-        ef.sigla        AS equipe_fora_sigla
+        ef.sigla        AS equipe_fora_sigla,
+        p.fase_id       AS fase_id
       FROM palpites pa
       JOIN partidas p ON p.id = pa.partida_id
       JOIN usuarios u ON u.id = pa.usuario_id
@@ -86,6 +88,7 @@ export class PrismaLeaderboardRepository implements LeaderboardRepository {
       pontosObtidos: r.pontos_obtidos,
       equipeCasaSigla: r.equipe_casa_sigla,
       equipeForaSigla: r.equipe_fora_sigla,
+      faseId: r.fase_id,
     }))
   }
 
