@@ -5,6 +5,8 @@ export interface LeaderboardHistoryPoint {
   dataHoraUtc: string
   rodada: number
   pontosPorUsuario: Record<string, number>
+  equipeCasaSigla: string | null
+  equipeForaSigla: string | null
 }
 
 export interface LeaderboardHistoryResponse {
@@ -19,7 +21,12 @@ export class GetLeaderboardHistory {
     const rows = await this.repo.findHistoricoPontos()
 
     const usuarios = new Map<string, string>()
-    const partidasOrdem: { partidaId: number; dataHoraUtc: string }[] = []
+    const partidasOrdem: {
+      partidaId: number
+      dataHoraUtc: string
+      equipeCasaSigla: string | null
+      equipeForaSigla: string | null
+    }[] = []
     const partidaIndex = new Map<number, number>()
     const ganhosPorPartida: Record<number, Record<string, number>> = {}
 
@@ -28,7 +35,12 @@ export class GetLeaderboardHistory {
 
       if (!partidaIndex.has(row.partidaId)) {
         partidaIndex.set(row.partidaId, partidasOrdem.length)
-        partidasOrdem.push({ partidaId: row.partidaId, dataHoraUtc: row.dataHoraUtc })
+        partidasOrdem.push({
+          partidaId: row.partidaId,
+          dataHoraUtc: row.dataHoraUtc,
+          equipeCasaSigla: row.equipeCasaSigla,
+          equipeForaSigla: row.equipeForaSigla,
+        })
         ganhosPorPartida[row.partidaId] = {}
       }
       ganhosPorPartida[row.partidaId][row.usuarioId] = row.pontosObtidos
@@ -48,6 +60,8 @@ export class GetLeaderboardHistory {
         dataHoraUtc: partida.dataHoraUtc,
         rodada: idx + 1,
         pontosPorUsuario: { ...acumulado },
+        equipeCasaSigla: partida.equipeCasaSigla,
+        equipeForaSigla: partida.equipeForaSigla,
       }
     })
 

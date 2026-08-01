@@ -1,7 +1,7 @@
 // Dashboard item 6 — cards de recorde para dar ritmo ao vídeo. Cada função é independente para
 // facilitar leitura e teste; `calcularRecordes` só orquestra.
-import { RegraPontuacao } from '../RegraPontuacao.js'
 import type { DetalhePalpiteRow } from './DetalhePalpiteRow.js'
+import { classificarComAusencia } from './classificarComAusencia.js'
 
 // Rótulo das 3 rodadas da fase de grupos (não existe coluna no schema — ver
 // src/infrastructure/tournament/loadRodadasGrupos.ts, que carrega o dado estático do seed).
@@ -23,6 +23,8 @@ export interface RecordeJogoQueTodosErraram {
   faseNomeExibicao: string
   multiplicador: number
   totalDeJogosAssim: number
+  equipeCasaSigla: string | null
+  equipeForaSigla: string | null
 }
 
 export interface Recordes {
@@ -46,11 +48,7 @@ function calcularMaisPlacaresExatos(rows: DetalhePalpiteRow[]): RecordePorUsuari
 
   for (const row of rows) {
     if (!porUsuario.has(row.usuarioId)) porUsuario.set(row.usuarioId, { nome: row.nome, quantidade: 0 })
-    const categoria = RegraPontuacao.classificar(
-      { golsCasa: row.golsCasaPalpite, golsFora: row.golsForaPalpite },
-      { golsCasa: row.golsCasa, golsFora: row.golsFora },
-    )
-    if (categoria === 'placar_exato') porUsuario.get(row.usuarioId)!.quantidade++
+    if (classificarComAusencia(row) === 'placar_exato') porUsuario.get(row.usuarioId)!.quantidade++
   }
 
   return [...porUsuario.entries()]
@@ -75,11 +73,7 @@ function calcularMaiorSequenciaDeAcertos(rows: DetalhePalpiteRow[]): RecordePorU
     let maior = 0
     let atual = 0
     for (const row of ordenadas) {
-      const categoria = RegraPontuacao.classificar(
-        { golsCasa: row.golsCasaPalpite, golsFora: row.golsForaPalpite },
-        { golsCasa: row.golsCasa, golsFora: row.golsFora },
-      )
-      atual = categoria === 'erro' ? 0 : atual + 1
+      atual = classificarComAusencia(row) === 'erro' ? 0 : atual + 1
       maior = Math.max(maior, atual)
     }
 
@@ -109,14 +103,13 @@ function calcularRodadaMaisPontuada(
   return melhor
 }
 
-// Partida em que os 3 jogadores erraram (categoria "erro") — destaca a de maior multiplicador
-// entre as que qualificam, já que é a mais "dolorida". Nem todo usuário palpita em toda
-// partida, então "todo mundo errou" só vale quando TODOS os usuários que aparecem em algum
-// palpite do dataset apostaram nessa partida (senão um único palpite perdido, sem os outros
-// dois terem apostado, contaria erradamente como "todo mundo errou").
+// Partida em que os 3 jogadores erraram (categoria "erro", incluindo quem não apostou) —
+// destaca a de maior multiplicador entre as que qualificam, já que é a mais "dolorida". Com
+// o cross join de findDetalhesPalpites, toda partida sempre tem uma linha por usuário
+// (apostada ou não), então "todo mundo errou" só fica interessante se PELO MENOS UM usuário
+// realmente apostou e errou — senão seria só "ninguém apostou nesse jogo", uma história bem
+// mais banal que não deveria virar recorde.
 function calcularJogoQueTodosErraram(rows: DetalhePalpiteRow[]): RecordeJogoQueTodosErraram | null {
-  const totalUsuarios = new Set(rows.map((r) => r.usuarioId)).size
-
   const porPartida = new Map<number, DetalhePalpiteRow[]>()
   for (const row of rows) {
     if (!porPartida.has(row.partidaId)) porPartida.set(row.partidaId, [])
@@ -125,15 +118,10 @@ function calcularJogoQueTodosErraram(rows: DetalhePalpiteRow[]): RecordeJogoQueT
 
   const candidatas: DetalhePalpiteRow[] = []
   for (const rowsDaPartida of porPartida.values()) {
-    if (rowsDaPartida.length < totalUsuarios) continue
+    const alguemApostou = rowsDaPartida.some((row) => row.golsCasaPalpite !== null)
+    if (!alguemApostou) continue
 
-    const todosErraram = rowsDaPartida.every(
-      (row) =>
-        RegraPontuacao.classificar(
-          { golsCasa: row.golsCasaPalpite, golsFora: row.golsForaPalpite },
-          { golsCasa: row.golsCasa, golsFora: row.golsFora },
-        ) === 'erro',
-    )
+    const todosErraram = rowsDaPartida.every((row) => classificarComAusencia(row) === 'erro')
     if (todosErraram) candidatas.push(rowsDaPartida[0])
   }
 
@@ -145,6 +133,8 @@ function calcularJogoQueTodosErraram(rows: DetalhePalpiteRow[]): RecordeJogoQueT
     faseNomeExibicao: destaque.faseNomeExibicao,
     multiplicador: destaque.multiplicador,
     totalDeJogosAssim: candidatas.length,
+    equipeCasaSigla: destaque.equipeCasaSigla,
+    equipeForaSigla: destaque.equipeForaSigla,
   }
 }
 

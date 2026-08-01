@@ -14,6 +14,8 @@ type RawHistoricoRow = {
   usuario_id: string
   nome: string
   pontos_obtidos: number
+  equipe_casa_sigla: string | null
+  equipe_fora_sigla: string | null
 }
 
 type RawDetalhePalpiteRow = {
@@ -26,10 +28,12 @@ type RawDetalhePalpiteRow = {
   multiplicador: number
   gols_casa: number
   gols_fora: number
-  gols_casa_palpite: number
-  gols_fora_palpite: number
+  gols_casa_palpite: number | null
+  gols_fora_palpite: number | null
   pontos_obtidos: number
   data_hora_utc: Date
+  equipe_casa_sigla: string | null
+  equipe_fora_sigla: string | null
 }
 
 export class PrismaLeaderboardRepository implements LeaderboardRepository {
@@ -63,10 +67,14 @@ export class PrismaLeaderboardRepository implements LeaderboardRepository {
         p.data_hora_utc AS data_hora_utc,
         u.id            AS usuario_id,
         u.nome          AS nome,
-        pa.pontos_obtidos AS pontos_obtidos
+        pa.pontos_obtidos AS pontos_obtidos,
+        ec.sigla        AS equipe_casa_sigla,
+        ef.sigla        AS equipe_fora_sigla
       FROM palpites pa
       JOIN partidas p ON p.id = pa.partida_id
       JOIN usuarios u ON u.id = pa.usuario_id
+      LEFT JOIN equipes ec ON ec.id = p.equipe_casa_id
+      LEFT JOIN equipes ef ON ef.id = p.equipe_fora_id
       WHERE p.status = 'encerrada' AND pa.pontos_obtidos IS NOT NULL AND u.nome != 'Tester'
       ORDER BY p.data_hora_utc ASC, p.id ASC
     `
@@ -76,32 +84,40 @@ export class PrismaLeaderboardRepository implements LeaderboardRepository {
       usuarioId: r.usuario_id,
       nome: r.nome,
       pontosObtidos: r.pontos_obtidos,
+      equipeCasaSigla: r.equipe_casa_sigla,
+      equipeForaSigla: r.equipe_fora_sigla,
     }))
   }
 
   async findDetalhesPalpites(): Promise<DetalhePalpiteRow[]> {
-    // Uma linha por palpite de partida encerrada — base para todas as visualizações do
-    // dashboard (perfil de acerto, pontos por fase, aproveitamento, contrafactual, recordes).
+    // Uma linha por USUÁRIO × PARTIDA ENCERRADA (cross join), não por palpite — quem não
+    // apostou aparece com gols_casa_palpite/gols_fora_palpite NULL e pontos_obtidos 0, porque
+    // não apostar conta como errar (DOMAIN_RULES.md). Base para perfil de acerto, pontos por
+    // fase, aproveitamento, contrafactual e recordes.
     const rows = await this.db.$queryRaw<RawDetalhePalpiteRow[]>`
       SELECT
-        u.id                                        AS usuario_id,
-        u.nome                                       AS nome,
-        p.id                                         AS partida_id,
-        p.fase_id                                    AS fase_id,
-        f.nome_exibicao                              AS fase_nome_exibicao,
-        f.ordem                                      AS fase_ordem,
-        CAST(f.multiplicador AS DOUBLE PRECISION)    AS multiplicador,
-        p.gols_casa                                  AS gols_casa,
-        p.gols_fora                                  AS gols_fora,
-        pa.gols_casa_palpite                         AS gols_casa_palpite,
-        pa.gols_fora_palpite                         AS gols_fora_palpite,
-        pa.pontos_obtidos                            AS pontos_obtidos,
-        p.data_hora_utc                              AS data_hora_utc
-      FROM palpites pa
-      JOIN partidas p ON p.id = pa.partida_id
+        u.id                                              AS usuario_id,
+        u.nome                                            AS nome,
+        p.id                                              AS partida_id,
+        p.fase_id                                         AS fase_id,
+        f.nome_exibicao                                   AS fase_nome_exibicao,
+        f.ordem                                           AS fase_ordem,
+        CAST(f.multiplicador AS DOUBLE PRECISION)         AS multiplicador,
+        p.gols_casa                                       AS gols_casa,
+        p.gols_fora                                       AS gols_fora,
+        pa.gols_casa_palpite                              AS gols_casa_palpite,
+        pa.gols_fora_palpite                              AS gols_fora_palpite,
+        CAST(COALESCE(pa.pontos_obtidos, 0) AS INTEGER)   AS pontos_obtidos,
+        p.data_hora_utc                                   AS data_hora_utc,
+        ec.sigla                                          AS equipe_casa_sigla,
+        ef.sigla                                          AS equipe_fora_sigla
+      FROM usuarios u
+      CROSS JOIN partidas p
       JOIN fases f ON f.id = p.fase_id
-      JOIN usuarios u ON u.id = pa.usuario_id
-      WHERE p.status = 'encerrada' AND pa.pontos_obtidos IS NOT NULL AND u.nome != 'Tester'
+      LEFT JOIN palpites pa ON pa.partida_id = p.id AND pa.usuario_id = u.id
+      LEFT JOIN equipes ec ON ec.id = p.equipe_casa_id
+      LEFT JOIN equipes ef ON ef.id = p.equipe_fora_id
+      WHERE p.status = 'encerrada' AND u.nome != 'Tester'
       ORDER BY p.data_hora_utc ASC, p.id ASC
     `
     return rows.map((r) => ({
@@ -118,6 +134,8 @@ export class PrismaLeaderboardRepository implements LeaderboardRepository {
       golsForaPalpite: r.gols_fora_palpite,
       pontosObtidos: r.pontos_obtidos,
       dataHoraUtc: r.data_hora_utc.toISOString(),
+      equipeCasaSigla: r.equipe_casa_sigla,
+      equipeForaSigla: r.equipe_fora_sigla,
     }))
   }
 }

@@ -12,6 +12,8 @@ export interface HistoricoPontosRow {
   usuarioId: string
   nome: string
   pontosObtidos: number
+  equipeCasaSigla: string | null
+  equipeForaSigla: string | null
 }
 
 export type { DetalhePalpiteRow }

@@ -17,6 +17,8 @@ function row(overrides: Partial<DetalhePalpiteRow>): DetalhePalpiteRow {
     golsForaPalpite: 1,
     pontosObtidos: 100,
     dataHoraUtc: '2026-07-19T19:00:00Z',
+    equipeCasaSigla: 'BRA',
+    equipeForaSigla: 'ARG',
     ...overrides,
   }
 }
@@ -49,5 +51,12 @@ describe('calcularContrafactual', () => {
 
     expect(usuario.pontosReais).toBe(125)
     expect(usuario.pontosSemMultiplicador).toBe(50)
+  })
+
+  it('não apostar conta 0 dos dois lados, mesmo com multiplicador alto', () => {
+    const [usuario] = calcularContrafactual([row({ golsCasaPalpite: null, golsForaPalpite: null, pontosObtidos: 0 })])
+
+    expect(usuario.pontosReais).toBe(0)
+    expect(usuario.pontosSemMultiplicador).toBe(0)
   })
 })

@@ -1,8 +1,9 @@
 // Dashboard item 2 — "de onde veio cada palpite": para cada usuário, % de palpites em cada
 // categoria da cascata (DOMAIN_RULES.md §7). Revela o estilo do jogador (cravador vs.
 // consistente vs. que erra mais), não só o total de pontos.
-import { RegraPontuacao, type CategoriaPalpite } from '../RegraPontuacao.js'
+import type { CategoriaPalpite } from '../RegraPontuacao.js'
 import type { DetalhePalpiteRow } from './DetalhePalpiteRow.js'
+import { classificarComAusencia } from './classificarComAusencia.js'
 
 export interface PerfilAcertoUsuario {
   usuarioId: string
@@ -39,11 +40,7 @@ export function calcularPerfilAcerto(rows: DetalhePalpiteRow[]): PerfilAcertoUsu
     }
 
     for (const row of rowsDoUsuario) {
-      const categoria = RegraPontuacao.classificar(
-        { golsCasa: row.golsCasaPalpite, golsFora: row.golsForaPalpite },
-        { golsCasa: row.golsCasa, golsFora: row.golsFora },
-      )
-      contagem[categoria]++
+      contagem[classificarComAusencia(row)]++
     }
 
     const total = rowsDoUsuario.length

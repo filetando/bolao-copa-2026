@@ -17,6 +17,8 @@ function row(overrides: Partial<DetalhePalpiteRow>): DetalhePalpiteRow {
     golsForaPalpite: 1,
     pontosObtidos: 25,
     dataHoraUtc: '2026-06-11T19:00:00Z',
+    equipeCasaSigla: 'MEX',
+    equipeForaSigla: 'AFS',
     ...overrides,
   }
 }

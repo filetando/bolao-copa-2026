@@ -19,11 +19,14 @@ export function calcularContrafactual(rows: DetalhePalpiteRow[]): ContrafactualU
     }
     const usuario = porUsuario.get(row.usuarioId)!
     usuario.pontosReais += row.pontosObtidos
-    usuario.pontosSemMultiplicador += RegraPontuacao.calcular(
-      { golsCasa: row.golsCasaPalpite, golsFora: row.golsForaPalpite },
-      { golsCasa: row.golsCasa, golsFora: row.golsFora },
-      1,
-    )
+    // Não apostou (golsCasaPalpite null) = 0 pontos em qualquer multiplicador, inclusive 1x.
+    if (row.golsCasaPalpite !== null && row.golsForaPalpite !== null) {
+      usuario.pontosSemMultiplicador += RegraPontuacao.calcular(
+        { golsCasa: row.golsCasaPalpite, golsFora: row.golsForaPalpite },
+        { golsCasa: row.golsCasa, golsFora: row.golsFora },
+        1,
+      )
+    }
   }
 
   return [...porUsuario.entries()].map(([usuarioId, dados]) => ({ usuarioId, ...dados }))

@@ -17,6 +17,8 @@ function row(overrides: Partial<DetalhePalpiteRow>): DetalhePalpiteRow {
     golsForaPalpite: 1,
     pontosObtidos: 25,
     dataHoraUtc: '2026-06-11T19:00:00Z',
+    equipeCasaSigla: 'MEX',
+    equipeForaSigla: 'AFS',
     ...overrides,
   }
 }
@@ -50,6 +52,8 @@ const rows: DetalhePalpiteRow[] = [
     golsCasaPalpite: 0,
     golsForaPalpite: 0,
     pontosObtidos: 0,
+    equipeCasaSigla: 'BRA',
+    equipeForaSigla: 'ARG',
   }),
   row({
     usuarioId: 'u2',
@@ -63,6 +67,8 @@ const rows: DetalhePalpiteRow[] = [
     golsCasaPalpite: 0,
     golsForaPalpite: 0,
     pontosObtidos: 0,
+    equipeCasaSigla: 'BRA',
+    equipeForaSigla: 'ARG',
   }),
 ]
 
@@ -93,7 +99,7 @@ describe('calcularRecordes', () => {
     expect(rodadaMaisPontuada).toEqual({ rotulo: 'Fase de grupos — R2', totalPontos: 50 })
   })
 
-  it('jogo que todo mundo errou: a final, com multiplicador 4', () => {
+  it('jogo que todo mundo errou: a final, com multiplicador 4 e o confronto real', () => {
     const { jogoQueTodosErraram } = calcularRecordes(rows, rodadasGrupos)
 
     expect(jogoQueTodosErraram).toEqual({
@@ -101,6 +107,8 @@ describe('calcularRecordes', () => {
       faseNomeExibicao: 'Final',
       multiplicador: 4,
       totalDeJogosAssim: 1,
+      equipeCasaSigla: 'BRA',
+      equipeForaSigla: 'ARG',
     })
   })
 
@@ -112,9 +120,9 @@ describe('calcularRecordes', () => {
     expect(jogoQueTodosErraram).toBeNull()
   })
 
-  it('não conta como "todo mundo errou" se nem todo mundo apostou na partida', () => {
-    // Só o Lucas apostou na partida 3 (e errou) — João nem palpitou. Não vale como recorde,
-    // mesmo que o único palpite existente tenha errado.
+  it('conta como "todo mundo errou" mesmo se só 1 de 2 apostou (o outro conta como erro por ausência)', () => {
+    // Só o Lucas apostou na partida 3 (e errou) — João nem palpitou, o que conta como erro
+    // também. Regra confirmada com o usuário: não apostar = errar.
     const comPalpiteSolitario = [
       ...rows,
       row({
@@ -130,10 +138,60 @@ describe('calcularRecordes', () => {
         golsFora: 1,
         pontosObtidos: 0,
       }),
+      row({
+        usuarioId: 'u2',
+        nome: 'João',
+        partidaId: 3,
+        faseId: 'grupos',
+        faseOrdem: 1,
+        dataHoraUtc: '2026-06-20T19:00:00Z',
+        golsCasaPalpite: null,
+        golsForaPalpite: null,
+        golsCasa: 2,
+        golsFora: 1,
+        pontosObtidos: 0,
+      }),
     ]
 
     const { jogoQueTodosErraram } = calcularRecordes(comPalpiteSolitario, rodadasGrupos)
 
+    // Agora tem 2 candidatas: a final (mult 4) continua vencendo o desempate por ter
+    // multiplicador maior que a partida 3 (mult 1, default do fixture).
     expect(jogoQueTodosErraram?.partidaId).toBe(104)
+    expect(jogoQueTodosErraram?.totalDeJogosAssim).toBe(2)
+  })
+
+  it('não conta "todo mundo errou" se ninguém apostou na partida', () => {
+    const ninguemApostou = [
+      ...rows,
+      row({
+        usuarioId: 'u1',
+        nome: 'Lucas',
+        partidaId: 5,
+        faseId: 'grupos',
+        faseOrdem: 1,
+        dataHoraUtc: '2026-06-21T19:00:00Z',
+        golsCasaPalpite: null,
+        golsForaPalpite: null,
+        pontosObtidos: 0,
+      }),
+      row({
+        usuarioId: 'u2',
+        nome: 'João',
+        partidaId: 5,
+        faseId: 'grupos',
+        faseOrdem: 1,
+        dataHoraUtc: '2026-06-21T19:00:00Z',
+        golsCasaPalpite: null,
+        golsForaPalpite: null,
+        pontosObtidos: 0,
+      }),
+    ]
+
+    const { jogoQueTodosErraram } = calcularRecordes(ninguemApostou, rodadasGrupos)
+
+    // Continua sendo só a final (partida 5 não qualifica, ninguém apostou nela).
+    expect(jogoQueTodosErraram?.partidaId).toBe(104)
+    expect(jogoQueTodosErraram?.totalDeJogosAssim).toBe(1)
   })
 })

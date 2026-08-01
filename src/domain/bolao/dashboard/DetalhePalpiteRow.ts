@@ -12,8 +12,12 @@ export interface DetalhePalpiteRow {
   multiplicador: number
   golsCasa: number
   golsFora: number
-  golsCasaPalpite: number
-  golsForaPalpite: number
+  // null = usuário não fez palpite pra essa partida — DOMAIN_RULES.md: não apostar conta
+  // como errar (0 pontos). Ver classificarComAusencia.ts.
+  golsCasaPalpite: number | null
+  golsForaPalpite: number | null
   pontosObtidos: number
   dataHoraUtc: string
+  equipeCasaSigla: string | null
+  equipeForaSigla: string | null
 }
