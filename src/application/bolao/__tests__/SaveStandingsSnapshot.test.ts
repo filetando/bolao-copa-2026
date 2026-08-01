@@ -8,6 +8,7 @@ function makeLeaderboardRepo(): LeaderboardRepository {
   return {
     findRanking: vi.fn().mockResolvedValue([{ usuarioId: 'u1', nome: 'Fulano', totalPontos: 100 }]),
     findHistoricoPontos: vi.fn(),
+    findDetalhesPalpites: vi.fn(),
   }
 }
 

@@ -23,6 +23,9 @@ import { leaderboardRoutes } from '../../presentation/http/routes/leaderboard.js
 import { PrismaLeaderboardRepository } from '../repositories/PrismaLeaderboardRepository.js'
 import { GetLeaderboard } from '../../application/bolao/use-cases/GetLeaderboard.js'
 import { GetLeaderboardHistory } from '../../application/bolao/use-cases/GetLeaderboardHistory.js'
+import { GetDashboardEstatisticas } from '../../application/bolao/use-cases/GetDashboardEstatisticas.js'
+import { dashboardRoutes } from '../../presentation/http/routes/dashboard.js'
+import { loadRodadasGrupos } from '../tournament/loadRodadasGrupos.js'
 import { adminRoutes } from '../../presentation/http/routes/admin.js'
 import { RegisterMatchResult } from '../../application/tournament/use-cases/RegisterMatchResult.js'
 import { CalculateScoreForMatch } from '../../application/bolao/use-cases/CalculateScoreForMatch.js'
@@ -112,6 +115,7 @@ const getPredictionsForMatch = new GetPredictionsForMatch(palpiteRepo, tournamen
 const leaderboardRepo = new PrismaLeaderboardRepository(prisma)
 const getLeaderboard = new GetLeaderboard(leaderboardRepo)
 const getLeaderboardHistory = new GetLeaderboardHistory(leaderboardRepo)
+const getDashboardEstatisticas = new GetDashboardEstatisticas(leaderboardRepo, loadRodadasGrupos())
 
 const bracketPropagation = new BracketPropagationService(loadBracketDependencias())
 const registerMatchResult = new RegisterMatchResult(partidaRepo, bracketPropagation)
@@ -137,6 +141,7 @@ await app.register(authRoutes, { prefix: '/auth', registerUser, loginUser, token
 await app.register(partidasRoutes, { listMatches, listMataMataMatches })
 await app.register(palpitesRoutes, { submitPrediction, getMyPredictions, getPredictionsForMatch, tokenService })
 await app.register(leaderboardRoutes, { getLeaderboard, getLeaderboardHistory, tokenService })
+await app.register(dashboardRoutes, { getDashboardEstatisticas, tokenService })
 await app.register(adminRoutes, { registerMatchResult, calculateScoreForMatch, saveStandingsSnapshot, getAdminUserPalpites, adminUpdatePalpite, adminUpsertPalpite, getAdminPartidasComPalpite, generateKnockoutBracket, listUsers, tokenService })
 await app.register(gruposRoutes, { getGroupStandings })
 

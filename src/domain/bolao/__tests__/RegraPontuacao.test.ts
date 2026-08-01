@@ -53,3 +53,45 @@ describe('RegraPontuacao.calcular', () => {
     expect(RegraPontuacao.calcular({ golsCasa: 2, golsFora: 0 }, { golsCasa: 1, golsFora: 0 }, 1.5)).toBe(15)
   })
 })
+
+// Distingue as categorias que empatam em pontos base (15): vencedor_saldo × empate_certo —
+// necessário para o "perfil de acerto" do dashboard, que separa os dois estilos de palpite.
+describe('RegraPontuacao.classificar', () => {
+  it('placar exato retorna categoria placar_exato', () => {
+    expect(RegraPontuacao.classificar({ golsCasa: 2, golsFora: 1 }, { golsCasa: 2, golsFora: 1 })).toBe(
+      'placar_exato',
+    )
+  })
+
+  it('vencedor correto e gols do vencedor batem retorna vencedor_gols', () => {
+    expect(RegraPontuacao.classificar({ golsCasa: 2, golsFora: 1 }, { golsCasa: 2, golsFora: 0 })).toBe(
+      'vencedor_gols',
+    )
+  })
+
+  it('vencedor correto e saldo de gols bate retorna vencedor_saldo', () => {
+    expect(RegraPontuacao.classificar({ golsCasa: 2, golsFora: 0 }, { golsCasa: 3, golsFora: 1 })).toBe(
+      'vencedor_saldo',
+    )
+  })
+
+  it('empate × empate com placares diferentes retorna empate_certo', () => {
+    expect(RegraPontuacao.classificar({ golsCasa: 1, golsFora: 1 }, { golsCasa: 2, golsFora: 2 })).toBe(
+      'empate_certo',
+    )
+  })
+
+  it('só vencedor correto retorna so_vencedor', () => {
+    expect(RegraPontuacao.classificar({ golsCasa: 2, golsFora: 0 }, { golsCasa: 1, golsFora: 0 })).toBe(
+      'so_vencedor',
+    )
+  })
+
+  it('vencedor errado retorna erro', () => {
+    expect(RegraPontuacao.classificar({ golsCasa: 2, golsFora: 1 }, { golsCasa: 0, golsFora: 1 })).toBe('erro')
+  })
+
+  it('palpite empate com resultado vitória retorna erro', () => {
+    expect(RegraPontuacao.classificar({ golsCasa: 2, golsFora: 1 }, { golsCasa: 1, golsFora: 1 })).toBe('erro')
+  })
+})
