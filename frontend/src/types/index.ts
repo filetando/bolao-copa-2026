@@ -130,3 +130,72 @@ export interface GenerateBracketResponse {
   confrontos: ConfrontoGerado[]
   chaveAnexoC: string
 }
+
+export type CategoriaPalpite =
+  | 'placar_exato'
+  | 'vencedor_gols'
+  | 'vencedor_saldo'
+  | 'empate_certo'
+  | 'so_vencedor'
+  | 'erro'
+
+export interface PerfilAcertoUsuario {
+  usuarioId: string
+  nome: string
+  totalPalpites: number
+  categorias: Record<CategoriaPalpite, { quantidade: number; percentual: number }>
+}
+
+export interface PontosPorFaseUsuario {
+  usuarioId: string
+  nome: string
+  fases: { faseId: string; faseNomeExibicao: string; faseOrdem: number; pontos: number }[]
+}
+
+export interface AproveitamentoFase {
+  faseId: string
+  faseNomeExibicao: string
+  faseOrdem: number
+  maxPossivel: number
+  usuarios: { usuarioId: string; nome: string; pontos: number; aproveitamento: number }[]
+}
+
+export interface ContrafactualUsuario {
+  usuarioId: string
+  nome: string
+  pontosReais: number
+  pontosSemMultiplicador: number
+}
+
+export interface RecordePorUsuario {
+  usuarioId: string
+  nome: string
+  quantidade: number
+}
+
+export interface RecordeRodadaMaisPontuada {
+  rotulo: string
+  totalPontos: number
+}
+
+export interface RecordeJogoQueTodosErraram {
+  partidaId: number
+  faseNomeExibicao: string
+  multiplicador: number
+  totalDeJogosAssim: number
+}
+
+export interface Recordes {
+  maisPlacaresExatos: RecordePorUsuario[]
+  maiorSequenciaDeAcertos: RecordePorUsuario[]
+  rodadaMaisPontuada: RecordeRodadaMaisPontuada | null
+  jogoQueTodosErraram: RecordeJogoQueTodosErraram | null
+}
+
+export interface DashboardEstatisticas {
+  perfilAcerto: PerfilAcertoUsuario[]
+  pontosPorFase: PontosPorFaseUsuario[]
+  aproveitamentoPorFase: AproveitamentoFase[]
+  contrafactual: ContrafactualUsuario[]
+  recordes: Recordes
+}

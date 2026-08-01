@@ -9,14 +9,12 @@ import {
   YAxis,
 } from 'recharts'
 import type { LeaderboardHistoryResponse } from '../../types/index.ts'
+import { corDoJogador } from '../../lib/playerColors.ts'
 
 interface Props {
   data: LeaderboardHistoryResponse
 }
 
-// Série de cores alinhada à paleta "Festa nas Arquibancadas" (DESIGN_SYSTEM.md).
-// Recharts exige valores de cor em JS — não há como usar utilitários do Tailwind aqui.
-const CORES = ['#e0480e', '#6d28d9', '#0ea5a5', '#15803d', '#d99412', '#dc2626', '#2563eb', '#db2777']
 const COR_GRID = '#e7ded2' // --color-border
 const COR_EIXO = '#6b6275' // --color-muted
 
@@ -31,12 +29,58 @@ export function PointsHistoryChart({ data }: Props) {
 
   const formatDate = (iso: string) =>
     new Date(iso).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })
-  const formatTooltipLabel = (label: unknown) => formatDate(String(label))
 
   const chartData = data.pontos.map((ponto) => ({
     dataHoraUtc: ponto.dataHoraUtc,
     ...ponto.pontosPorUsuario,
   }))
+
+  // Tooltip customizado: ordena por maior pontuação (quem passa à frente aparece em cima)
+  // e mostra o ganho de pontos (+xx) em relação ao ponto anterior do histórico.
+  const CustomTooltip = ({
+    active,
+    payload,
+    label,
+  }: {
+    active?: boolean
+    payload?: Array<{ dataKey: string | number; value?: number; name?: string; color?: string }>
+    label?: unknown
+  }) => {
+    if (!active || !payload || payload.length === 0) return null
+
+    const idx = chartData.findIndex((p) => p.dataHoraUtc === label)
+    const anterior = idx > 0 ? (chartData[idx - 1] as Record<string, unknown>) : null
+
+    const ordenado = [...payload].sort((a, b) => (b.value ?? 0) - (a.value ?? 0))
+
+    return (
+      <div
+        style={{
+          borderRadius: 12,
+          border: `1px solid ${COR_GRID}`,
+          fontSize: 12,
+          background: '#fff',
+          padding: '8px 12px',
+        }}
+      >
+        <p style={{ marginBottom: 4, fontWeight: 600 }}>{formatDate(String(label))}</p>
+        {ordenado.map((entry) => {
+          const valorAnterior = anterior ? (anterior[entry.dataKey] as number | undefined) : undefined
+          const ganho =
+            valorAnterior !== undefined && entry.value !== undefined ? entry.value - valorAnterior : undefined
+
+          return (
+            <div key={entry.dataKey} style={{ color: entry.color }}>
+              {entry.name}: {entry.value}
+              {ganho !== undefined && ganho > 0 && (
+                <span style={{ fontWeight: 600 }}> (+{ganho})</span>
+              )}
+            </div>
+          )
+        })}
+      </div>
+    )
+  }
 
   return (
     <ResponsiveContainer width="100%" height={320}>
@@ -50,10 +94,7 @@ export function PointsHistoryChart({ data }: Props) {
           tickLine={false}
         />
         <YAxis tick={{ fontSize: 11, fill: COR_EIXO }} axisLine={false} tickLine={false} allowDecimals={false} />
-        <Tooltip
-          contentStyle={{ borderRadius: 12, border: `1px solid ${COR_GRID}`, fontSize: 12 }}
-          labelFormatter={formatTooltipLabel}
-        />
+        <Tooltip content={<CustomTooltip />} />
         <Legend wrapperStyle={{ fontSize: 12 }} />
         {data.usuarios.map((usuario, idx) => (
           <Line
@@ -61,7 +102,7 @@ export function PointsHistoryChart({ data }: Props) {
             type="monotone"
             dataKey={usuario.usuarioId}
             name={usuario.nome}
-            stroke={CORES[idx % CORES.length]}
+            stroke={corDoJogador(usuario.nome, idx)}
             strokeWidth={3}
             strokeLinecap="round"
             strokeLinejoin="round"

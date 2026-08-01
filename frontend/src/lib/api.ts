@@ -10,6 +10,7 @@ import type {
   PalpiteComPartida,
   PartidaComPalpiteAdmin,
   GenerateBracketResponse,
+  DashboardEstatisticas,
 } from '../types/index.ts'
 
 const BASE = '/api'
@@ -60,6 +61,9 @@ export const api = {
   leaderboard: {
     get: () => request<LeaderboardRow[]>('/leaderboard'),
     historico: () => request<LeaderboardHistoryResponse>('/leaderboard/historico'),
+  },
+  dashboard: {
+    estatisticas: () => request<DashboardEstatisticas>('/dashboard/estatisticas'),
   },
   grupos: {
     classificacao: (grupoId: string) => request<ClassificacaoRow[]>(`/grupos/${grupoId}/classificacao`),
