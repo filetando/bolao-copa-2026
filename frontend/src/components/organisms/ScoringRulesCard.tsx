@@ -1,12 +1,11 @@
 // DOMAIN_RULES.md §7/§8 — cascata de pontuação e multiplicadores por fase, exibidos em
 // linguagem simples pra quem chega no Ranking sem contexto.
 const CASCATA = [
-  { rotulo: 'Vencedor', pontos: 10 },
+  { rotulo: 'Placar exato', pontos: 25 },
+  { rotulo: 'Vencedor + gols do vencedor', pontos: 18 },
   { rotulo: 'Vencedor + saldo de gols', pontos: 15 },
   { rotulo: 'Empate (sem ser o placar exato)', pontos: 15 },
-  { rotulo: 'Vencedor + gols do vencedor', pontos: 18 },
-  { rotulo: 'Placar exato', pontos: 25 },
-  { rotulo: 'Errou', pontos: 0 },
+  { rotulo: 'Vencedor', pontos: 10 },
 ]
 
 const MULTIPLICADORES = [
@@ -18,10 +17,7 @@ const MULTIPLICADORES = [
 
 export function ScoringRulesCard() {
   return (
-    <details
-      open
-      className="bg-surface rounded-[12px] border border-border shadow-sm p-4 mb-6 open:pb-4"
-    >
+    <details className="bg-surface rounded-[12px] border border-border shadow-sm p-4 mb-6 open:pb-4">
       <summary className="text-sm font-semibold text-text cursor-pointer select-none">
         Como funciona a pontuação
       </summary>

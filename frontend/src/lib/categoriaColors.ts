@@ -14,7 +14,8 @@ export const COR_CATEGORIA: Record<CategoriaPerfil, string> = {
   empate_certo: '#D97A2E',
   so_vencedor: '#EDA34A',
   erro: '#9C94A3', // cinza — "vazado": renderizado com fill translúcido + contorno visível
-  nao_palpitou: '#9C94A3', // mesmo cinza do erro, mas sem fill — só o contorno tracejado
+  nao_palpitou: '#6B7280', // cinza-azulado distinto do "erro" — precisa de cor própria pra
+  // aparecer na legenda/tooltip (o swatch usa o fill "cheio", não a fillOpacity do gráfico)
 }
 
 export const ROTULO_CATEGORIA: Record<CategoriaPerfil, string> = {

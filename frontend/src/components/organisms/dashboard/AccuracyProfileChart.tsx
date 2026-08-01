@@ -90,7 +90,8 @@ export function AccuracyProfileChart({ data }: Props) {
                 dataKey={categoria}
                 name={ROTULO_CATEGORIA[categoria]}
                 stackId="perfil"
-                fill="transparent"
+                fill={COR_CATEGORIA.nao_palpitou}
+                fillOpacity={0.12}
                 stroke={COR_CATEGORIA.nao_palpitou}
                 strokeDasharray="3 2"
                 strokeWidth={1}
