@@ -64,7 +64,7 @@ export function AccuracyProfileChart({ data }: Props) {
         <XAxis
           type="number"
           domain={[0, 100]}
-          tickFormatter={(v) => `${v}%`}
+          tickFormatter={(v) => `${Math.round(v)}%`}
           tick={{ fontSize: 11, fill: COR_EIXO }}
           axisLine={{ stroke: COR_GRID }}
           tickLine={false}

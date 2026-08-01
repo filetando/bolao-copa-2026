@@ -32,8 +32,17 @@ export function PointsHistoryChart({ data }: Props) {
 
   const chartData = data.pontos.map((ponto) => ({
     dataHoraUtc: ponto.dataHoraUtc,
+    equipeCasaSigla: ponto.equipeCasaSigla,
+    equipeForaSigla: ponto.equipeForaSigla,
     ...ponto.pontosPorUsuario,
   }))
+
+  const formatTitulo = (iso: string) => {
+    const ponto = chartData.find((p) => p.dataHoraUtc === iso)
+    const confronto =
+      ponto?.equipeCasaSigla && ponto?.equipeForaSigla ? ` - ${ponto.equipeCasaSigla} x ${ponto.equipeForaSigla}` : ''
+    return `${formatDate(iso)}${confronto}`
+  }
 
   // Tooltip customizado: ordena por maior pontuação (quem passa à frente aparece em cima)
   // e mostra o ganho de pontos (+xx) em relação ao ponto anterior do histórico.
@@ -63,7 +72,7 @@ export function PointsHistoryChart({ data }: Props) {
           padding: '8px 12px',
         }}
       >
-        <p style={{ marginBottom: 4, fontWeight: 600 }}>{formatDate(String(label))}</p>
+        <p style={{ marginBottom: 4, fontWeight: 600 }}>{formatTitulo(String(label))}</p>
         {ordenado.map((entry) => {
           const valorAnterior = anterior ? (anterior[entry.dataKey] as number | undefined) : undefined
           const ganho =

@@ -62,6 +62,8 @@ export interface LeaderboardHistoryPoint {
   dataHoraUtc: string
   rodada: number
   pontosPorUsuario: Record<string, number>
+  equipeCasaSigla: string | null
+  equipeForaSigla: string | null
 }
 
 export interface LeaderboardHistoryResponse {
@@ -183,6 +185,8 @@ export interface RecordeJogoQueTodosErraram {
   faseNomeExibicao: string
   multiplicador: number
   totalDeJogosAssim: number
+  equipeCasaSigla: string | null
+  equipeForaSigla: string | null
 }
 
 export interface Recordes {
@@ -192,10 +196,19 @@ export interface Recordes {
   jogoQueTodosErraram: RecordeJogoQueTodosErraram | null
 }
 
+export interface TaxaAcertoUsuario {
+  usuarioId: string
+  nome: string
+  totalApostados: number
+  acertos: number
+  taxaAcerto: number
+}
+
 export interface DashboardEstatisticas {
   perfilAcerto: PerfilAcertoUsuario[]
   pontosPorFase: PontosPorFaseUsuario[]
   aproveitamentoPorFase: AproveitamentoFase[]
   contrafactual: ContrafactualUsuario[]
   recordes: Recordes
+  taxaAcerto: TaxaAcertoUsuario[]
 }

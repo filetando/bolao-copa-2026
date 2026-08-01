@@ -7,6 +7,7 @@ import { AccuracyProfileChart } from '../components/organisms/dashboard/Accuracy
 import { PointsByPhaseChart } from '../components/organisms/dashboard/PointsByPhaseChart.tsx'
 import { PhaseEfficiencyChart } from '../components/organisms/dashboard/PhaseEfficiencyChart.tsx'
 import { MultiplierCounterfactualChart } from '../components/organisms/dashboard/MultiplierCounterfactualChart.tsx'
+import { AccuracyDonutChart } from '../components/organisms/dashboard/AccuracyDonutChart.tsx'
 import { RecordCards } from '../components/organisms/dashboard/RecordCards.tsx'
 import { Skeleton } from '../components/atoms/Skeleton.tsx'
 import type { LeaderboardRow, LeaderboardHistoryResponse, DashboardEstatisticas } from '../types/index.ts'
@@ -93,6 +94,15 @@ export function HomePage() {
                     Foi a final de 4x que decidiu o campeão, ou já estava ganho antes do mata-mata?
                   </p>
                   <MultiplierCounterfactualChart data={estatisticas.contrafactual} />
+                </div>
+
+                <div className="bg-surface rounded-[12px] border border-border shadow-sm p-4">
+                  <h3 className="text-sm font-semibold text-text mb-1">Taxa de acerto</h3>
+                  <p className="text-xs text-muted mb-3">
+                    % de acerto só entre os palpites que cada um realmente fez — separa "acerta pouco" de
+                    "esqueceu de apostar".
+                  </p>
+                  <AccuracyDonutChart data={estatisticas.taxaAcerto} />
                 </div>
 
                 {/* Os momentos */}

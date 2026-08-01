@@ -52,12 +52,16 @@ export function RecordCards({ data }: Props) {
       />
       <Card
         rotulo="O jogo que todo mundo errou"
-        valor={data.jogoQueTodosErraram ? `×${data.jogoQueTodosErraram.multiplicador}` : '—'}
+        valor={
+          data.jogoQueTodosErraram && data.jogoQueTodosErraram.equipeCasaSigla && data.jogoQueTodosErraram.equipeForaSigla
+            ? `${data.jogoQueTodosErraram.equipeCasaSigla} x ${data.jogoQueTodosErraram.equipeForaSigla}`
+            : '—'
+        }
         detalhe={
           data.jogoQueTodosErraram
-            ? `${data.jogoQueTodosErraram.faseNomeExibicao}${
+            ? `${data.jogoQueTodosErraram.faseNomeExibicao} · ×${data.jogoQueTodosErraram.multiplicador}${
                 data.jogoQueTodosErraram.totalDeJogosAssim > 1
-                  ? ` (${data.jogoQueTodosErraram.totalDeJogosAssim} jogos assim)`
+                  ? ` · ${data.jogoQueTodosErraram.totalDeJogosAssim} jogos assim`
                   : ''
               }`
             : 'ninguém errou tudo'
