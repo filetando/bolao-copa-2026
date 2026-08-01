@@ -110,8 +110,13 @@ function calcularRodadaMaisPontuada(
 }
 
 // Partida em que os 3 jogadores erraram (categoria "erro") — destaca a de maior multiplicador
-// entre as que qualificam, já que é a mais "dolorida".
+// entre as que qualificam, já que é a mais "dolorida". Nem todo usuário palpita em toda
+// partida, então "todo mundo errou" só vale quando TODOS os usuários que aparecem em algum
+// palpite do dataset apostaram nessa partida (senão um único palpite perdido, sem os outros
+// dois terem apostado, contaria erradamente como "todo mundo errou").
 function calcularJogoQueTodosErraram(rows: DetalhePalpiteRow[]): RecordeJogoQueTodosErraram | null {
+  const totalUsuarios = new Set(rows.map((r) => r.usuarioId)).size
+
   const porPartida = new Map<number, DetalhePalpiteRow[]>()
   for (const row of rows) {
     if (!porPartida.has(row.partidaId)) porPartida.set(row.partidaId, [])
@@ -120,6 +125,8 @@ function calcularJogoQueTodosErraram(rows: DetalhePalpiteRow[]): RecordeJogoQueT
 
   const candidatas: DetalhePalpiteRow[] = []
   for (const rowsDaPartida of porPartida.values()) {
+    if (rowsDaPartida.length < totalUsuarios) continue
+
     const todosErraram = rowsDaPartida.every(
       (row) =>
         RegraPontuacao.classificar(

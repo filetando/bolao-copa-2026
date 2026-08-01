@@ -111,4 +111,29 @@ describe('calcularRecordes', () => {
 
     expect(jogoQueTodosErraram).toBeNull()
   })
+
+  it('não conta como "todo mundo errou" se nem todo mundo apostou na partida', () => {
+    // Só o Lucas apostou na partida 3 (e errou) — João nem palpitou. Não vale como recorde,
+    // mesmo que o único palpite existente tenha errado.
+    const comPalpiteSolitario = [
+      ...rows,
+      row({
+        usuarioId: 'u1',
+        nome: 'Lucas',
+        partidaId: 3,
+        faseId: 'grupos',
+        faseOrdem: 1,
+        dataHoraUtc: '2026-06-20T19:00:00Z',
+        golsCasaPalpite: 0,
+        golsForaPalpite: 0,
+        golsCasa: 2,
+        golsFora: 1,
+        pontosObtidos: 0,
+      }),
+    ]
+
+    const { jogoQueTodosErraram } = calcularRecordes(comPalpiteSolitario, rodadasGrupos)
+
+    expect(jogoQueTodosErraram?.partidaId).toBe(104)
+  })
 })
