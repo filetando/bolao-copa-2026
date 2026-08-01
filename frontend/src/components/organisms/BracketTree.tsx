@@ -26,11 +26,25 @@ const POSICAO_VISUAL: Record<number, number> = Object.fromEntries(
 const LADO_ESQUERDO = { dezesseisAvos: [74, 77, 73, 75, 83, 84, 81, 82], oitavas: [89, 90, 93, 94], quartas: [97, 98], semi: 101 }
 const LADO_DIREITO = { dezesseisAvos: [76, 78, 79, 80, 86, 88, 85, 87], oitavas: [91, 92, 95, 96], quartas: [99, 100], semi: 102 }
 
-function Coluna({ titulo, partidas, className = '' }: { titulo: string; partidas: Partida[]; className?: string }) {
+// O título da rodada (h3) fica FORA de qualquer centralização — só o container dos cards
+// (que recebe flex-1 e ocupa a altura toda da coluna, esticada pra bater com a coluna mais
+// alta) usa justify-around/justify-center pra manter o desenho do chaveamento (pares de
+// jogos alinhados verticalmente com o jogo da rodada seguinte que eles alimentam). Se o
+// justify fosse aplicado no wrapper externo (título + cards juntos), ele empurraria o
+// título pra longe do topo em colunas com poucos jogos (Semifinal, Final).
+function Coluna({
+  titulo,
+  partidas,
+  alinhamentoCards = 'justify-around',
+}: {
+  titulo: string
+  partidas: Partida[]
+  alinhamentoCards?: string
+}) {
   return (
-    <div className={`shrink-0 flex flex-col gap-4 min-w-[9rem] ${className}`}>
+    <div className="shrink-0 flex flex-col gap-4 min-w-[9rem]">
       <h3 className="text-xs font-semibold text-muted uppercase tracking-wide text-center">{titulo}</h3>
-      <div className="flex flex-col gap-4 justify-start flex-1">
+      <div className={`flex flex-col gap-4 flex-1 ${alinhamentoCards}`}>
         {partidas.map((p) => (
           <BracketMatchNode key={p.id} partida={p} />
         ))}
@@ -67,7 +81,7 @@ export function BracketTree({ partidas }: BracketTreeProps) {
         {ORDEM_RODADAS.filter((rodada) => porRodada.has(rodada)).map((rodada) => (
           <div key={rodada} className="snap-start shrink-0 flex flex-col gap-4 min-w-[9rem]">
             <h3 className="text-xs font-semibold text-muted uppercase tracking-wide">{rodada}</h3>
-            <div className="flex flex-col gap-4 justify-start flex-1">
+            <div className="flex flex-col gap-4 justify-around flex-1">
               {porRodada.get(rodada)!.map((p) => (
                 <BracketMatchNode key={p.id} partida={p} />
               ))}
@@ -87,10 +101,10 @@ export function BracketTree({ partidas }: BracketTreeProps) {
         <Coluna titulo="16-Avos" partidas={porTodasIds(LADO_ESQUERDO.dezesseisAvos)} />
         <Coluna titulo="Oitavas" partidas={porTodasIds(LADO_ESQUERDO.oitavas)} />
         <Coluna titulo="Quartas" partidas={porTodasIds(LADO_ESQUERDO.quartas)} />
-        <Coluna titulo="Semifinal" partidas={semiEsquerda} />
+        <Coluna titulo="Semifinal" partidas={semiEsquerda} alinhamentoCards="justify-center" />
         <div className="shrink-0 flex flex-col gap-4 min-w-[9rem]">
           <h3 className="text-xs font-semibold text-muted uppercase tracking-wide text-center">🏆 Final</h3>
-          <div className="flex flex-col items-center gap-6 justify-start flex-1">
+          <div className="flex flex-col items-center gap-6 justify-center flex-1">
             {final.map((p) => (
               <BracketMatchNode key={p.id} partida={p} />
             ))}
@@ -102,7 +116,7 @@ export function BracketTree({ partidas }: BracketTreeProps) {
             )}
           </div>
         </div>
-        <Coluna titulo="Semifinal" partidas={semiDireita} />
+        <Coluna titulo="Semifinal" partidas={semiDireita} alinhamentoCards="justify-center" />
         <Coluna titulo="Quartas" partidas={porTodasIds(LADO_DIREITO.quartas)} />
         <Coluna titulo="Oitavas" partidas={porTodasIds(LADO_DIREITO.oitavas)} />
         <Coluna titulo="16-Avos" partidas={porTodasIds(LADO_DIREITO.dezesseisAvos)} />
