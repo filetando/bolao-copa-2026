@@ -125,7 +125,7 @@ export function PointsHistoryChart({ data }: Props) {
           tickLine={false}
         />
         <YAxis tick={{ fontSize: 11, fill: COR_EIXO }} axisLine={false} tickLine={false} allowDecimals={false} />
-        <Tooltip content={<CustomTooltip />} />
+        <Tooltip content={<CustomTooltip />} axisId="datas" />
         <Legend wrapperStyle={{ fontSize: 12 }} />
         {data.usuarios.map((usuario, idx) => (
           <Line
