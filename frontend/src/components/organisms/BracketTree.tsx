@@ -26,12 +26,17 @@ const POSICAO_VISUAL: Record<number, number> = Object.fromEntries(
 const LADO_ESQUERDO = { dezesseisAvos: [74, 77, 73, 75, 83, 84, 81, 82], oitavas: [89, 90, 93, 94], quartas: [97, 98], semi: 101 }
 const LADO_DIREITO = { dezesseisAvos: [76, 78, 79, 80, 86, 88, 85, 87], oitavas: [91, 92, 95, 96], quartas: [99, 100], semi: 102 }
 
-// O título da rodada (h3) fica FORA de qualquer centralização — só o container dos cards
-// (que recebe flex-1 e ocupa a altura toda da coluna, esticada pra bater com a coluna mais
-// alta) usa justify-around/justify-center pra manter o desenho do chaveamento (pares de
-// jogos alinhados verticalmente com o jogo da rodada seguinte que eles alimentam). Se o
-// justify fosse aplicado no wrapper externo (título + cards juntos), ele empurraria o
-// título pra longe do topo em colunas com poucos jogos (Semifinal, Final).
+function TituloRodada({ titulo }: { titulo: string }) {
+  return <h3 className="text-xs font-semibold text-muted uppercase tracking-wide text-center">{titulo}</h3>
+}
+
+// O justify-around/justify-center precisa continuar espalhando os CARDS pra manter o desenho
+// do chaveamento (pares alinhados com o jogo da rodada seguinte que eles alimentam) — mas o
+// título não pode ser um item separado nessa distribuição, senão ele fica preso no topo do
+// container enquanto o próprio espaçamento empurra o primeiro card pra longe (rodadas com
+// poucos jogos, tipo Semifinal, ficam com um vão enorme entre título e card). Solução: o
+// título vai DENTRO do mesmo item flex do primeiro card, então ele "pega carona" na posição
+// que o espaçamento calcular pra esse primeiro card, esteja ela onde estiver.
 function Coluna({
   titulo,
   partidas,
@@ -42,13 +47,17 @@ function Coluna({
   alinhamentoCards?: string
 }) {
   return (
-    <div className="shrink-0 flex flex-col gap-4 min-w-[9rem]">
-      <h3 className="text-xs font-semibold text-muted uppercase tracking-wide text-center">{titulo}</h3>
-      <div className={`flex flex-col gap-4 flex-1 ${alinhamentoCards}`}>
-        {partidas.map((p) => (
-          <BracketMatchNode key={p.id} partida={p} />
-        ))}
-      </div>
+    <div className={`shrink-0 flex flex-col gap-4 min-w-[9rem] ${alinhamentoCards}`}>
+      {partidas.length === 0 ? (
+        <TituloRodada titulo={titulo} />
+      ) : (
+        partidas.map((p, i) => (
+          <div key={p.id} className="flex flex-col gap-2">
+            {i === 0 && <TituloRodada titulo={titulo} />}
+            <BracketMatchNode partida={p} />
+          </div>
+        ))
+      )}
     </div>
   )
 }
@@ -79,13 +88,13 @@ export function BracketTree({ partidas }: BracketTreeProps) {
           de 3º lugar ficam juntas na última coluna, o 3º lugar embaixo da final. */}
       <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 lg:hidden">
         {ORDEM_RODADAS.filter((rodada) => porRodada.has(rodada)).map((rodada) => (
-          <div key={rodada} className="snap-start shrink-0 flex flex-col gap-4 min-w-[9rem]">
-            <h3 className="text-xs font-semibold text-muted uppercase tracking-wide">{rodada}</h3>
-            <div className="flex flex-col gap-4 justify-around flex-1">
-              {porRodada.get(rodada)!.map((p) => (
-                <BracketMatchNode key={p.id} partida={p} />
-              ))}
-            </div>
+          <div key={rodada} className="snap-start shrink-0 flex flex-col gap-4 min-w-[9rem] justify-around">
+            {porRodada.get(rodada)!.map((p, i) => (
+              <div key={p.id} className="flex flex-col gap-2">
+                {i === 0 && <TituloRodada titulo={rodada} />}
+                <BracketMatchNode partida={p} />
+              </div>
+            ))}
             {rodada === RODADA_FINAL && terceiroLugar && (
               <div className="pt-3 border-t border-border">
                 <h4 className="text-xs font-semibold text-muted uppercase tracking-wide mb-2">3º Lugar</h4>
@@ -102,19 +111,23 @@ export function BracketTree({ partidas }: BracketTreeProps) {
         <Coluna titulo="Oitavas" partidas={porTodasIds(LADO_ESQUERDO.oitavas)} />
         <Coluna titulo="Quartas" partidas={porTodasIds(LADO_ESQUERDO.quartas)} />
         <Coluna titulo="Semifinal" partidas={semiEsquerda} alinhamentoCards="justify-center" />
-        <div className="shrink-0 flex flex-col gap-4 min-w-[9rem]">
-          <h3 className="text-xs font-semibold text-muted uppercase tracking-wide text-center">🏆 Final</h3>
-          <div className="flex flex-col items-center gap-6 justify-center flex-1">
-            {final.map((p) => (
-              <BracketMatchNode key={p.id} partida={p} />
-            ))}
-            {terceiroLugar && (
-              <div className="w-full pt-4 border-t border-border">
-                <h4 className="text-xs font-semibold text-muted uppercase tracking-wide mb-2 text-center">3º Lugar</h4>
-                <BracketMatchNode partida={terceiroLugar} />
+        <div className="shrink-0 flex flex-col gap-4 min-w-[9rem] justify-center">
+          {final.length === 0 ? (
+            <TituloRodada titulo="🏆 Final" />
+          ) : (
+            final.map((p, i) => (
+              <div key={p.id} className="flex flex-col items-center gap-2 w-full">
+                {i === 0 && <TituloRodada titulo="🏆 Final" />}
+                <BracketMatchNode partida={p} />
               </div>
-            )}
-          </div>
+            ))
+          )}
+          {terceiroLugar && (
+            <div className="w-full pt-4 border-t border-border">
+              <h4 className="text-xs font-semibold text-muted uppercase tracking-wide mb-2 text-center">3º Lugar</h4>
+              <BracketMatchNode partida={terceiroLugar} />
+            </div>
+          )}
         </div>
         <Coluna titulo="Semifinal" partidas={semiDireita} alinhamentoCards="justify-center" />
         <Coluna titulo="Quartas" partidas={porTodasIds(LADO_DIREITO.quartas)} />
