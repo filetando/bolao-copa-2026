@@ -209,6 +209,15 @@ export interface TaxaAcertoUsuario {
   taxaAcerto: number
 }
 
+export interface AproveitamentoApostadoUsuario {
+  usuarioId: string
+  nome: string
+  totalApostados: number
+  pontosObtidos: number
+  pontosMaximos: number
+  aproveitamento: number
+}
+
 export interface DashboardEstatisticas {
   perfilAcerto: PerfilAcertoUsuario[]
   pontosPorFase: PontosPorFaseUsuario[]
@@ -216,4 +225,5 @@ export interface DashboardEstatisticas {
   contrafactual: ContrafactualUsuario[]
   recordes: Recordes
   taxaAcerto: TaxaAcertoUsuario[]
+  aproveitamentoApostado: AproveitamentoApostadoUsuario[]
 }

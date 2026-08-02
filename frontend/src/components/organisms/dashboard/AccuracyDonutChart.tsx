@@ -1,19 +1,25 @@
 import { Cell, Pie, PieChart, ResponsiveContainer } from 'recharts'
-import type { TaxaAcertoUsuario } from '../../../types/index.ts'
 import { corDoJogador } from '../../../lib/playerColors.ts'
 
+export interface DonutItem {
+  usuarioId: string
+  nome: string
+  percentual: number
+  detalhe: string
+}
+
 interface Props {
-  data: TaxaAcertoUsuario[]
+  data: DonutItem[]
 }
 
 const COR_RESTO = '#9c94a3' // --color-locked
 
-function Donut({ usuario, indice }: { usuario: TaxaAcertoUsuario; indice: number }) {
-  const cor = corDoJogador(usuario.nome, indice)
-  const taxa = Math.round(usuario.taxaAcerto)
+function Donut({ item, indice }: { item: DonutItem; indice: number }) {
+  const cor = corDoJogador(item.nome, indice)
+  const percentualArredondado = Math.round(item.percentual)
   const fatias = [
-    { nome: 'acerto', valor: usuario.taxaAcerto },
-    { nome: 'resto', valor: 100 - usuario.taxaAcerto },
+    { nome: 'preenchido', valor: item.percentual },
+    { nome: 'resto', valor: 100 - item.percentual },
   ]
 
   return (
@@ -28,14 +34,12 @@ function Donut({ usuario, indice }: { usuario: TaxaAcertoUsuario; indice: number
           </PieChart>
         </ResponsiveContainer>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="font-mono text-lg font-bold tabular-nums text-text">{taxa}%</span>
+          <span className="font-mono text-lg font-bold tabular-nums text-text">{percentualArredondado}%</span>
         </div>
       </div>
       <div className="text-center">
-        <p className="text-sm font-semibold text-text">{usuario.nome}</p>
-        <p className="text-xs text-muted">
-          {usuario.acertos}/{usuario.totalApostados} apostados
-        </p>
+        <p className="text-sm font-semibold text-text">{item.nome}</p>
+        <p className="text-xs text-muted">{item.detalhe}</p>
       </div>
     </div>
   )
@@ -48,8 +52,8 @@ export function AccuracyDonutChart({ data }: Props) {
 
   return (
     <div className="flex flex-wrap justify-center gap-6">
-      {data.map((usuario, idx) => (
-        <Donut key={usuario.usuarioId} usuario={usuario} indice={idx} />
+      {data.map((item, idx) => (
+        <Donut key={item.usuarioId} item={item} indice={idx} />
       ))}
     </div>
   )

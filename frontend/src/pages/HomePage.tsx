@@ -105,7 +105,30 @@ export function HomePage() {
                     % de acerto só entre os palpites que cada um realmente fez — separa "acerta pouco" de
                     "esqueceu de apostar".
                   </p>
-                  <AccuracyDonutChart data={estatisticas.taxaAcerto} />
+                  <AccuracyDonutChart
+                    data={estatisticas.taxaAcerto.map((u) => ({
+                      usuarioId: u.usuarioId,
+                      nome: u.nome,
+                      percentual: u.taxaAcerto,
+                      detalhe: `${u.acertos}/${u.totalApostados} apostados`,
+                    }))}
+                  />
+
+                  <h3 className="text-sm font-semibold text-text mb-1 mt-6 pt-4 border-t border-border">
+                    Aproveitamento de pontos
+                  </h3>
+                  <p className="text-xs text-muted mb-3">
+                    % dos pontos possíveis (cravar todos os jogos apostados) — só entre o que cada um
+                    apostou, ignorando os jogos que ficaram de fora.
+                  </p>
+                  <AccuracyDonutChart
+                    data={estatisticas.aproveitamentoApostado.map((u) => ({
+                      usuarioId: u.usuarioId,
+                      nome: u.nome,
+                      percentual: u.aproveitamento,
+                      detalhe: `${u.pontosObtidos}/${u.pontosMaximos} pts`,
+                    }))}
+                  />
                 </div>
 
                 {/* Os momentos */}
