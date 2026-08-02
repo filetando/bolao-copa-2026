@@ -8,6 +8,10 @@ import {
 import { calcularContrafactual, type ContrafactualUsuario } from '../../../domain/bolao/dashboard/Contrafactual.js'
 import { calcularRecordes, type Recordes, type RodadaGrupo } from '../../../domain/bolao/dashboard/Recordes.js'
 import { calcularTaxaAcerto, type TaxaAcertoUsuario } from '../../../domain/bolao/dashboard/TaxaAcerto.js'
+import {
+  calcularAproveitamentoApostado,
+  type AproveitamentoApostadoUsuario,
+} from '../../../domain/bolao/dashboard/AproveitamentoApostado.js'
 
 export interface DashboardEstatisticas {
   perfilAcerto: PerfilAcertoUsuario[]
@@ -16,6 +20,7 @@ export interface DashboardEstatisticas {
   contrafactual: ContrafactualUsuario[]
   recordes: Recordes
   taxaAcerto: TaxaAcertoUsuario[]
+  aproveitamentoApostado: AproveitamentoApostadoUsuario[]
 }
 
 export class GetDashboardEstatisticas {
@@ -34,6 +39,7 @@ export class GetDashboardEstatisticas {
       contrafactual: calcularContrafactual(rows),
       recordes: calcularRecordes(rows, this.rodadasGrupos),
       taxaAcerto: calcularTaxaAcerto(rows),
+      aproveitamentoApostado: calcularAproveitamentoApostado(rows),
     }
   }
 }
